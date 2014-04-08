@@ -1,0 +1,118 @@
+\documentclass[letterpaper,12pt,titlepage]{article}
+
+\usepackage{graphicx}                                        
+\usepackage{amssymb}                                         
+\usepackage{amsmath}                                         
+\usepackage{amsthm}                                          
+
+\usepackage{alltt}                                           
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+
+\usepackage{balance}
+\usepackage[TABBOTCAP, tight]{subfigure}
+\usepackage{enumitem}
+\usepackage{pstricks, pst-node}
+
+\usepackage{geometry}
+\geometry{textheight=9in, textwidth=6.5in}
+
+%random comment
+
+\newcommand{\cred}[1]{{\color{red}#1}}
+\newcommand{\cblue}[1]{{\color{blue}#1}}
+
+\usepackage{hyperref}
+\usepackage{geometry}
+
+\def\name{Drake Bridgewater \& Ryan Phillips}
+
+%% The following metadata will show up in the PDF properties
+\hypersetup{
+  colorlinks = true,
+  urlcolor = black,
+  pdfauthor = {\name},
+  pdfkeywords = {cs472 ``computer architecture'' clements ``chapter 1''},
+  pdftitle = {CS 472: Homework 1},
+  pdfsubject = {CS 472: Homework 1},
+  pdfpagemode = UseNone
+}
+
+\begin{document}
+\hfill \name
+
+\hfill \today
+
+\hfill CS 472 HW 1
+
+\begin{enumerate}
+\item[$(1.3)$] We said that the pattern of $1$s and $0$s used to represent an instruction
+  in a computer has no intrinsic meaning. Why is this so and what is the implication of
+  this statement?
+  
+As far as intrinsic meaning is concerned, this is the case with language in general. Information can only be communicated if both the sender and receiver can then encode/decode the words/sentences/messages/bits according to a shared schema. In the case of bit patterns the implication is simply that anything reading or writing these bit patterns must know the format ahead of time.
+
+  
+  \begin{enumerate}
+  \item[] 
+  \end{enumerate}
+
+  %Answer goes here -- make sure you put a blank line between question and answer.
+\item[$(1.5)$] Modify the algorithm used in this chapter to locate the longest run of
+  non-consecutive characters in the string.
+  
+  \begin{enumerate}
+  \item[] \begin{verbatim}
+  read first digit in the string and call it new_digit
+  set the current_run_value to new_digit
+  set the current_run_length to 1
+  set the max_run to 1
+  
+  REPEAT
+     read the next digit in the sequence
+     IF new_digit != current_run_value
+          current_run_length ++
+     ELSE 
+          current_run_length = 1
+
+     current_run_value = new_digit     
+         
+     IF current_run_length > max_run 
+          max_run = current_run_length
+  UNTIL last digit is read   
+  
+  \end{verbatim}
+  \end{enumerate}
+  
+\item[$(1.8)$] What are the differences between RTL, machine language, assembly language,
+  high-level language, and pseudocode?
+  \begin{enumerate}
+  \item[] \textbf{RTL or Register Transfer Language} is actual programming of the registers at gate level. This kind of programming can be done with Verilog, VHDL or actual drawing of the gates. 
+  \item[] \textbf{Machine Language} is a set of instructions executed directly on the CPU. Each instruction performs one of usually 10 different operations. 
+  \item[] \textbf{Assembly Language} is a lower level programming language for a computational system where the language is highly dependent on the architecture
+  \item[] \textbf{High-level Language} is a programming language with much abstraction from the details of a the computer. Many of the operations are either automated or a subset of functions within a single high-level language command. 
+  \item[] \textbf{Pseudocode} is an informal, high-level description of the operating principle of a computer program.
+  \end{enumerate}
+  
+\item[$(1.12)$]What is the difference between a computer's \textit{architecture} and its
+  \textit{organization}?
+  \begin{enumerate}
+\item[] \textbf{Computer architecture} implies structure and tells us something about how the components of the computer fit together and how the different hardware components of a computer system relate; whereas, \textbf{computer organization} is exactly how the circuits are laid out. The organization is vastly important in all aspects of computers but is can be seen as more important in dedicated devices; these dedicated devices such as a video decoder for a camera will orient the different electrical components in such a fashion to enable greater throughput for video related operations. \cite{Shahzad}
+  \end{enumerate}
+  
+\item[$(1.18)$]What is the von Neumann bottleneck?
+  \begin{enumerate}
+  \item[] "The Expression Von Neumann bottleneck has been coined to indicate that one of the limiting factors of the stored program computer is the path between the CPU and the memory." \cite{Clements} The Von Neumann Bottleneck is caused when the limited throughput, data transfer rate, between the CPU and the memory compared to the amount of memory. This is partly because program memory and data memory cannot be accessed at the same time. 
+  \end{enumerate}
+\item[$(1.33)$]Is Moore's law a law?
+  \begin{enumerate}
+  \item[] No, Moore's Law is not a law, as the book puts it this is an empirical observation, and people usually think of Moore's law as results of the current analysis which state that the number of components on an integrated circuit doubles every two years has been accompanied by a corresponding increase in the speed of integrated circuits. 
+  \end{enumerate}
+
+\end{enumerate}
+
+\bibliographystyle{plain}
+\bibliography{cs472_HW1_bridgewd_philliry}
+\end{document}
+

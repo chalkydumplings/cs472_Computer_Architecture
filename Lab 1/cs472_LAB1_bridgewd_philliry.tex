@@ -1,0 +1,80 @@
+\documentclass[letterpaper,12pt,titlepage]{article}
+
+\usepackage{graphicx}                                        
+\usepackage{amssymb}                                         
+\usepackage{amsmath}                                         
+\usepackage{amsthm}                                          
+
+\usepackage{alltt}                                           
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+
+\usepackage{balance}
+\usepackage[TABBOTCAP, tight]{subfigure}
+\usepackage{enumitem}
+\usepackage{pstricks, pst-node}
+
+\usepackage{geometry}
+\geometry{textheight=9in, textwidth=6.5in}
+
+%random comment
+
+\newcommand{\cred}[1]{{\color{red}#1}}
+\newcommand{\cblue}[1]{{\color{blue}#1}}
+
+\usepackage{hyperref}
+\usepackage{geometry}
+
+\def\name{Drake Bridgewater \& Ryan Phillips}
+
+%% The following metadata will show up in the PDF properties
+\hypersetup{
+  colorlinks = true,
+  urlcolor = black,
+  pdfauthor = {\name},
+  pdfkeywords = {cs472 ``computer architecture'' clements ``chapter 1''},
+  pdftitle = {CS 472: Lab 1},
+  pdfsubject = {CS 472: Lab 1},
+  pdfpagemode = UseNone
+}
+
+\begin{document}
+\hfill \name
+
+\hfill \today
+
+\hfill CS 472 Lab 1
+\section*{Getting started}
+It is assumed that you are comfortable programming in C or C++. If this is not the case, it is recommended you make yourself comfortable as quickly as possible. This lab will be done on flip.engr.oregonstate.edu, in C. Please ensure you can access this server and are comfortable navigating around.
+
+In this lab, you will be exploring the numerical formats, including both integers and floating point values. You will be implementing addition, multiplication, subtraction, and division for both floating point and integer values.
+
+\section*{Part 1: Implement frexp Function}
+The standard C library provides a collection of functions for working with the parts of a floating point value. Specifically, you will be implementing the double form of frexp. Please see the man pages for details of implementation. Your version of the function should work identically to the supplied version. Feel free to use the example program from the man page as a test case.
+\section*{Part 2: Feature Extraction}
+As we discussed in class, bit patterns have no meaning until such is assigned by the programmer. As such, a given bit pattern can be an integer, a floating point value, a 4 or 8 character string (depending on the size), etc. For this part of the lab, write code to treat a given value as each of these things.
+
+For a given bit pattern, write code capable of answering the following questions:
+\begin{enumerate}
+\item[]If the value is treated as a double, what is the mantissa?
+
+\item[]If the value is treated as a double, what is the sign?
+
+\item[]If the value is treated as a double, what is the exponent?
+
+\item[]If the value is treated as a long, what is the value?
+
+\item[]If the value is treated as a long, what is the sign?
+
+\item[]If the value is treated as 8 characters, what are they?
+
+\end{enumerate}
+
+\begin{thebibliography}{9}
+
+
+\end{thebibliography}
+
+\end{document}
+
