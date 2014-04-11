@@ -1,0 +1,140 @@
+\documentclass[letterpaper,12pt,titlepage]{article}
+
+\usepackage{graphicx}                                        
+\usepackage{amssymb}                                         
+\usepackage{amsmath}                                         
+\usepackage{amsthm}                                          
+
+\usepackage{alltt}                                           
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+
+\usepackage{balance}
+\usepackage[TABBOTCAP, tight]{subfigure}
+\usepackage{enumitem}
+\usepackage{pstricks, pst-node}
+
+\usepackage{geometry}
+\geometry{textheight=9in, textwidth=6.5in}
+
+%random comment
+
+\newcommand{\cred}[1]{{\color{red}#1}}
+\newcommand{\cblue}[1]{{\color{blue}#1}}
+
+\usepackage{hyperref}
+\usepackage{geometry}
+
+\def\name{Drake Bridgewater \& Ryan Phillips}
+
+%% The following metadata will show up in the PDF properties
+\hypersetup{
+  colorlinks = true,
+  urlcolor = black,
+  pdfauthor = {\name},
+  pdfkeywords = {cs472 ``computer architecture'' clements ``chapter 2''},
+  pdftitle = {CS 472: Homework 2},
+  pdfsubject = {CS 472: Homework 2},
+  pdfpagemode = UseNone
+}
+
+\begin{document}
+\hfill \name
+
+\hfill \today
+
+\hfill CS 472 HW 2
+
+\begin{enumerate}
+
+\item[$(2.5)$] Calculations are to be performed to a precision of 0.001\%. How many bits does this require?
+  
+.001 = $2^{-x}$
+
+x ~= 9.9
+
+It will require at least 10 bits to achieve this precision. This doesn't take into account the size of the numbers, as it will require extra bits to describe the possible range of magnitudes.
+
+\item[$(2.13)$] Perform the following calculations in the stated bases.
+
+
+
+a. \newline
+$00110111_{2}$ \newline
+$01011011_{2}$ \newline
+--------- \newline
+$10010010_{2}$ \newline 
+
+
+b. \newline
+$00111111_{2}$ \newline
+$ + 01001001_{2}$ \newline
+--------- \newline
+$10001000_{2}$ \newline
+
+c. \newline
+$00120121_{16}$ \newline
+$ + 0A015031_{16}$ \newline
+--------- \newline
+$A135152_{16}$ \newline
+
+d. \newline
+$00ABCD1F_{16}$ \newline
+$ + 0F00800F_{16}$ \newline
+--------- \newline
+$FAC4D2E_{16}$ \newline
+  
+\item[$(2.14)$] What is arithmatic overflow? When does it occur and how can it be detected?
+  
+Arithmatic overflow is what occurs when the result of an arithmatic calculation will not fit in the provided number of bits. In this case, the carry of the sum \textit{overflows}. It can be detected by checking the leading bits of the inputs, outputs and the type of operation. If the operation is addition, and either one or both of the inputs have a 1 in the most significant bit, and the answer does not, then an overflow has occured. Similarly, if the operation is subtract, and both numbers are negative, the same check can be performed.
+
+\item[$(2.16)$] Convert 1234.125 into 32-bit IEEE floating-point format.
+  
+sign digit = 0
+exponent = 10001001
+significand = 00110100100010000000000
+
+Or in hexidecimal: 00449a44 
+
+\item[$(2.17)$] What is the decimal equivalent of the 32-bit IEEE floating-point value CC4C 0000
+  
+First, as binary:
+
+1 10011000 10011000000000000000000
+
+$ negative, 2^{25}, fraction: 0.59375 $ 
+
+$ -1.59375 * 2^{25} = -53477376 $
+
+\item[$(2.22)$] What is the difference between a \textit{truncation} error and a \textit{rounding} error? 
+  
+Truncation is the simplest method of maintaining a constant number of bits in the significand; it drops any bits that don't fit. This means that a truncated number will always be less than what it should be, which is a biased error.
+
+Rounding is the other method. The bits that don't fit in the significand are rounded, and this is reflected in the least significant bit (and it propogates through the rest of the bits if necessary). Rounding error just refers to difference between a rounded value and the original value.
+
+(Clements, 2014, Pages 78 \& 79)
+
+\item[$(2.40)$] Draw a truth table for the circuit in Figure P2.40 and explain what it does.
+  
+\begin{tabular}{c c c}
+A & B & C \\
+0 & 0 & 0 \\
+0 & 1 & 1\% \\
+1 & 0 & 1\% \\
+1 & 1 & 0\% \\
+\end{tabular}
+
+This is a way of making an XOR gate out of NAND gates.
+
+
+\item[$(2.45)$] It is possible to have n-input AND, OR, NAND, and NOR gates, where n\textgreater 2. Can you have an n-input XOR gate for n\textgreater 2? Explain your answer with a truth table.
+  
+answer here
+
+\end{enumerate}
+
+\bibliographystyle{plain}
+\bibliography{cs472_HW2_bridgewd_philliry}
+\end{document}
+
