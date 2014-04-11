@@ -4,14 +4,6 @@
 #include <float.h>
 
 
-/*
-
-note from Ryan:
-I need to cite portions of this code if I end up using it...
-I don't remember where I found the first foo off the top of my head,
-but a search should be able to find it.
-
-*/
 
 //pexp is a pointer to the exponent
 double my_frexp(double value, int *pexp){
