@@ -1,26 +1,33 @@
-TARGET = my_frexp
-SRC    = my_frexp
-TARGET2= feature_extraction
-SRC2   = feature_extraction
+TARGET 		= my_frexp
+SRC_FILENAME	= my_frexp
+TARGET2		= feature_extraction
+SRC2_FILENAME	= feature_extraction
 
-LATEX  = cs472_LAB1_bridgewd_philliry
-FLAGS  =  
-LIBS   =
+ASSIGNMENT_NAME	= cs472_LAB1_bridgewd_philliry
+
+LATEX_FILENAME	= cs472_LAB1_bridgewd_philliry
+FLAGS  		=
+LIBS   		=
 
 default: compile latex run
 
-compile: $(SRC).c
-	gcc $(FLAGS) $(SRC).c $(LIBS) -o $(TARGET)
-	gcc $(FLAGS) $(SRC2).c $(LIBS) -o $(TARGET2)
+compile: $(SRC_FILENAME).c
+	gcc $(FLAGS)  $(SRC_FILENAME).c $(LIBS) -o $(TARGET)
+	gcc $(FLAGS) $(SRC2_FILENAME).c $(LIBS) -o $(TARGET2)
 
-latex: $(LATEX).tex
-	pdflatex $(LATEX).tex
-	pdflatex $(LATEX).tex
+latex: $(LATEX_FILENAME).tex
+	pdflatex $(LATEX_FILENAME).tex
 	
 run: 
-	./my_frexp 
+	$(info ************************RUNNING********************************)
+	./my_frexp
 	./feature_extraction
 
-clean:
-	rm $(TARGET) *_results $(LATEX).aux $(LATEX).log $(LATEX).out $(LATEX).toc $(LATEX).synctex.gz $(LATEX).pdf
+tar:
+	tar cvf $(ASSIGNMENT_NAME).tar.bz2 $(LATEX_FILENAME).tex  Makefile \
+		$(SRC_FILENAME).c  $(SRC2_FILENAME).c 
 
+clean:
+	rm $(TARGET) *_results $(LATEX_FILENAME).aux $(LATEX_FILENAME).log \
+		$(LATEX_FILENAME).out $(LATEX_FILENAME).toc \
+		$(LATEX_FILENAME).synctex.gz $(LATEX_FILENAME).pdf
