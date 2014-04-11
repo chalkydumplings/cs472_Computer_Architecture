@@ -195,9 +195,13 @@ void print_chars(signed char *ch){
     printf("\n");
 }
 
-int main(void){
+int main(int argc, char *argv[]){
+    if (argc != 2)
+    {
+        printf("please enter number to be processed.\n");
+    }
 
-    float f = -1.234;
+    float f = atof(argv[1]);
     int max = sizeof(typeof(f));
     printf("\nfloat: %f \n", f);
     unsigned char *ch; //signed or unsigned chars... i still don't know?
