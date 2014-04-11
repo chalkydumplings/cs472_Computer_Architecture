@@ -55,30 +55,11 @@ In this lab, you will be exploring the numerical formats, including both integer
 \section*{Part 1: Implement frexp Function}
 The standard C library provides a collection of functions for working with the parts of a floating point value. Specifically, you will be implementing the double form of frexp. Please see the man pages for details of implementation. Your version of the function should work identically to the supplied version. Feel free to use the example program from the man page as a test case.  \hyperref[frexp]{https://web.engr.oregonstate.edu/~bridgewd/public/frexp.txt}
 
-
 \lstinputlisting[language=C]{my_frexp.c}
 
 \newpage
 \section*{Part 2: Feature Extraction}
 As we discussed in class, bit patterns have no meaning until such is assigned by the programmer. As such, a given bit pattern can be an integer, a floating point value, a 4 or 8 character string (depending on the size), etc. For this part of the lab, write code to treat a given value as each of these things.
-
-For a given bit pattern, write code capable of answering the following questions:
-\begin{enumerate}
-\item[]If the value is treated as a double, what is the mantissa?
-
-\item[]If the value is treated as a double, what is the sign?
-
-\item[]If the value is treated as a double, what is the exponent?
-
-\item[]If the value is treated as a long, what is the value?
-
-\item[]If the value is treated as a long, what is the sign?
-
-\item[]If the value is treated as 8 characters, what are they?
-
-
-
-\end{enumerate}
 
 \begin{center}
 \begin{tabular} {| l | l | }
