@@ -197,7 +197,7 @@ void print_chars(signed char *ch){
 
 int main(int argc, char *argv[]){
 
-
+    float f = 1.234;
     int max = sizeof(typeof(f));
     printf("\nfloat: %f \n", f);
     unsigned char *ch; //signed or unsigned chars... i still don't know?

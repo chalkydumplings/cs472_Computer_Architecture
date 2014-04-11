@@ -1,13 +1,11 @@
+TARGET = my_frexp
+SRC    = my_frexp
+TARGET2= feature_extraction
+SRC2   = feature_extraction
 
-
-TARGET=my_frexp
-SRC1=my_frexp
-TARGET2=feature_extraction
-SRC2=feature_extraction
-
-LATEX=cs472_LAB1_bridgewd_philliry
-FLAGS=-pedantic -Wall -std=c++11 -g -pg -O0
-LIBS=
+LATEX  = cs472_LAB1_bridgewd_philliry
+FLAGS  =  
+LIBS   =
 
 default: compile latex run
 
