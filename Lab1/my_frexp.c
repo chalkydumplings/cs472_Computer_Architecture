@@ -7,7 +7,8 @@
 
 source:
 
-http://read.pudn.com/downloads65/sourcecode/os/234548/libc/math/frexp.c__.htm
+http://read.pudn.com/downloads65/sourcecode/
+os/234548/libc/math/frexp.c__.htm
 
 */
 

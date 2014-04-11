@@ -5,8 +5,10 @@
 
 note:
 
-okay, this is weird. The lab instructions ask for the sign bit if a value is
-treated as a long, but long appears to use 2's complement instead of a sign bit.
+okay, this is weird. The lab instructions ask
+for the sign bit if a value is treated as a long,
+but long appears to use 2's complement instead of
+a sign bit.
 
 */
 
@@ -153,6 +155,7 @@ void print_chars(signed char *ch){
 
     int output[8*8];
     int i, j, k;
+    k = 0;
     ch = ch + 3;
     for (i = 0; i < 8; i++){
         int j;
