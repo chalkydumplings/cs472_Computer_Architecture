@@ -182,36 +182,68 @@ void print_chars(signed char *ch){
 
 int main(int argc, char *argv[]){
 
-    float f = -1.234;
-    int max = sizeof(typeof(f));
-    printf("\nfloat: %f \n", f);
-    unsigned char *ch; //signed or unsigned chars... i still don't know?
-    ch = (unsigned char *)(&f);
+    if (argc < 2){
+        printf("Usage: %s VALUE TYPE \n",argv[0]);
+        printf("where TYPE is f,d,i,l,c \nfor float,double,int,long, or char\n");
+        printf("or: %s t\nto display test output \n",argv[0]);
 
-    print_mse_as_float(ch,max);
-    print_mse_as_double(ch);
-    print_vs_as_long(ch);
-    print_chars(ch);
+    } else if(argv[1][0] == 't'){
 
-    int i = 1;
-    printf("\nint: %d \n", i);
-    unsigned char *ch2; 
-    ch2 = (unsigned char *)(&i);
+        float f = -1.234;
+        int max = sizeof(typeof(f));
+        printf("\nfloat: %f \n", f);
+        unsigned char *ch; //signed or unsigned chars... i still don't know?
+        ch = (unsigned char *)(&f);
 
-    print_mse_as_float(ch2,max);
-    print_mse_as_double(ch2);
-    print_vs_as_long(ch2);
-    print_chars(ch2);
+        print_mse_as_float(ch,max);
+        print_mse_as_double(ch);
+        print_vs_as_long(ch);
+        print_chars(ch);
 
-    long int l = -1000;
-    printf("\nlong: %d \n", l);
-    unsigned char *ch3; 
-    ch3 = (unsigned char *)(&l);
+        int i = 1;
+        printf("\nint: %d \n", i);
+        unsigned char *ch2; 
+        ch2 = (unsigned char *)(&i);
 
-    print_mse_as_float(ch3,max);
-    print_mse_as_double(ch3);
-    print_vs_as_long(ch3);
-    print_chars(ch3);
+        print_mse_as_float(ch2,max);
+        print_mse_as_double(ch2);
+        print_vs_as_long(ch2);
+        print_chars(ch2);
+
+        long int l = -1000;
+        printf("\nlong: %d \n", l);
+        unsigned char *ch3; 
+        ch3 = (unsigned char *)(&l);
+
+        print_mse_as_float(ch3,max);
+        print_mse_as_double(ch3);
+        print_vs_as_long(ch3);
+        print_chars(ch3);
+
+    } else if(argv[2][0] == 'i'){ //int
+
+        int as_int = argv[1][0] - '0';
+
+        unsigned char *user_in; 
+        user_in = (unsigned char *)(&as_int);
+        printf("\nInput is the following INT: %d \n", as_int);
+        print_mse_as_double(user_in);
+        print_vs_as_long(user_in);
+        print_chars(user_in);
+
+    } else if(argv[2][0] == 'f'){ //float
+
+        double as_double = strtod(argv[1],NULL);
+        
+        unsigned char *user_in; 
+        user_in = (unsigned char *)(&as_double);
+        
+        printf("\nInput is the following DOUBLE: %f \n", as_double);
+        print_mse_as_double(user_in);
+        print_vs_as_long(user_in);
+        print_chars(user_in);
+        
+    }
 
 }
 
