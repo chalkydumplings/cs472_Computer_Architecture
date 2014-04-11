@@ -1,8 +1,16 @@
+/*
+ *	Author:  Drake Bridgewater and Ryan Phillips
+ *	Created:  04//14/2014 
+ *	Filename:  my_frexp.c
+ *
+ *	Description:
+ *
+ *	Source: http://read.pudn.com/downloads65/sourcecode/os/234548/libc/math/frexp.c__.htm
+*/
 
 #include <stdio.h>    
 #include <math.h>       
 #include <float.h>
-
 
 
 //pexp is a pointer to the exponent
