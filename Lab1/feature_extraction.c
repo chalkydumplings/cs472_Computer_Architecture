@@ -3,28 +3,6 @@
 
 /*
 
-(from wolfram alpha for 1.234)
-
-sign digit | 0
-exponent | 01111111
-significand | 00111011111001110110110
-
-from print_bits
-
-byte 1 = 00111111
-byte 2 = 10011101
-byte 3 = 11110011
-byte 4 = 10110110
-
-they match!
-
-00111111100111011111001110110110
-00111111100111011111001110110110
-
-*/
-
-
-/* 
 note:
 
 okay, this is weird. The lab instructions ask for the sign bit if a value is
@@ -123,9 +101,11 @@ void print_vs_as_long(signed char *ch){
         printf("%d",output[k]);
     }
     printf("\n");
+    ch = ch + 3;
 }
 
-//1, 11, 52
+// prints sign, exponent, mantissa...
+// in this case the lenghts are: 1, 11, 52
 void print_mse_as_double(signed char *ch){
 
     printf("if this were a double...\n");
@@ -165,6 +145,8 @@ void print_mse_as_double(signed char *ch){
     printf("\n");
 }
 
+//assumes string is 8 chars long,
+//prints each set of 8 bits as a char
 void print_chars(signed char *ch){
 
     printf("if this were 8 chars...\n");
@@ -197,7 +179,7 @@ void print_chars(signed char *ch){
 
 int main(int argc, char *argv[]){
 
-    float f = 1.234;
+    float f = -1.234;
     int max = sizeof(typeof(f));
     printf("\nfloat: %f \n", f);
     unsigned char *ch; //signed or unsigned chars... i still don't know?
