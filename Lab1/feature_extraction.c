@@ -179,10 +179,20 @@ void print_chars(signed char *ch){
 	printf("\n");
 }
 
+void noop_message(int argc, char *argv[]){
+	printf("**************feature_extraction.c************\n");
+	printf("****By Drake Bridgewater and Ryan Phillips****\n");
+	printf("Usage: %s VALUE TYPE \n",argv[0]);
+	printf("where TYPE is f,d,i,l,c \nfor float,double,int,long, or char\n");
+	printf("or: %s t\tto display test output \n\n\n\n",argv[0]);
+}
+
 int main(int argc, char *argv[]){
 
-	if(argv[1][0] == 't'){
-
+	if (argc ==1) {
+		noop_message(argc, argv);
+	}
+	else if(argv[1][0] == 't'){
 		float f = -1.234;
 		int max = sizeof(typeof(f));
 		printf("\nfloat: %f \n", f);
@@ -215,7 +225,6 @@ int main(int argc, char *argv[]){
 		print_chars(ch3);
 
 	} else if(argv[2][0] == 'i'){ //int
-
 		int as_int = argv[1][0] - '0';
 
 		unsigned char *user_in; 
@@ -226,7 +235,17 @@ int main(int argc, char *argv[]){
 		print_chars(user_in);
 
 	} else if(argv[2][0] == 'f'){ //float
+		float as_float = strtof(argv[1],NULL);
 
+		unsigned char *user_in; 
+		user_in = (unsigned char *)(&as_float);
+
+		printf("\nInput is the following FLOAT: %f \n", as_float);
+		print_mse_as_double(user_in);
+		print_vs_as_long(user_in);
+		print_chars(user_in);
+
+	} else if(argv[2][0] == 'd'){ //double
 		double as_double = strtod(argv[1],NULL);
 
 		unsigned char *user_in; 
@@ -236,13 +255,30 @@ int main(int argc, char *argv[]){
 		print_mse_as_double(user_in);
 		print_vs_as_long(user_in);
 		print_chars(user_in);
-	
+
+	} else if(argv[2][0] == 'l'){ //long
+		long as_long = strtol(argv[1],NULL);
+
+		unsigned char *user_in; 
+		user_in = (unsigned char *)(&as_long);
+
+		printf("\nInput is the following LONG: %f \n", as_long);
+		print_mse_as_double(user_in);
+		print_vs_as_long(user_in);
+		print_chars(user_in);
+
+	} else if(argv[2][0] == 'c'){ //chars
+		char as_char = argv[1];
+
+		unsigned char *user_in; 
+		user_in = (unsigned char *)(&as_char);
+
+		printf("\nInput is the following CHAR: %c \n", as_char);
+		print_mse_as_double(user_in);
+		print_vs_as_long(user_in);
+		print_chars(user_in);
 	} else {
-		printf("Usage: %s VALUE TYPE \n",argv[0]);
-		printf("where TYPE is f,d,i,l,c \nfor float,double,int,long, or char\n");
-		printf("or: %s t\nto display test output \n",argv[0]);
+		noop_message(argc, argv);
 	} 
 
 }
-
-

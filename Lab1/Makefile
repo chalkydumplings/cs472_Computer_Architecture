@@ -20,8 +20,8 @@ latex: $(LATEX_FILENAME).tex
 	
 run: 
 	$(info ************************RUNNING********************************)
-	./my_frexp
-	./feature_extraction
+	./my_frexp 
+	./feature_extraction t
 
 tar:
 	tar cvf $(ASSIGNMENT_NAME).tar.bz2 $(LATEX_FILENAME).tex  Makefile \
