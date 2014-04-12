@@ -262,7 +262,7 @@ int main(int argc, char *argv[]){
 		unsigned char *user_in; 
 		user_in = (unsigned char *)(&as_long);
 
-		printf("\nInput is the following LONG: %f \n", as_long);
+		printf("\nInput is the following LONG: %ld \n", as_long);
 		print_mse_as_double(user_in);
 		print_vs_as_long(user_in);
 		print_chars(user_in);
