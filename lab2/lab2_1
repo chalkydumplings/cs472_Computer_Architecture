@@ -1,0 +1,13 @@
+AREA lab2_1, CODE, READONLY
+
+MOV r0, #10 			;a
+MOV r1, #20 			;b
+MOV r2, #30 			;c
+MOV r3, #15 			;d
+MOV r4, #25 			;e
+
+
+ADD r1,r1,r1 			;r1=r1+r1 || b=b+b
+ADD r1,r1,r0			;r1=r1+r0 || b=a+(b+b)
+MUL r3,r3,r4			;r3=r3+r4 || d=d*e
+SUB 
