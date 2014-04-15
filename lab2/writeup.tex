@@ -126,10 +126,30 @@
 %\newpage
 
 \section*{Getting started}
-Begin with reading the introduction the KEIL simulator on pages 16-29 of \href{http://academic.cengage.com/resource_uploads/downloads/1111987041_374273.pdf}{the Student Workbook}  which accompanies the textbook.
+Begin with reading the introduction the KEIL simulator on pages 16-29 of \href{http://academic.cengage.com/resource_uploads/downloads/1111987041_374273.pdf}{the Student Workbook}  which accompanies the textbook 
 
 \section*{Part 1}
-Please provide answers to the problems in Problem Set 5 in the Student Workbook.
+Please provide answers to the problems in Problem Set 5 in the Student Workbook. Here we provide an introduction to the Keil ARM processor development system.
+
+\subsection*{1)} Write a simple program to perform:  $Z = A+B+B-(D \times E)$
+
+The instructions you may use are ADD, SUB, and MUL. Assume that the data is in registers r0 to r4 (representing A to E) and the result is put in r5. 
+
+Enter your program into the Keil simulator and run it. You can use move instruction to load data into registers. Do you
+get the expected answer?
+ 
+\subsection*{2)} Now assume A, B, C, D and E are 16-bit values in memory. You can load them by using a DCD directive. Remember that you use a label to define the first memory location and you can put successive values on the same line by  separating them by commas. However, since each data item needs its own name, you are going to have to use one directive per element; that is:,  
+
+A   DCD  4
+B   DCD  12
+C   DCD  -2
+ 
+Enter the program, compile (build) it and test it.
+ 
+\subsection*{3)} Write a program that includes deliberate syntax errors.   Enter it in the development system, assemble (build) it and
+then debug it. 
+
+
 
 \newpage
 \section*{Part 2: Examination of compiler output}
