@@ -64,7 +64,7 @@ $+$ &	$01011011_{2}$ 		& $+$ 	& $01001001_{2}$	\\
 \hline
 	&	$10010010_{2}$ 		&  		& $10001000_{2}$	\\
  \\ \\
-c. 	&				&   .	&					\\
+c. 	&				&d.	&					\\
 	&	$00120121_{16}$		&  		& $00ABCD1F_{16}$ 	\\
 $+$ &	$0A015031_{16}$ 	& $+$ 	& $0F00800F_{16}$ 	\\
 \hline 
@@ -118,9 +118,9 @@ $ -1.59375 * 2^{25} = -53477376 $
  \begin{tabular}{c | c | c}
 A & B & C \\ \hline
 0 & 0 & 0 \\
-0 & 1 & 1\% \\
-1 & 0 & 1\% \\
-1 & 1 & 0\% \\
+0 & 1 & 1 \\
+1 & 0 & 1 \\
+1 & 1 & 0 \\
 \end{tabular}
 & This is a way of making an XOR gate out of NAND gates. 
 \end{tabular}
@@ -129,72 +129,18 @@ A & B & C \\ \hline
 
 \begin{center}
 \begin{tabular}{p{6cm} p{6cm}}
-\textbf{AND~~}
- \begin{tabular}{c | c | c | c}
-A 	& B 	& C 	& A $\bullet$ B $\bullet$ C\\ \hline
-1 	& 1 	& 1 	&   1		\\
-1 	& 1 	& 0 	&   0		\\
-1 	& 0 	& 1 	&   0		\\
-1 	& 0 	& 0 	&   0		\\
-0 	& 1 	& 1 	&   0		\\
-0 	& 1 	& 0 	&   0		\\
-0 	& 0 	& 1 	&   0		\\
-0 	& 0 	& 0 	&   0		\\
-\end{tabular}
-&
-\textbf{OR~~}
- \begin{tabular}{c | c | c | c}
-A 	& B 	& C 	& A+B+C\\ \hline
-1 	& 1 	& 1 	&   1		\\
-1 	& 1 	& 0 	&   1		\\
-1 	& 0 	& 1 	&   1		\\
-1 	& 0 	& 0 	&   1		\\
-0 	& 1 	& 1 	&   1		\\
-0 	& 1 	& 0 	&   1		\\
-0 	& 0 	& 1 	&   1		\\
-0 	& 0 	& 0 	&   0		\\
-\end{tabular} 
-\\\\\\\\
-\textbf{NAND}
- \begin{tabular}{c | c | c | c}
-A 	& B 	& C 	& $\overline{A \bullet B \bullet C}$\\ \hline
-1 	& 1 	& 1 	&   0		\\
-1 	& 1 	& 0 	&   1		\\
-1 	& 0 	& 1 	&   1		\\
-1 	& 0 	& 0 	&   1		\\
-0 	& 1 	& 1 	&   1		\\
-0 	& 1 	& 0 	&   1		\\
-0 	& 0 	& 1 	&   1		\\
-0 	& 0 	& 0 	&   1		\\
-\end{tabular} 
-&
-\textbf{NOR}
- \begin{tabular}{c | c | c | c}
-A 	& B 	& C 	& $\overline{A+B+C}$\\ \hline
-1 	& 1 	& 1 	&   0		\\
-1 	& 1 	& 0 	&   0		\\
-1 	& 0 	& 1 	&   0		\\
-1 	& 0 	& 0 	&   0		\\
-0 	& 1 	& 1 	&   0		\\
-0 	& 1 	& 0 	&   0		\\
-0 	& 0 	& 1 	&   0		\\
-0 	& 0 	& 0 	&   1		\\
-\end{tabular}
-\\\\\\\\
+
 \textbf{XOR}
- \begin{tabular}{c | c | c | c}
-A 	& B 	& C 	& $A \oplus B \oplus C$\\ \hline
-1 	& 1 	& 1 	&   0		\\
-1 	& 1 	& 0 	&   1		\\
-1 	& 0 	& 1 	&   1		\\
-1 	& 0 	& 0 	&   1		\\
-0 	& 1 	& 1 	&   1		\\
-0 	& 1 	& 0 	&   1		\\
-0 	& 0 	& 1 	&   1		\\
-0 	& 0 	& 0 	&   0		\\
-&
+ \begin{tabular}{c |  c | c}
+A 	& B 	& $A \oplus B $\\ \hline
+1 	& 1 	&   0		\\
+1 	& 0 	&   1		\\
+0 	& 1 	&   1		\\
+0 	& 0 	&   0		\\
 \end{tabular}
+&No, by definition you can't have an XOR gate with 3 or more inputs. 
 \end{tabular}
+
 \end{center}
 
 
