@@ -10,6 +10,14 @@
 \usepackage{color}
 \usepackage{url}
 
+\usepackage[framemethod=TikZ]{mdframed}
+\mdfdefinestyle{MyFrame}{%
+    innertopmargin=\baselineskip,
+    innerbottommargin=\baselineskip,
+    innerrightmargin=20pt,
+    innerleftmargin=20pt,
+    backgroundcolor=gray!10!white}
+
 \usepackage{balance}
 \usepackage[TABBOTCAP, tight]{subfigure}
 \usepackage{enumitem}
@@ -46,14 +54,53 @@
 
 \hfill CS 472 HW 3
 
-\section*{$(3.1)$} Why is the program counter a pointer and not a counter?
+\section*{$(3.1)$} Why is the program counter a pointer and not a counter? \newline
+
+
+
+\begin{mdframed}[style=MyFrame]
+
+It saves a step. If it were a counter, an address would still need to be stored somewhere, and arithmatic on this address would need to be performed using the counter. But since the program instructions are stored sequentially in memory, the address itself can simply be incremented to get the next instruction.
+
+\end{mdframed}
   
 \section*{$(3.2)$} Explain the function of the following registers in a CPU.
 
-a. PC
-b. MAR
-c. MBR
-d. IR
+\renewcommand{\labelenumi}{\alph{enumi})}
+\begin{enumerate}
+\item PC
+
+\begin{mdframed}[style=MyFrame]
+
+The Program Counter. It is incremented after an instruction is fetched. It holds the memory address of the next instruction to be executed.
+
+\end{mdframed}
+
+\item MAR
+
+\begin{mdframed}[style=MyFrame]
+
+The Memory Address Register. It works in tandom with the MDR. It either contains the location of the where the MDR data should be written to, or the location of data which will be read into the MDR.
+
+\end{mdframed}
+
+\item MDR 
+
+\begin{mdframed}[style=MyFrame]
+
+The Memory Data Register. It contains the data referred to in the MAR explanation above.
+
+\end{mdframed}
+
+\item IR
+
+\begin{mdframed}[style=MyFrame]
+
+The Memory Data Register. It contains the data referred to in the MAR explanation above.
+
+\end{mdframed}
+
+\end{enumerate}
 
 \section*{$(3.3)$} For each of the following 6-bit operations, calculate the values of the C, Z, V, and N flags.
 
@@ -103,13 +150,19 @@ f.
 
 \section*{$(3.25)$} What is the binary encoding of the following instructions?
 
-a. STRB r1, [r2]
 
-b. LDR r3, [r4, r5]!
+\renewcommand{\labelenumi}{\alph{enumi})}
+\begin{enumerate}
 
-c. LDR r3, [r4], r5
+\item STRB r1, [r2]
 
-d. LDR r3, [r4,\#-6]!
+\item LDR r3, [r4, r5]!
+
+\item LDR r3, [r4], r5
+
+\item LDR r3, [r4,\#-6]!
+
+\end{enumerate}
 
 \section*{$(3.39)$} Write an ARM assembly language program that scans a string terminated by the null byte 0x00 and copies the string from a source location pointed at by r0 to a destination pointed at by r1.
 
