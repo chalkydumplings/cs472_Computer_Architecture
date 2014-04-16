@@ -7,7 +7,7 @@ CXXFLAGS = -Wall -openmp -O3 -g
 #add current dir to libs for libjsmn.a
 LDFLAGS = -lrt -lpthread -L. -ljsmn
 #replace this if you want to change the output name
-CTARGET = compute
+CTARGET = palindrome
 TEX_TARGET = writeup
 
 # LaTeX related constants
@@ -18,7 +18,7 @@ SRC=mt.h
 INCLUDES = 
 
 #any .c or .cpp files go here
-SOURCE = compute.c
+SOURCE = palindrome.c
 
 #default is to compile and pdf
 default: compile
