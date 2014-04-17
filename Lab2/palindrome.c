@@ -6,6 +6,9 @@
  *	Description:
  *
  *	Checks an odd length string input to see if it is a palindrome.
+ *
+ *  Input: second command line param is an odd length string
+ *  Return: 1 if it's a palindrome, 0 if it isn't
 */
 
 #include <stdio.h>    
@@ -40,8 +43,7 @@ int main(int argc, char *argv[]){
 
     //for testing
     //printf("%s %d",in_string, in_length);
-
-  printf("%d\n", ret);
+    //printf("%d\n", ret);
   return ret;
 
   }
