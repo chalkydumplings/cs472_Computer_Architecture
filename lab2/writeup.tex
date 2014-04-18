@@ -139,7 +139,7 @@ The instructions you may use are ADD, SUB, and MUL. Assume that the data is in r
 Enter your program into the Keil simulator and run it. You can use move instruction to load data into registers. Do you
 get the expected answer? 
 
-While watching the register reflect each line of code I was able to view each commands effects on the bits. This allowed me to realize that the add operation and subtraction operations are performed exactly as expected, but once the multiplication command came into play I noticed that the numbers di
+While watching the register reflect each line of code I was able to view each commands effects on the bits. This allowed me to realize that the add operation and subtraction operations are performed exactly as expected, but once the multiplication command came into play I noticed that when the numbers are smaller minus larger the result is a negative. 
 \lstinputlisting{lab2_1.asm}
  
 \subsection*{2)} Now assume A, B, C, D and E are 16-bit values in memory. You can load them by using a DCD directive. Remember that you use a label to define the first memory location and you can put successive values on the same line by  separating them by commas. However, since each data item needs its own name, you are going to have to use one directive per element; that is:,  
