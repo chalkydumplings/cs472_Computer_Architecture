@@ -20,13 +20,54 @@
 \usepackage{geometry}
 \geometry{textheight=9in, textwidth=6.5in}
 
-%random comment
+% Code listing packages
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}
+
+%%keeps text of subsection on same line
+\usepackage{titlesec} 
+\titleformat{\subsection}[runin] 
+  {\normalfont\large\bfseries}{\thesubsection}{1em}{} 
+
 
 \newcommand{\cred}[1]{{\color{red}#1}}
 \newcommand{\cblue}[1]{{\color{blue}#1}}
 
 \usepackage{hyperref}
 \usepackage{geometry}
+
+%% Code Listing Configuration
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{0.987\linewidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing, labelfont=white, indention=0pt, textfont=white, margin=0pt, font={bf,footnotesize}, singlelinecheck=false}
+\DeclareCaptionFont{white}{\color{white}}
+\renewcommand{\lstlistingname}{Code}
+\lstset{ %
+  %Some lang opts: C++, C, Java, Python, Matlab, TeX, HTML, SQL, Verilog, VHDL, make, ...
+  basicstyle=\footnotesize\ttfamily , % the size of the fonts that are used for the code
+  numbers=left,                       % where to put the line-numbers
+  numberstyle=\scriptsize\color{darkgray}, % the style that is used for the line-numbers
+  stepnumber=2,                       % the step between two line-numbers. 
+  numbersep=5pt,                      % how far the line-numbers are from the code
+  backgroundcolor=\color{white},      % choose the background color. You must add \usepackage{color}
+  showspaces=false,                   % show spaces adding particular underscores
+  showstringspaces=false,             % underline spaces within strings
+  showtabs=false,                     % show tabs within strings adding particular underscores
+  frame=tb,                           % adds a frame around the code
+  rulesepcolor=\color{gray},          % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=2,                          % sets default tabsize to 2 spaces
+  captionpos=t,                       % sets the caption-position
+  breaklines=true,                    % sets automatic line breaking
+  breakatwhitespace=false,            % sets if automatic breaks should only happen at whitespace
+  title=\lstname,                     % show the filename of files included with \lstinputlisting;
+  keywordstyle=\color{blue},          % keyword style
+  commentstyle=\color{dkgreen},       % comment style
+  stringstyle=\color{mauve},          % string literal style
+  escapeinside={\%*}{*)},             % if you want to add a comment within your code
+  morekeywords={*,...}                % if you want to add more keywords to the set
+  framexbottommargin=5pt,
+}
 
 \def\name{Drake Bridgewater \\  Ryan Phillips}
 \def\title{Lab 2 - The ARM ISA}
@@ -128,28 +169,21 @@
 \section*{Getting started}
 Begin with reading the introduction the KEIL simulator on pages 16-29 of \href{http://academic.cengage.com/resource_uploads/downloads/1111987041_374273.pdf}{the Student Workbook}  which accompanies the textbook 
 
-\section*{Part 1}
-Please provide answers to the problems in Problem Set 5 in the Student Workbook. Here we provide an introduction to the Keil ARM processor development system.
+\section*{Part 1}Please provide answers to the problems in Problem Set 5 in the Student Workbook. Here we provide an introduction to the Keil ARM processor development system.
 
 
-\subsection*{1)} Write a simple program to perform:  $Z = A+B+B-(D \times E)$
-
-The instructions you may use are ADD, SUB, and MUL. Assume that the data is in registers r0 to r4 (representing A to E) and the result is put in r5. 
-
-Enter your program into the Keil simulator and run it. You can use move instruction to load data into registers. Do you
+\subsection*{1)} Write a simple program to perform:  $Z = A+B+B-(D \times E)$. The instructions you may use are ADD, SUB, and MUL. Assume that the data is in registers r0 to r4 (representing A to E) and the result is put in r5. Enter your program into the Keil simulator and run it. You can use move instruction to load data into registers. Do you
 get the expected answer? 
 
+\lstinputlisting{lab2_part1/lab2_1.asm}
 While watching the register reflect each line of code I was able to view each commands effects on the bits. This allowed me to realize that the add operation and subtraction operations are performed exactly as expected, but once the multiplication command came into play I noticed that when the numbers are smaller minus larger the result is a negative. 
-\lstinputlisting{lab2_1.asm}
- 
-\subsection*{2)} Now assume A, B, C, D and E are 16-bit values in memory. You can load them by using a DCD directive. Remember that you use a label to define the first memory location and you can put successive values on the same line by  separating them by commas. However, since each data item needs its own name, you are going to have to use one directive per element; that is:,  
 
-A   DCD  4
-B   DCD  12
-C   DCD  -2
+ \newpage
+\subsection*{2)} Now assume A, B, C, D and E are 16-bit values in memory. You can load them by using a DCD directive. Enter the program, compile (build) it and test it.
  
-Enter the program, compile (build) it and test it.
- 
+\lstinputlisting{lab2_part1/lab2_2.asm}
+
+\newpage
 \subsection*{3)} Write a program that includes deliberate syntax errors.   Enter it in the development system, assemble (build) it and
 then debug it. 
 
