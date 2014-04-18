@@ -184,11 +184,29 @@ While watching the register reflect each line of code I was able to view each co
 \lstinputlisting{lab2_part1/lab2_2.asm}
 
 \newpage
-\subsection*{3)} Write a program that includes deliberate syntax errors.   Enter it in the development system, assemble (build) it and
-then debug it. 
+\subsection*{3)} Write a program that includes deliberate syntax errors.   Enter it in the development system, assemble (build) it and then debug it. 
 
-
-
+\vspace{-0.75cm}
+\begin{tabular}{p{7.5cm} p{7.5cm}}
+\lstinputlisting{lab2_part1/lab2_3_errors.asm}
+&
+\lstinputlisting{lab2_part1/lab2_3_fixed.asm}
+\end{tabular}
+\vspace{-0.75cm}
+\begin{verbatim}
+assembling lab2_3_errors.asm...
+lab2_3_errors.asm(6): error: A1163E: Unknown opcode r4, expecting opcode or Macro
+lab2_3_errors.asm(8): error: A1106E: Missing comma
+lab2_3_errors.asm(11): error: A1110E: Expected constant expression
+lab2_3_errors.asm(24): warning: A1313W: Missing END directive at end of file
+assembling lab2_3_fixed.asm...
+".\lab2.axf" - 3 Error(s), 1 Warning(s).
+\end{verbatim}
+Error on line 6: can be fixed by adding tabbing out the command out. The compiler thinks that ADR is a label and that r4 is the opcode; that is why it is saying unknown opcode r4.
+Error on line 8: can be fixed by adding comma but will still complain if you only add a comma. Therefore you will have to add an additional operand.
+Error on line 11: can be fixed by adding the expected expression, either numeric or PC-relative, as the Directive allocates one or more words of memory aligned on four-byte boundaries.
+Error on line 24: can be fixed by telling the compiler where the end of the program is or placing 'END' on the last line. 
+Error on line 18: this error is not seen as an error but as a bug; the attempt is to add the two register but you must specify the Rd or destination, Rn or the first operand and operand2 or the second operand in order to sum two values. 
 \newpage
 \section*{Part 2: Examination of compiler output}
 In the homework, you were asked to write an assembly routine that checks for palindromes in odd length strings. For this portion of the lab, please write a simple C program that does the same thing, use the \href{http://gcc.godbolt.org}{web based compiler} and compile your  C code to ARM assembly (use arm-linux-gnueabi-g++-4.6 with option -O0). Compare this assembly with what you wrote. Modify the optimization level from 0 to one of the values in the set {1,2,3,s}. What changes? Why do you think these changes were made?

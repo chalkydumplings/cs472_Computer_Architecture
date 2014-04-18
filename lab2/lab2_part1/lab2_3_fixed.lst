@@ -4,7 +4,7 @@
 ARM Macro Assembler    Page 1 
 
 
-    1 00000000                 AREA             lab2_2, CODE, READONLY
+    1 00000000                 AREA             lab2_3_fixed, CODE, READONLY
     2 00000000                 ENTRY
     3 00000000         
     4 00000000 E28F0010        ADR              r0, A
@@ -27,16 +27,16 @@ ARM Macro Assembler    Page 1
                        Z       DCD              0
    16 00000030         
    17 00000030         
-   18 00000030 E0822002        ADD              r2,r2,r2    ; b=b+b
-   19 00000034 E0822000        ADD              r2,r2,r0    ; b=a+(b+b)
+   18 00000030 E0822002        ADD              r2,r2,r2
+   19 00000034 E0822000        ADD              r2,r2,r0
    20 00000038         
-   21 00000038 E01A0896        MULS             r10,r6,r8   ; z=d*e
-   22 0000003C E042A00A        SUB              r10,r2,r10  ; z=b-(d*e)
+   21 00000038 E01A0896        MULS             r10,r6,r8
+   22 0000003C E042A00A        SUB              r10,r2,r10
    23 00000040         
    24 00000040                 END
-Command Line: --debug --xref --bi --apcs=interwork --depend=.\lab2_2.d -o.\lab2
-_2.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include --predefine="__EVAL SET
-A 1" --list=.\lab2_2.lst lab2_2.asm
+Command Line: --debug --xref --bi --apcs=interwork --depend=.\lab2_3_fixed.d -o
+.\lab2_3_fixed.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include --predefine
+="__EVAL SETA 1" --list=.\lab2_3_fixed.lst lab2_3_fixed.asm
 
 
 
@@ -47,57 +47,57 @@ A 00000018
 
 Symbol: A
    Definitions
-      At line 10 in file lab2_2.asm
+      At line 10 in file lab2_3_fixed.asm
    Uses
-      At line 4 in file lab2_2.asm
+      At line 4 in file lab2_3_fixed.asm
 Comment: A used once
 C 0000001C
 
 Symbol: C
    Definitions
-      At line 11 in file lab2_2.asm
+      At line 11 in file lab2_3_fixed.asm
    Uses
-      At line 5 in file lab2_2.asm
+      At line 5 in file lab2_3_fixed.asm
 Comment: C used once
 D 00000020
 
 Symbol: D
    Definitions
-      At line 12 in file lab2_2.asm
+      At line 12 in file lab2_3_fixed.asm
    Uses
-      At line 6 in file lab2_2.asm
+      At line 6 in file lab2_3_fixed.asm
 Comment: D used once
 E 00000024
 
 Symbol: E
    Definitions
-      At line 13 in file lab2_2.asm
+      At line 13 in file lab2_3_fixed.asm
    Uses
-      At line 7 in file lab2_2.asm
+      At line 7 in file lab2_3_fixed.asm
 Comment: E used once
 F 00000028
 
 Symbol: F
    Definitions
-      At line 14 in file lab2_2.asm
+      At line 14 in file lab2_3_fixed.asm
    Uses
-      At line 8 in file lab2_2.asm
+      At line 8 in file lab2_3_fixed.asm
 Comment: F used once
 Z 0000002C
 
 Symbol: Z
    Definitions
-      At line 15 in file lab2_2.asm
+      At line 15 in file lab2_3_fixed.asm
    Uses
-      At line 9 in file lab2_2.asm
+      At line 9 in file lab2_3_fixed.asm
 Comment: Z used once
-lab2_2 00000000
+lab2_3_fixed 00000000
 
-Symbol: lab2_2
+Symbol: lab2_3_fixed
    Definitions
-      At line 1 in file lab2_2.asm
+      At line 1 in file lab2_3_fixed.asm
    Uses
       None
-Comment: lab2_2 unused
+Comment: lab2_3_fixed unused
 7 symbols
 338 symbols in table

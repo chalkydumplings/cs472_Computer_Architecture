@@ -4,26 +4,42 @@
 ARM Macro Assembler    Page 1 
 
 
-    1 00000000         ; AREA lab2_1, CODE, READONLY 
-    2 00000000         ; ENTRY
+    1 00000000                 AREA             lab2_1, CODE, READONLY
+    2 00000000                 ENTRY
     3 00000000         
-    4 00000000         ; MOV r0, #6    ;a
-    5 00000000         ; MOV r1, #3    ;b
-    6 00000000         ; MOV r2, #4    ;c
-    7 00000000         ; MOV r3, #3    ;d
-    8 00000000         ; MOV r4, #2    ;e
-    9 00000000         
-   10 00000000         
-   11 00000000         ; ADD r1,r1,r1    ;r1=r1+r1 || b=b+b
-   12 00000000         ; ADD r1,r1,r0   ;r1=r1+r0 || b=a+(b+b)
-   13 00000000         
-   14 00000000         ;for muls you have to have diff destination register
-   15 00000000         ; MULS r5,r3,r4   ;r5=r3+r4 || z=d*e
-   16 00000000         ; SUB r5,r1,r5   ;r5=r1-r3 || z=b-(d*e)
-   17 00000000         
-   18 00000000         ; END
-                       
+    4 00000000 E3A00006        MOV              r0, #6      ;a
+    5 00000004 E3A01003        MOV              r1, #3      ;b
+    6 00000008 E3A02004        MOV              r2, #4      ;c; MOV r3, #3    ;
+                                                            d
+    7 0000000C E3A04002        MOV              r4, #2      ;e
+    8 00000010         
+    9 00000010         
+   10 00000010 E0811001        ADD              r1,r1,r1    ;r1=r1+r1 || b=b+b
+   11 00000014 E0811000        ADD              r1,r1,r0    ;r1=r1+r0 || b=a+(b
+                                                            +b)
+   12 00000018         
+   13 00000018         ;for muls you have to have diff destination register
+   14 00000018 E0150493        MULS             r5,r3,r4    ;r5=r3+r4 || z=d*e
+   15 0000001C E0415005        SUB              r5,r1,r5    ;r5=r1-r3 || z=b-(d
+                                                            *e)
+   16 00000020         
+   17 00000020                 END
 Command Line: --debug --xref --bi --apcs=interwork --depend=.\lab2_1.d -o.\lab2
 _1.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include --predefine="__EVAL SET
 A 1" --list=.\lab2_1.lst lab2_1.asm
-331 symbols in table
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+lab2_1 00000000
+
+Symbol: lab2_1
+   Definitions
+      At line 1 in file lab2_1.asm
+   Uses
+      None
+Comment: lab2_1 unused
+1 symbol
+332 symbols in table
