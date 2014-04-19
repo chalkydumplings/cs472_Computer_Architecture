@@ -1,7 +1,9 @@
-; source: http://www.ing.unlp.edu.ar/electrotecnia/arcom1/09-Clements-Chap09-ARM.pdf
-
+		AREA palindrome, CODE, READONLY	
+		ENTRY
+			; source: http://www.ing.unlp.edu.ar/electrotecnia/arcom1/09-Clements-Chap09-ARM.pdf
+		
 start
-		ldr	r0,-string
+		ldr	r0, =string
 		mov	r1,r0
 loop		ldrb	r2,[r1],#1
 		cmp	r2,#0
@@ -10,7 +12,7 @@ loop		ldrb	r2,[r1],#1
 		bl	pal
 
 pal		mov	r10, #0x0
-loop2		ldrb	r3, [r0]
+loop2	ldrb	r3, [r0]
 		ldrb	r4, [r1]
 		cmp	r3, r4
 		bne	notpal
@@ -27,4 +29,6 @@ loop2		ldrb	r3, [r0]
 
 waspal		mov	r10, #0x1
 notpal		mov	pc,lr
+string	DCB     "First string - source",0
+		END
 	
