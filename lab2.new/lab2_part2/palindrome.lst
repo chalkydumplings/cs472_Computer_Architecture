@@ -10,7 +10,7 @@ ARM Macro Assembler    Page 1
                        1/09-Clements-Chap09-ARM.pdf
     4 00000000         
     5 00000000         start
-    6 00000000 E59F0068        ldr              r0, =string
+    6 00000000 E59F0050        ldr              r0, =srcstr
     7 00000004 E1A01000        mov              r1,r0
     8 00000008 E4D12001 
                        loop    ldrb             r2,[r1],#1
@@ -41,17 +41,34 @@ ARM Macro Assembler    Page 1
                        waspal  mov              r10, #0x1
    31 00000054 E1A0F00E 
                        notpal  mov              pc,lr
-   32 00000058 46 69 72 
+   32 00000058         
+   33 00000058 00000000        AREA             Strings, DATA
+   34 00000000 46 69 72 
               73 74 20 
               73 74 72 
               69 6E 67 
               20 2D 20 
               73 6F 75 
               72 63 65 
-              00       string  DCB              "First string - source",0
-   33 0000006E                 END
-              00 00 00000000 
+              00       srcstr  DCB              "First string - source",0
+   35 00000016 53 65 63 
+              6F 6E 64 
+              20 73 74 
+              72 69 6E 
+              67 20 2D 
+              20 64 65 
+              73 74 69 
+              6E 61 74 
+              69 6F 6E 
+              00       dststr  DCB              "Second string - destination",0
+   36 00000032                 END
 Command Line: --debug --xref --bi --apcs=interwork --depend=.\palindrome.d -o.\
+
+
+
+ARM Macro Assembler    Page 2 
+
+
 palindrome.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include --predefine="__
 EVAL SETA 1" --list=.\palindrome.lst palindrome.asm
 
@@ -108,28 +125,45 @@ Symbol: start
    Uses
       None
 Comment: start unused
-string 00000058
-
-Symbol: string
-   Definitions
-      At line 32 in file palindrome.asm
-   Uses
-      At line 6 in file palindrome.asm
-Comment: string used once
 waspal 00000050
 
 Symbol: waspal
-
-
-
-ARM Macro Assembler    Page 2 Alphabetic symbol ordering
-Relocatable symbols
-
    Definitions
       At line 30 in file palindrome.asm
    Uses
       At line 21 in file palindrome.asm
       At line 24 in file palindrome.asm
 
-8 symbols
-341 symbols in table
+7 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Strings 00000000
+
+Symbol: Strings
+   Definitions
+      At line 33 in file palindrome.asm
+   Uses
+      None
+Comment: Strings unused
+dststr 00000016
+
+Symbol: dststr
+   Definitions
+      At line 35 in file palindrome.asm
+   Uses
+      None
+Comment: dststr unused
+srcstr 00000000
+
+Symbol: srcstr
+   Definitions
+      At line 34 in file palindrome.asm
+   Uses
+      At line 6 in file palindrome.asm
+Comment: srcstr used once
+3 symbols
+343 symbols in table

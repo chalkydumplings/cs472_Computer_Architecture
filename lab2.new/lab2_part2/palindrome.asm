@@ -3,7 +3,7 @@
 			; source: http://www.ing.unlp.edu.ar/electrotecnia/arcom1/09-Clements-Chap09-ARM.pdf
 		
 start
-		ldr	r0, =string
+		ldr	r0, =srcstr
 		mov	r1,r0
 loop		ldrb	r2,[r1],#1
 		cmp	r2,#0
@@ -29,6 +29,9 @@ loop2	ldrb	r3, [r0]
 
 waspal		mov	r10, #0x1
 notpal		mov	pc,lr
-string	DCB     "First string - source",0
+
+		AREA	Strings, DATA
+srcstr  DCB     "First string - source",0
+dststr  DCB     "Second string - destination",0
 		END
 	

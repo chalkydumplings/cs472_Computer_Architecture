@@ -4,13 +4,8 @@
 ARM Macro Assembler    Page 1 
 
 
-    1 00000000                 AREA             palindrome2, CODE, READONLY
-    2 00000000                 ENTRY
-    3 00000000         
-    4 00000000         start
-    5 00000000 E51F0008        ldr              r0,-string
-    6 00000004         
-    7 00000004                 END
+                       
 Command Line: --debug --xref --bi --apcs=interwork --depend=.\palindrome2.d -o.
 \palindrome2.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include --predefine="
 __EVAL SETA 1" --list=.\palindrome2.lst palindrome2.s
+331 symbols in table
