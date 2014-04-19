@@ -24,13 +24,15 @@ void noop_message(int argc, char *argv[]){
 }
 
 int main(int argc, char *argv[]){
+  
+  if (argc == 1 || argc > 2) { noop_message(argc,argv); }
 
   char *in_string;
   in_string = argv[1]; //
   int in_length = strlen(in_string);
 
   // should have just one additional arg, and it should be an odd length string
-  if (argc == 1 || argc > 2 || ((in_length%2) != 1)) {
+  if ( (in_length%2) != 1){
     noop_message(argc, argv);
   } else {
 
@@ -42,8 +44,8 @@ int main(int argc, char *argv[]){
     }
 
     //for testing
-    //printf("%s %d",in_string, in_length);
-    //printf("%d\n", ret);
+    printf("%s %d",in_string, in_length);
+    printf("%d\n", ret);
   return ret;
 
   }
