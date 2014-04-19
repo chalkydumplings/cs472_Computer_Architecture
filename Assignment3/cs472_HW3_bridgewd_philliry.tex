@@ -23,6 +23,11 @@
 \usepackage{enumitem}
 \usepackage{pstricks, pst-node}
 
+%%keeps text of subsection on same line
+\usepackage{titlesec} 
+\titleformat{\subsection}[runin] 
+  {\normalfont\large\bfseries}{\thesubsection}{1em}{} 
+  
 \usepackage{geometry}
 \geometry{textheight=9in, textwidth=6.5in}
 
@@ -104,47 +109,50 @@ Instruction Register. This contains the instruction which is currently being exe
 
 \section*{$(3.3)$} For each of the following 6-bit operations, calculate the values of the C, Z, V, and N flags.
 
-a.
+\subsection*{a.}
 
 001011
 001101
 +
 
-b. 
+\subsection*{b.}
 
 111111
 000001
 +
 
-c.
+\subsection*{c.}
 
 000000
 111111
 -
 
-d. 
+\subsection*{d}
 
 101101
 011011
 +
 
-e.
+\subsection*{e}
 
 000000
 000001
 -
 
-f.
+\subsection*{f.}
 
 111110
 111111
 +
 
 \section*{$(3.10)$} Why does the ARM provide a reverse subtract instruction RSB r0,r1,r2 that implements [r0] = [r2] - [r1] when the normal subtraction instruction SUB r0,r2,r1 will do exactly the same job?
+\begin{mdframed}[style=MyFrame]
+These two operand only differ by the order of operation, and can be seen as unnecessary as switching the two operands for SUB should suffice. The problem arises when only the second operand can be constant or other special forms. All operations could be done using the SUB operations but additional registers would be necessary as seen  in this example: $SUB~R2,~R4,~\#8$ if you wanted to do the exact opposite you would need an an additional register to hold the constant $\#8$, but using RSB it would just be $RSB~R2,~R4,~\#8$
+\end{mdframed}
 
 \section*{$(3.17)$} 
 
-\section*{$(3.18)$} Write one or more ARM instructinos that will clear bits 20 to 25 inclusive in register r0. All the other bits of r0 should remain unchanged.
+\section*{$(3.18)$} Write one or more ARM instructions that will clear bits 20 to 25 inclusive in register r0. All the other bits of r0 should remain unchanged.
 
 \section*{$(3.19)$} This is a classic problem of assembly language programming. Write a sequence of ARM instructions that swap the contents of registers r0 and r2 without using any additional registers or memory storage (that is, you can't move r1 to a temporary location).
 
