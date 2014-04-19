@@ -1,11 +1,11 @@
-CC = icc
-CXX = icpc
+CC = gcc
+CXX = gcpc
 CFLAGS = -Wall -std=gnu99 -openmp -O2 -g -I.
 CFLAGS_DEBUG = -Wall -std=gnu99 -openmp -O0 -g -I.
 CXXFLAGS = -Wall -openmp -O3 -g
 #overkill on the flags, but that doesn't hurt anything
 #add current dir to libs for libjsmn.a
-LDFLAGS = -lrt -lpthread -L. -ljsmn
+LDFLAGS = -lrt -lpthread -L. 
 #replace this if you want to change the output name
 CTARGET = palindrome
 TEX_TARGET = writeup
