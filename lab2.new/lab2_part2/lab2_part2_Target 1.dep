@@ -1,3 +1,2 @@
 Dependencies for Project 'lab2_part2', Target 'Target 1': (DO NOT MODIFY !)
-F (.\palindrome.asm)(0x5351FFE3)(--cpu ARM7TDMI --bi --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include--list .\palindrome.lst --xref -o .\palindrome.o --depend .\palindrome.d)
-F (.\palindrome2.s)(0x5351FCD9)(--cpu ARM7TDMI --bi --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include--list .\palindrome2.lst --xref -o .\palindrome2.o --depend .\palindrome2.d)
+F (.\palindrome.asm)(0x535201DD)(--cpu ARM7TDMI --bi --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include--list .\palindrome.lst --xref -o .\palindrome.o --depend .\palindrome.d)

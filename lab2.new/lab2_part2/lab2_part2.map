@@ -18,7 +18,6 @@ Image Symbol Table
     Strings                                  0x00000000   Section       50  palindrome.o(Strings)
     palindrome                               0x00000000   Section       92  palindrome.o(palindrome)
     palindrome.asm                           0x00000000   Number         0  palindrome.o ABSOLUTE
-    palindrome2.s                            0x00000000   Number         0  palindrome2.o ABSOLUTE
     srcstr                                   0x00000000   Data          22  palindrome.o(Strings)
 
     Global Symbols

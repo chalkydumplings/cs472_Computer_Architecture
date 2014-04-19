@@ -26,12 +26,12 @@ loop2	ldrb	r3, [r0]
 		add	r0,r0,#1
 		sub	r1,r1,#1
 		b 	loop2
-
+		
 waspal		mov	r10, #0x1
-notpal		mov	pc,lr
+notpal		bx lr
 
 		AREA	Strings, DATA
 srcstr  DCB     "First string - source",0
 dststr  DCB     "Second string - destination",0
 		END
-	
+		END

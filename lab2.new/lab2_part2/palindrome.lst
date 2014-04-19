@@ -39,8 +39,8 @@ ARM Macro Assembler    Page 1
    29 00000050         
    30 00000050 E3A0A001 
                        waspal  mov              r10, #0x1
-   31 00000054 E1A0F00E 
-                       notpal  mov              pc,lr
+   31 00000054 E12FFF1E 
+                       notpal  bx               lr
    32 00000058         
    33 00000058 00000000        AREA             Strings, DATA
    34 00000000 46 69 72 
