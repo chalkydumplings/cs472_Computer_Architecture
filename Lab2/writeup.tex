@@ -5,6 +5,8 @@
 \usepackage{amsmath}                                         
 \usepackage{amsthm}                                          
 
+\usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
+
 \usepackage{alltt}                                           
 \usepackage{float}
 \usepackage{color}
@@ -38,6 +40,13 @@
 \usepackage{hyperref}
 \usepackage{geometry}
 
+%% Color Definitions
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{lightgrey}{gray}{0.8}
+\definecolor{darkgrey}{gray}{1.6}
+
 %% Code Listing Configuration
 \DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{0.987\linewidth}{#1#2#3}}}
 \captionsetup[lstlisting]{format=listing, labelfont=white, indention=0pt, textfont=white, margin=0pt, font={bf,footnotesize}, singlelinecheck=false}
@@ -68,6 +77,14 @@
   morekeywords={*,...}                % if you want to add more keywords to the set
   framexbottommargin=5pt,
 }
+
+\makeatletter
+\patchcmd{\lst@GLI@}% <command>
+  {\def\lst@firstline{#1\relax}}% <search>
+  {\def\lst@firstline{#1\relax}\def\lst@firstnumber{#1\relax}}% <replace>
+  {\typeout{listings firstnumber=firstline}}% <success>
+  {\typeout{listings firstnumber not set}}% <failure>
+\makeatother
 
 \def\name{Drake Bridgewater \\  Ryan Phillips}
 \def\title{Lab 2 - The ARM ISA}
@@ -201,7 +218,23 @@ In the homework, you were asked to write an assembly routine that checks for pal
 
 For this lab, you will need to create a write-up discussing the differences you see in Part 2. Do you see any interesting features being used? Is the hand assembly you wrote significantly different than what the compiler produced? Which uses fewer instructions? In other words, provide an analysis of Part 2.
 
-%\lstinputlisting[language=C]{feature_extraction.c}
+\lstinputlisting[language=C]{palindrome.c}
+
+\begin{tabular}{p{7.5cm} p{7.5cm} }
+\lstinputlisting[lastline=45]{palindrome_0.s}
+&
+\lstinputlisting[lastline=50]{palindrome_3.s}
+\end{tabular}
+
+\begin{tabular}{p{7.5cm} p{7.5cm} }
+\lstinputlisting[linerange=46-90]{palindrome_0.s}
+&
+\lstinputlisting[linerange=51-100]{palindrome_3.s}
+\end{tabular}
+
+\begin{tabular}{p{7.5cm} p{7.5cm} }
+\lstinputlisting[linerange=90-200]{palindrome_0.s} &
+\end{tabular}
 
 \end{document}
 
