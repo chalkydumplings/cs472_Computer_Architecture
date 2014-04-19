@@ -10,6 +10,8 @@ LDFLAGS = -lrt -lpthread -L.
 CTARGET = palindrome
 TEX_TARGET = writeup
 
+ASSIGNMENT_NAME = cs472_LAB2_bridgewd_philliry
+
 # LaTeX related constants
 HTML=main_html
 SRC=mt.h
@@ -18,12 +20,12 @@ SRC=mt.h
 INCLUDES = 
 
 #any .c or .cpp files go here
-SOURCE = palindrome.c
+SOURCE = lab2_part2/palindrome.c
 
 #default is to compile and pdf
 default: compile
 both: pdf html
-
+	
 #depends on all of you source and header files
 compile: ${SOURCE} ${INCLUDES}
 #this assumes you actually are linking all of the source files together
@@ -66,7 +68,8 @@ run:
 
 tar:
 	tar cvf $(ASSIGNMENT_NAME).tar.bz2 $(TEX_TARGET).tex  Makefile \
-		$(SRC_FILENAME).c  $(SRC2_FILENAME).c pygments.tex *.bib
+		$(SOURCE) pygments.tex lab2_part1/*.asm  lab2_part2/*.asm
+
 
 clean:
 	rm ${TEX_TARGET}.dvi ${TEX_TARGET}.log ${TEX_TARGET}.out ${TEX_TARGET}.ps ${TEX_TARGET}.aux ${TEX_TARGET}.pdf ${CTARGET}
