@@ -416,11 +416,6 @@
               <FilePath>.\lab2_2.asm</FilePath>
             </File>
             <File>
-              <FileName>lab2_3_errors.asm</FileName>
-              <FileType>2</FileType>
-              <FilePath>.\lab2_3_errors.asm</FilePath>
-            </File>
-            <File>
               <FileName>lab2_3_fixed.asm</FileName>
               <FileType>2</FileType>
               <FilePath>.\lab2_3_fixed.asm</FilePath>

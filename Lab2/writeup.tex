@@ -165,25 +165,13 @@
 %\tableofcontents
 %\vfill % Fill the rest of the page with whitespace
 %\newpage
-
-\section*{Getting started}
-Begin with reading the introduction the KEIL simulator on pages 16-29 of \href{http://academic.cengage.com/resource_uploads/downloads/1111987041_374273.pdf}{the Student Workbook}  which accompanies the textbook 
-
-\section*{Part 1}Please provide answers to the problems in Problem Set 5 in the Student Workbook. Here we provide an introduction to the Keil ARM processor development system.
-
-
-\subsection*{1)} Write a simple program to perform:  $Z = A+B+B-(D \times E)$. The instructions you may use are ADD, SUB, and MUL. Assume that the data is in registers r0 to r4 (representing A to E) and the result is put in r5. Enter your program into the Keil simulator and run it. You can use move instruction to load data into registers. Do you
+\subsection*{1 \& 2)} Write a simple program to perform:  $Z = A+B+B-(D \times E)$. The instructions you may use are ADD, SUB, and MUL. Assume that the data is in registers r0 to r4 (representing A to E) and the result is put in r5. Enter your program into the Keil simulator and run it. You can use move instruction to load data into registers. Do you
 get the expected answer? 
 
 \lstinputlisting{lab2_part1/lab2_1.asm}
 While watching the register reflect each line of code I was able to view each commands effects on the bits. This allowed me to realize that the add operation and subtraction operations are performed exactly as expected, but once the multiplication command came into play I noticed that when the numbers are smaller minus larger the result is a negative. 
 
  \newpage
-\subsection*{2)} Now assume A, B, C, D and E are 16-bit values in memory. You can load them by using a DCD directive. Enter the program, compile (build) it and test it.
- 
-\lstinputlisting{lab2_part1/lab2_2.asm}
-
-\newpage
 \subsection*{3)} Write a program that includes deliberate syntax errors.   Enter it in the development system, assemble (build) it and then debug it. 
 
 \vspace{-0.75cm}
