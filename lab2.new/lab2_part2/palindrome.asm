@@ -4,8 +4,8 @@
 		
 start
 		ldr	r0, =srcstr
-		mov	r1,r0
-loop		ldrb	r2,[r1],#1
+		mov	r1,r0						;copy r0 data
+loop		ldrb	r2,[r1],#1 			;Double word
 		cmp	r2,#0
 		bne	loop
 		sub	r1,r1,#2

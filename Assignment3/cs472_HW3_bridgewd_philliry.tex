@@ -240,7 +240,6 @@ N = 1
 \end{mdframed}
 
 \section*{$(3.10)$} Why does the ARM provide a reverse subtract instruction RSB r0,r1,r2 that implements [r0] = [r2] - [r1] when the normal subtraction instruction SUB r0,r2,r1 will do exactly the same job? \newline
->>>>>>> 010ec48eb31da9db479ba7db1086a18039b30501
 
 \begin{mdframed}[style=MyFrame]
 These two operand only differ by the order of operation, and can be seen as unnecessary as switching the two operands for SUB should suffice. The problem arises when only the second operand can be constant or other special forms. All operations could be done using the SUB operations but additional registers would be necessary as seen  in this example: $SUB~R2,~R4,~\#8$ if you wanted to do the exact opposite you would need an an additional register to hold the constant $\#8$, but using RSB it would just be $RSB~R2,~R4,~\#8$
@@ -327,16 +326,23 @@ E5343006 $\rightarrow$ 11100101001101000011000000000110
 
 \end{enumerate}
 
+\newpage
+\section*{$(3.39)$} Write an ARM program that scans a string terminated by the null byte 0x00 and copies the string from a source location pointed by r0 to a destination pointed at by r1.
+\begin{mdframed}[style=MyFrame]
+\begin{verbatim}
 
+\end{verbatim}
+\end{mdframed}
+
+\newpage
 \section*{$(3.51)$} Write an ARM assembly language program to determine whether a string of characters with an odd length is a palindrome (for example, mom) under the following constraints.
 
 a. The string of ASIC-encoded characters is stored in memory.
 
 b. At the start of the program, register r1 contains the address of the first character in the string, and r2 contains the address of the last character. On exit from the program, register r0 contains a 0 if the string is a not a palindrome, and 1 if it is. \newline
 
-\begin{mdframed}[style=MyFrame]
-todo...
-\end{mdframed}
+\lstinputlisting{../lab2.new/lab2_part2/palindrome.asm}
+
 
 \bibliographystyle{plain}
 \bibliography{cs472_HW3_bridgewd_philliry}
