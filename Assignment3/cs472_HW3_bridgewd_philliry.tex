@@ -59,9 +59,7 @@
 
 \hfill CS 472 HW 3
 
-\section*{$(3.1)$} Why is the program counter a pointer and not a counter? \newline
-
-
+\section*{$(3.1)$} Why is the program counter a pointer and not a counter? 
 
 \begin{mdframed}[style=MyFrame]
 
@@ -109,41 +107,56 @@ Instruction Register. This contains the instruction which is currently being exe
 
 \section*{$(3.3)$} For each of the following 6-bit operations, calculate the values of the C, Z, V, and N flags.
 
-\subsection*{a.}
 
-001011
-001101
-+
-
-\subsection*{b.}
-
-111111
-000001
-+
-
-\subsection*{c.}
-
-000000
-111111
--
-
-\subsection*{d}
-
-101101
-011011
-+
-
-\subsection*{e}
-
-000000
-000001
--
-
-\subsection*{f.}
-
-111110
-111111
-+
+\begin{tabular}{c c}
+\begin{tabular}{r p{1.5cm} c c c c}
+\textbf{A}\\
+	& 001011\\
++ 	& 001101\\
+\hline
+	& 011000 & C:\_ &Z:\_ & V:\_ & N:\_
+\end{tabular}
+ &
+ \begin{tabular}{r p{1.5cm} c c c c}
+\textbf{B}\\
+	&  111111\\
++ 	&  000001\\
+\hline
+	& test  &  C:\_ &Z:\_ & V:\_ & N:\_
+\end{tabular}
+\\\\\\\\
+\begin{tabular}{r p{1.5cm} c c c c}
+\textbf{C}\\
+	&  000000\\
+- 	&  111111\\
+\hline
+	& test  & C:\_ &Z:\_ & V:\_ & N:\_
+\end{tabular}
+&
+\begin{tabular}{r p{1.5cm} c c c c}
+\textbf{D}\\
+	&  101101\\
++ 	&  011011\\
+\hline
+	& test  & C:\_ &Z:\_ & V:\_ & N:\_
+\end{tabular}
+\\\\\\\\
+\begin{tabular}{r p{1.5cm} c c c c}
+\textbf{E}\\
+	&  000000\\
+- 	&  000001\\
+\hline
+	& test  & C:\_ &Z:\_ & V:\_ & N:\_
+\end{tabular}
+&
+\begin{tabular}{r p{1.5cm} c c c c}
+\textbf{F}\\
+	&  111110\\
++ 	&  111111\\
+\hline
+	& test  & C:\_ &Z:\_ & V:\_ & N:\_
+\end{tabular}
+\end{tabular}
 
 \section*{$(3.10)$} Why does the ARM provide a reverse subtract instruction RSB r0,r1,r2 that implements [r0] = [r2] - [r1] when the normal subtraction instruction SUB r0,r2,r1 will do exactly the same job?
 \begin{mdframed}[style=MyFrame]
@@ -152,13 +165,38 @@ These two operand only differ by the order of operation, and can be seen as unne
 
 \section*{$(3.17)$} 
 
+\newpage
 \section*{$(3.18)$} Write one or more ARM instructions that will clear bits 20 to 25 inclusive in register r0. All the other bits of r0 should remain unchanged.
+\begin{mdframed}[style=MyFrame]
+$LDR~~~ R3, = 0xFC0F~FFFF $\\
+$AND~~~ R0,R3,R0$
+\end{mdframed}
 
 \section*{$(3.19)$} This is a classic problem of assembly language programming. Write a sequence of ARM instructions that swap the contents of registers r0 and r2 without using any additional registers or memory storage (that is, you can't move r1 to a temporary location).
+\begin{mdframed}[style=MyFrame]
+Our original thought similar the the integer implementation where you add them and together and subtract the other like this
+\begin{verbatim}
+x=15;
+y=21;
 
+x=x+y;
+y=x-y;
+x=x-y;
+\end{verbatim}
+But we had some concern with the S bits. This lead us to some research online where we found an article titled \textbf{The Magic of XOR} \cite{Charles} which introduced us to an extremely fascinating method of swapping two values. This process is basically XORing the three times as the pseudocode below depicts.
+\begin{verbatim}
+x=1101;
+y=0110;
+
+x=x EOR y;       //1101 EOR 0110 = 1011
+y=x EOR y;       //1011 EOR 0110 = 1101
+x=x EOR y;       //1011 EOR 1101 = 0110
+\end{verbatim}
+\vspace{-0.5cm}
+\end{mdframed}
+
+\newpage
 \section*{$(3.25)$} What is the binary encoding of the following instructions?
-
-
 \renewcommand{\labelenumi}{\alph{enumi})}
 \begin{enumerate}
 
@@ -171,6 +209,30 @@ These two operand only differ by the order of operation, and can be seen as unne
 \item LDR r3, [r4,\#-6]!
 
 \end{enumerate}
+
+\begin{center}
+\begin{tabular}{| l | l | l | l | l | l | l | l | l | }
+\hline 
+& Condition & 0 0 & & Op-code & S & $r_{source1}$ & $r_{destination}$ & Operand 2 \\
+\hline 
+\textbf{A}& \#\#\#\# & \#\# & \# & \#\#\#\# &\# & \#\#\#\# &\#\#\#\# & \#\#\#\#\#\#\#\#\#\#\#\#  \\ 
+\hline 
+\end{tabular}
+
+
+\begin{tabular}{| l | l | l | l | l | l | l | l | l | l | l | l | }
+\hline 
+& Condition & 0 1 & \# & P & U & b &W & L & $r_{base}$ & $r_{transfer}$ & Operand 2 \\
+\hline
+\textbf{B}& \#\#\#\# & \#\# & \# & \# & \# & \# & \# &\# & \#\#\#\# &\#\#\#\# & \#\#\#\#\#\#\#\#\#\#\#\#  \\
+\hline
+\textbf{C}& \#\#\#\# & \#\# & \# & \# & \# & \# & \# &\# & \#\#\#\# &\#\#\#\# & \#\#\#\#\#\#\#\#\#\#\#\#  \\
+\hline
+\textbf{D}& \#\#\#\# & \#\# & \# & \# & \# & \# & \# &\# & \#\#\#\# &\#\#\#\# & \#%\#\#\#\#\#\#\#\#\#\#\#  \\
+\hline
+\end{tabular}
+\end{center}
+
 
 \section*{$(3.39)$} Write an ARM assembly language program that scans a string terminated by the null byte 0x00 and copies the string from a source location pointed at by r0 to a destination pointed at by r1.
 
