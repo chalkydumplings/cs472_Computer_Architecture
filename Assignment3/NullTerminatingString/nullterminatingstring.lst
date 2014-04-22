@@ -4,104 +4,57 @@
 ARM Macro Assembler    Page 1 
 
 
-    1 00000000                 AREA             NullTerminatingString, CODE, RE
-<<<<<<< HEAD
-<<<<<<< HEAD
-ADWRITE
-    2 00000000                 ENTRY
-    3 00000000         ;;modification of code from section 3.9.11
-    4 00000000         ;;copies from r0 to r1
-    5 00000000         
-    6 00000000 E28F0014 
-                       copystr ADR              R0, src     ; r0 points at stri
-                                                            ng 
-    7 00000004 E3A0105F        LDR              R1, =0x0000005f ; a location of
-                                                             safe mem?
-    8 00000008 E4D02001 
-                       loop    LDRB             R2, [R0], #1 ; grab first chara
-                                                            cter, increment poi
-                                                            nter
-    9 0000000C E3520000        CMP              R2, #0x00   ; are we at the end
-                                                            ?
-   10 00000010 E4C12001        STRB             R2, [r1], #1 ; if not, copy to 
-                                                            address location (f
-                                                            rom r1)
-   11 00000014         ;ADD  R1, #1 ; increment r1
-   12 00000014 1AFFFFFB        BNE              loop        ; if not at the end
-                                                            ... we move onto th
-                                                            e next character
-   13 00000018 E1A0F00E        MOV              PC, R14
-   14 0000001C         
-   15 0000001C 61 61 61 
-              61 61 61 
-              61 61 7A 
-              7A 7A 7A 
-              7A 7A 0A 
-              0D 00    src     =                "aaaaaaaazzzzzz", &0A, &0D, 0
-   16 0000002D         
-   17 0000002D                 END
-=======
-ADONLY
+    1 00000000                 AREA             palindrome, CODE, READWRITE
     2 00000000                 ENTRY
     3 00000000         
-    4 00000000 E28F1010 
-                       Banner  ADR              R1, String
-    5 00000004 E4DA0001 
-                       Bnner1  LDRB             R0, [R10], #1
-    6 00000008 E3500000        CMP              R0, #0
-    7 0000000C 1F000000        SVCNE            WriteC
-    8 00000010 1AFFFFFB        BNE              Bnner1
-    9 00000014 E1A0F00E        MOV              PC, R14
-   10 00000018         
-   11 00000018 41 20 53 
-              74 72 69 
-              6E 67 20 
-              67 6F 65 
-              73 20 68 
-              65 72 65 
-              21 0A 0D 
-              00       String  =                "A String goes here!", &0A, &0D
-, 0
-   12 0000002E 00000000 
-                       WriteC  EQU              0
-   13 0000002E                 END
->>>>>>> 429ce864761d563cd133c94e92b8270e282d7844
-=======
-ADWRITE
-    2 00000000                 ENTRY
-    3 00000000         ;;modification of code from section 3.9.11
-    4 00000000         ;;copies from r0 to r1
-    5 00000000         
-    6 00000000 E28F0014 
-                       copystr ADR              R0, src     ; r0 points at stri
-                                                            ng 
-    7 00000004 E3A0105F        LDR              R1, =0x0000005f ; a location of
-                                                             safe mem?
-    8 00000008 E4D02001 
-                       loop    LDRB             R2, [R0], #1 ; grab first chara
+    4 00000000 E3A00001        MOV              R0, #1      ; palindrome flag s
+                                                            et at true
+    5 00000004 E28F103C        ADR              R1, src     ; r0 points at stri
+                                                            ng
+    6 00000008 E28F2038        ADR              R2, src     ; r1 points at stri
+                                                            ng END
+    7 0000000C         
+    8 0000000C         ;get pointer to end of the string and store in r2
+    9 0000000C         ;R2 is temp pointer
+   10 0000000C E4D23001 
+                       getstrend
+                               LDRB             R3, [R2], #1 ;load r0 into r2 a
+                                                            nd increment
+   11 00000010         
+   12 00000010 E3530000        CMP              R3, #0x00
+   13 00000014 1AFFFFFC        BNE              getstrend
+   14 00000018         
+   15 00000018 E2422002        SUB              R2, #2
+   16 0000001C E1510002 
+                       loop    CMP              R1, R2
+   17 00000020 0A000006        BEQ              pass
+   18 00000024 E4D13001        LDRB             R3, [R1], #1 ; grab first chara
                                                             cter, increment poi
                                                             nter
-    9 0000000C E3520000        CMP              R2, #0x00   ; are we at the end
-                                                            ?
-   10 00000010 E4C12001        STRB             R2, [r1], #1 ; if not, copy to 
-                                                            address location (f
-                                                            rom r1)
-   11 00000014         ;ADD  R1, #1 ; increment r1
-   12 00000014 1AFFFFFB        BNE              loop        ; if not at the end
+   19 00000028 E4524001        LDRB             R4, [R2], #-1 ; grab last chara
+                                                            cter, decrement poi
+                                                            nter
+   20 0000002C E1530004        CMP              R3, R4      ; do they match?
+   21 00000030 1A000000        BNE              fail
+   22 00000034         
+   23 00000034         
+   24 00000034 EAFFFFF8        B                loop        ; if not at the end
                                                             ... we move onto th
                                                             e next character
-   13 00000018 E1A0F00E        MOV              PC, R14
-   14 0000001C         
-   15 0000001C 61 61 61 
-              61 61 61 
-              61 61 7A 
-              7A 7A 7A 
-              7A 7A 0A 
-              0D 00    src     =                "aaaaaaaazzzzzz", &0A, &0D, 0
-   16 0000002D         
-   17 0000002D         
-   18 0000002D                 END
->>>>>>> 75331f1320db67e83f269fa1ebbe4f4a61e90782
+   25 00000038         
+   26 00000038 E3A00000 
+                       fail    MOV              R0, #0      ; is not a palindro
+                                                            me
+   27 0000003C EAFFFFFD        B                fail        ; infinite loop!
+   28 00000040         
+   29 00000040 E3A00001 
+                       pass    MOV              R0, #1      ; if a palindrome
+   30 00000044 EAFFFFFD        B                pass        ; infinite loop!
+   31 00000048         
+   32 00000048         
+   33 00000048 71 30 30 
+                       src     =                "q00"
+   34 0000004B                 END
 Command Line: --debug --xref --bi --apcs=interwork --depend=.\nullterminatingst
 ring.d -o.\nullterminatingstring.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\I
 nclude --predefine="__EVAL SETA 1" --list=.\nullterminatingstring.lst NullTermi
@@ -112,99 +65,56 @@ natingString.asm
 ARM Macro Assembler    Page 1 Alphabetic symbol ordering
 Relocatable symbols
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-Banner 00000000
+fail 00000038
 
-Symbol: Banner
+Symbol: fail
    Definitions
-      At line 4 in file NullTerminatingString.asm
+      At line 26 in file NullTerminatingString.asm
    Uses
-      None
-Comment: Banner unused
-Bnner1 00000004
+      At line 21 in file NullTerminatingString.asm
+      At line 27 in file NullTerminatingString.asm
 
-Symbol: Bnner1
+getstrend 0000000C
+
+Symbol: getstrend
    Definitions
-      At line 5 in file NullTerminatingString.asm
+      At line 10 in file NullTerminatingString.asm
    Uses
-      At line 8 in file NullTerminatingString.asm
-Comment: Bnner1 used once
->>>>>>> 429ce864761d563cd133c94e92b8270e282d7844
-=======
->>>>>>> 75331f1320db67e83f269fa1ebbe4f4a61e90782
-NullTerminatingString 00000000
+      At line 13 in file NullTerminatingString.asm
+Comment: getstrend used once
+loop 0000001C
 
-Symbol: NullTerminatingString
+Symbol: loop
+   Definitions
+      At line 16 in file NullTerminatingString.asm
+   Uses
+      At line 24 in file NullTerminatingString.asm
+Comment: loop used once
+palindrome 00000000
+
+Symbol: palindrome
    Definitions
       At line 1 in file NullTerminatingString.asm
    Uses
       None
-Comment: NullTerminatingString unused
-<<<<<<< HEAD
-<<<<<<< HEAD
-copystr 00000000
+Comment: palindrome unused
+pass 00000040
 
-Symbol: copystr
+Symbol: pass
    Definitions
-      At line 6 in file NullTerminatingString.asm
+      At line 29 in file NullTerminatingString.asm
    Uses
-      None
-Comment: copystr unused
-loop 00000008
+      At line 17 in file NullTerminatingString.asm
+      At line 30 in file NullTerminatingString.asm
 
-Symbol: loop
-   Definitions
-      At line 8 in file NullTerminatingString.asm
-   Uses
-      At line 12 in file NullTerminatingString.asm
-Comment: loop used once
-src 0000001C
+src 00000048
 
 Symbol: src
    Definitions
-      At line 15 in file NullTerminatingString.asm
+      At line 33 in file NullTerminatingString.asm
    Uses
+      At line 5 in file NullTerminatingString.asm
       At line 6 in file NullTerminatingString.asm
-Comment: src used once
-4 symbols
-335 symbols in table
-=======
-String 00000018
-=======
-copystr 00000000
->>>>>>> 75331f1320db67e83f269fa1ebbe4f4a61e90782
 
-Symbol: copystr
-   Definitions
-      At line 6 in file NullTerminatingString.asm
-   Uses
-      None
-Comment: copystr unused
-loop 00000008
-
-Symbol: loop
-   Definitions
-      At line 8 in file NullTerminatingString.asm
-   Uses
-      At line 12 in file NullTerminatingString.asm
-Comment: loop used once
-src 0000001C
-
-Symbol: src
-   Definitions
-      At line 15 in file NullTerminatingString.asm
-   Uses
-<<<<<<< HEAD
-      At line 7 in file NullTerminatingString.asm
-Comment: WriteC used once
-1 symbol
-336 symbols in table
->>>>>>> 429ce864761d563cd133c94e92b8270e282d7844
-=======
-      At line 6 in file NullTerminatingString.asm
-Comment: src used once
-4 symbols
-335 symbols in table
->>>>>>> 75331f1320db67e83f269fa1ebbe4f4a61e90782
+6 symbols
+337 symbols in table

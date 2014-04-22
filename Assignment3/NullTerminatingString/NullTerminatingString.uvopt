@@ -120,7 +120,6 @@
         </SetRegEntry>
       </TargetDriverDllRegistry>
       <Breakpoint/>
-<<<<<<< HEAD
       <MemoryWindow1>
         <Mm>
           <WinNumber>1</WinNumber>
@@ -128,14 +127,12 @@
           <ItemText>0</ItemText>
         </Mm>
       </MemoryWindow1>
-=======
->>>>>>> 429ce864761d563cd133c94e92b8270e282d7844
       <Tracepoint>
         <THDelay>0</THDelay>
       </Tracepoint>
       <DebugFlag>
         <trace>0</trace>
-        <periodic>1</periodic>
+        <periodic>0</periodic>
         <aLwin>1</aLwin>
         <aCover>0</aCover>
         <aSer1>0</aSer1>
@@ -156,11 +153,7 @@
         <aSer4>0</aSer4>
         <StkLoc>0</StkLoc>
         <TrcWin>0</TrcWin>
-<<<<<<< HEAD
         <newCpu>0</newCpu>
-=======
-        <newCpu>3</newCpu>
->>>>>>> 429ce864761d563cd133c94e92b8270e282d7844
         <uProt>0</uProt>
       </DebugFlag>
       <LintExecutable></LintExecutable>
@@ -180,24 +173,10 @@
       <FileType>2</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-<<<<<<< HEAD
-      <ColumnNumber>42</ColumnNumber>
+      <ColumnNumber>40</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>1</TopLine>
-      <CurrentLine>3</CurrentLine>
-=======
-<<<<<<< HEAD
-      <ColumnNumber>31</ColumnNumber>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1</TopLine>
-      <CurrentLine>15</CurrentLine>
-=======
-      <ColumnNumber>17</ColumnNumber>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1</TopLine>
-      <CurrentLine>12</CurrentLine>
->>>>>>> 429ce864761d563cd133c94e92b8270e282d7844
->>>>>>> 75331f1320db67e83f269fa1ebbe4f4a61e90782
+      <CurrentLine>31</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\NullTerminatingString.asm</PathWithFileName>
       <FilenameWithoutPath>NullTerminatingString.asm</FilenameWithoutPath>
