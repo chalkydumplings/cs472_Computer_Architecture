@@ -1,2 +1,6 @@
 Dependencies for Project 'NullTerminatingString', Target 'Target 1': (DO NOT MODIFY !)
+<<<<<<< HEAD
+F (.\NullTerminatingString.asm)(0x5355DCA1)(--cpu ARM7TDMI --bi --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include--list .\nullterminatingstring.lst --xref -o .\nullterminatingstring.o --depend .\nullterminatingstring.d)
+=======
 F (.\NullTerminatingString.asm)(0x5355B601)(--cpu ARM7TDMI --bi --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include--list .\nullterminatingstring.lst --xref -o .\nullterminatingstring.o --depend .\nullterminatingstring.d)
+>>>>>>> 429ce864761d563cd133c94e92b8270e282d7844
