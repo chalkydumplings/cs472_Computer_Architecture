@@ -9,6 +9,6 @@ Bnner1	LDRB	R0, [R10], #1
 		BNE 	Bnner1
 		MOV		PC, R14
 
-String =	"A String goes here!", &0A, &0D, 0
+String =	"A String goes here!"
 WriteC	EQU		0
 		END
