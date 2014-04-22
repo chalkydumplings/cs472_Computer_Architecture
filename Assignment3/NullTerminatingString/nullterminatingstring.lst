@@ -1,0 +1,90 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             NullTerminatingString, CODE, RE
+ADONLY
+    2 00000000                 ENTRY
+    3 00000000         
+    4 00000000 E28F1010 
+                       Banner  ADR              R1, String
+    5 00000004 E4DA0001 
+                       Bnner1  LDRB             R0, [R10], #1
+    6 00000008 E3500000        CMP              R0, #0
+    7 0000000C 1F000000        SVCNE            WriteC
+    8 00000010 1AFFFFFB        BNE              Bnner1
+    9 00000014 E1A0F00E        MOV              PC, R14
+   10 00000018         
+   11 00000018 41 20 53 
+              74 72 69 
+              6E 67 20 
+              67 6F 65 
+              73 20 68 
+              65 72 65 
+              21 0A 0D 
+              00       String  =                "A String goes here!", &0A, &0D
+, 0
+   12 0000002E 00000000 
+                       WriteC  EQU              0
+   13 0000002E                 END
+Command Line: --debug --xref --bi --apcs=interwork --depend=.\nullterminatingst
+ring.d -o.\nullterminatingstring.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\I
+nclude --predefine="__EVAL SETA 1" --list=.\nullterminatingstring.lst NullTermi
+natingString.asm
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Banner 00000000
+
+Symbol: Banner
+   Definitions
+      At line 4 in file NullTerminatingString.asm
+   Uses
+      None
+Comment: Banner unused
+Bnner1 00000004
+
+Symbol: Bnner1
+   Definitions
+      At line 5 in file NullTerminatingString.asm
+   Uses
+      At line 8 in file NullTerminatingString.asm
+Comment: Bnner1 used once
+NullTerminatingString 00000000
+
+Symbol: NullTerminatingString
+   Definitions
+      At line 1 in file NullTerminatingString.asm
+   Uses
+      None
+Comment: NullTerminatingString unused
+String 00000018
+
+Symbol: String
+   Definitions
+      At line 11 in file NullTerminatingString.asm
+   Uses
+      At line 4 in file NullTerminatingString.asm
+Comment: String used once
+4 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+WriteC 00000000
+
+Symbol: WriteC
+   Definitions
+      At line 12 in file NullTerminatingString.asm
+   Uses
+      At line 7 in file NullTerminatingString.asm
+Comment: WriteC used once
+1 symbol
+336 symbols in table

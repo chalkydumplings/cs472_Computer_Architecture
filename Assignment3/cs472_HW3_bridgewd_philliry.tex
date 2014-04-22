@@ -296,7 +296,29 @@ x=x EOR y;       //1011 EOR 1101 = 0110
 
 \newpage
 \section*{$(3.25)$} What is the binary encoding of the following instructions?
+\begin{center}
+\begin{tabular}{| l | l | l | l | l | l | l | l | l | }
+\hline 
+& Condition & 0 0 & & Op-code & S & $r_{source1}$ & $r_{destination}$ & Operand 2 \\
+\hline 
+\textbf{A}& & & & & & &  &  \\ 
+\hline 
+\end{tabular}
 
+
+\begin{tabular}{| l | l | l | l | l | l | l | l | l | l | l | l | }
+\hline 
+& Condition & 0 1 & \# & P & U & b &W & L & $r_{base}$ & $r_{transfer}$ & Operand 2 \\
+\hline
+\textbf{B}& & & & & & &  &  &  &  & \\
+\hline
+\textbf{C}& & & & & & &  &  &   & &\\
+\hline
+\textbf{D}& & & & & &  &  &  &  &  &\\
+\hline
+\end{tabular}
+\end{center}
+ 
 \renewcommand{\labelenumi}{\alph{enumi})}
 \begin{enumerate}
 
@@ -328,11 +350,7 @@ E5343006 $\rightarrow$ 11100101001101000011000000000110
 
 \newpage
 \section*{$(3.39)$} Write an ARM program that scans a string terminated by the null byte 0x00 and copies the string from a source location pointed by r0 to a destination pointed at by r1.
-\begin{mdframed}[style=MyFrame]
-\begin{verbatim}
-
-\end{verbatim}
-\end{mdframed}
+\lstinputlisting{NullTerminatingString/NullTerminatingString.asm}
 
 \newpage
 \section*{$(3.51)$} Write an ARM assembly language program to determine whether a string of characters with an odd length is a palindrome (for example, mom) under the following constraints.

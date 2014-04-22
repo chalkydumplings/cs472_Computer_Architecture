@@ -1,0 +1,1 @@
+.\nullterminatingstring.o: NullTerminatingString.asm

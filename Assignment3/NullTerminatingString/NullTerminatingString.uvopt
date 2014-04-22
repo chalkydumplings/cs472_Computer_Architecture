@@ -126,7 +126,7 @@
       <DebugFlag>
         <trace>0</trace>
         <periodic>1</periodic>
-        <aLwin>0</aLwin>
+        <aLwin>1</aLwin>
         <aCover>0</aCover>
         <aSer1>0</aSer1>
         <aSer2>0</aSer2>
@@ -146,7 +146,7 @@
         <aSer4>0</aSer4>
         <StkLoc>0</StkLoc>
         <TrcWin>0</TrcWin>
-        <newCpu>0</newCpu>
+        <newCpu>3</newCpu>
         <uProt>0</uProt>
       </DebugFlag>
       <LintExecutable></LintExecutable>
@@ -166,13 +166,13 @@
       <FileType>2</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>18</ColumnNumber>
+      <ColumnNumber>17</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>5</TopLine>
-      <CurrentLine>18</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>12</CurrentLine>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\palindrome.asm</PathWithFileName>
-      <FilenameWithoutPath>palindrome.asm</FilenameWithoutPath>
+      <PathWithFileName>.\NullTerminatingString.asm</PathWithFileName>
+      <FilenameWithoutPath>NullTerminatingString.asm</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
