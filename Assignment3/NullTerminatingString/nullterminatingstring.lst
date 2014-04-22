@@ -6,6 +6,7 @@ ARM Macro Assembler    Page 1
 
     1 00000000                 AREA             NullTerminatingString, CODE, RE
 <<<<<<< HEAD
+<<<<<<< HEAD
 ADWRITE
     2 00000000                 ENTRY
     3 00000000         ;;modification of code from section 3.9.11
@@ -65,6 +66,42 @@ ADONLY
                        WriteC  EQU              0
    13 0000002E                 END
 >>>>>>> 429ce864761d563cd133c94e92b8270e282d7844
+=======
+ADWRITE
+    2 00000000                 ENTRY
+    3 00000000         ;;modification of code from section 3.9.11
+    4 00000000         ;;copies from r0 to r1
+    5 00000000         
+    6 00000000 E28F0014 
+                       copystr ADR              R0, src     ; r0 points at stri
+                                                            ng 
+    7 00000004 E3A0105F        LDR              R1, =0x0000005f ; a location of
+                                                             safe mem?
+    8 00000008 E4D02001 
+                       loop    LDRB             R2, [R0], #1 ; grab first chara
+                                                            cter, increment poi
+                                                            nter
+    9 0000000C E3520000        CMP              R2, #0x00   ; are we at the end
+                                                            ?
+   10 00000010 E4C12001        STRB             R2, [r1], #1 ; if not, copy to 
+                                                            address location (f
+                                                            rom r1)
+   11 00000014         ;ADD  R1, #1 ; increment r1
+   12 00000014 1AFFFFFB        BNE              loop        ; if not at the end
+                                                            ... we move onto th
+                                                            e next character
+   13 00000018 E1A0F00E        MOV              PC, R14
+   14 0000001C         
+   15 0000001C 61 61 61 
+              61 61 61 
+              61 61 7A 
+              7A 7A 7A 
+              7A 7A 0A 
+              0D 00    src     =                "aaaaaaaazzzzzz", &0A, &0D, 0
+   16 0000002D         
+   17 0000002D         
+   18 0000002D                 END
+>>>>>>> 75331f1320db67e83f269fa1ebbe4f4a61e90782
 Command Line: --debug --xref --bi --apcs=interwork --depend=.\nullterminatingst
 ring.d -o.\nullterminatingstring.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\I
 nclude --predefine="__EVAL SETA 1" --list=.\nullterminatingstring.lst NullTermi
@@ -75,6 +112,7 @@ natingString.asm
 ARM Macro Assembler    Page 1 Alphabetic symbol ordering
 Relocatable symbols
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 Banner 00000000
@@ -94,6 +132,8 @@ Symbol: Bnner1
       At line 8 in file NullTerminatingString.asm
 Comment: Bnner1 used once
 >>>>>>> 429ce864761d563cd133c94e92b8270e282d7844
+=======
+>>>>>>> 75331f1320db67e83f269fa1ebbe4f4a61e90782
 NullTerminatingString 00000000
 
 Symbol: NullTerminatingString
@@ -102,6 +142,7 @@ Symbol: NullTerminatingString
    Uses
       None
 Comment: NullTerminatingString unused
+<<<<<<< HEAD
 <<<<<<< HEAD
 copystr 00000000
 
@@ -131,28 +172,39 @@ Comment: src used once
 335 symbols in table
 =======
 String 00000018
+=======
+copystr 00000000
+>>>>>>> 75331f1320db67e83f269fa1ebbe4f4a61e90782
 
-Symbol: String
+Symbol: copystr
    Definitions
-      At line 11 in file NullTerminatingString.asm
+      At line 6 in file NullTerminatingString.asm
    Uses
-      At line 4 in file NullTerminatingString.asm
-Comment: String used once
-4 symbols
+      None
+Comment: copystr unused
+loop 00000008
 
-
-
-ARM Macro Assembler    Page 1 Alphabetic symbol ordering
-Absolute symbols
-
-WriteC 00000000
-
-Symbol: WriteC
+Symbol: loop
    Definitions
+      At line 8 in file NullTerminatingString.asm
+   Uses
       At line 12 in file NullTerminatingString.asm
+Comment: loop used once
+src 0000001C
+
+Symbol: src
+   Definitions
+      At line 15 in file NullTerminatingString.asm
    Uses
+<<<<<<< HEAD
       At line 7 in file NullTerminatingString.asm
 Comment: WriteC used once
 1 symbol
 336 symbols in table
 >>>>>>> 429ce864761d563cd133c94e92b8270e282d7844
+=======
+      At line 6 in file NullTerminatingString.asm
+Comment: src used once
+4 symbols
+335 symbols in table
+>>>>>>> 75331f1320db67e83f269fa1ebbe4f4a61e90782
