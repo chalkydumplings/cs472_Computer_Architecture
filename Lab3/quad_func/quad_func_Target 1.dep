@@ -1,0 +1,2 @@
+Dependencies for Project 'quad_func', Target 'Target 1': (DO NOT MODIFY !)
+F (.\quad_func.s)(0x53599DD1)(--cpu ARM7TDMI --bi --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include--list .\quad_func.lst --xref -o .\quad_func.o --depend .\quad_func.d)

@@ -1,0 +1,104 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             block_move, CODE, READWRITE
+    2 00000000                 ENTRY
+    3 00000000 E28F0074        ADR              r0, Table
+    4 00000004 E3A01011        MOV              r1, #0x11
+    5 00000008 E3A02022        MOV              r2, #0x22
+    6 0000000C E3A03033        MOV              r3, #0x33
+    7 00000010 E3A04044        MOV              r4, #0x44
+    8 00000014         
+    9 00000014 E8A0001E        STMIA            r0!,{r1-r4}
+   10 00000018         
+   11 00000018 00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00               SPACE            100
+   12 0000007C 22222222 
+                       Table   DCD              0x22222222
+   13 00000080 00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00            SPACE            50
+   14 000000B2         
+   15 000000B2                 END
+Command Line: --debug --xref --bi --apcs=interwork --depend=.\block_move.d -o.\
+block_move.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include --predefine="__
+EVAL SETA 1" --list=.\block_move.lst block_move.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Table 0000007C
+
+Symbol: Table
+   Definitions
+      At line 12 in file block_move.s
+   Uses
+      At line 3 in file block_move.s
+Comment: Table used once
+block_move 00000000
+
+Symbol: block_move
+   Definitions
+      At line 1 in file block_move.s
+   Uses
+      None
+Comment: block_move unused
+2 symbols
+333 symbols in table

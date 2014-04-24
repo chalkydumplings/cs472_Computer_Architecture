@@ -1,0 +1,125 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             quad_func, CODE, READWRITE
+    2 00000000                 ENTRY
+    3 00000000         
+    4 00000000         ; mul requires more than one register
+    5 00000000         ; we must assume then that we can modify registers?
+    6 00000000         ; let's just save r1-r4 and then restore at the end
+    7 00000000 E92D001E        STMDB            sp!,{r1-r4}
+    8 00000004         
+    9 00000004 E3A00005        MOV              r0, #5      ; user input
+   10 00000008         
+   11 00000008 E0010090        MUL              r1, r0, r0  ; x^2 -> r1
+   12 0000000C E59F2038        LDR              r2, Cv      ;
+   13 00000010 E0040291        MUL              r4, r1, r2  ; cx^2 -> r4
+   14 00000014         
+   15 00000014 E59F202C        LDR              r2, Bv      ;
+   16 00000018 E0030290        MUL              r3, r0, r2  ; bx -> r3
+   17 0000001C         
+   18 0000001C E59F2020        LDR              r2, Av      ; a -> r2
+   19 00000020         
+   20 00000020 E0821003        ADD              r1, r2, r3  ; a + bx -> r1
+   21 00000024 E0811004        ADD              r1, r1, r4  ; (a + bx) + cx^2 -
+                                                            > r1
+   22 00000028         
+   23 00000028 E59F2020        LDR              r2, Dv      ; 
+   24 0000002C E1510002        CMP              r1, r2      ; compare result to
+                                                             Constraint
+   25 00000030 DA000000        BLE              Finish      ; it's less than...
+                                                             good!
+   26 00000034 E1A01002        MOV              r1, r2      ; else: replace wit
+                                                            h constaint
+   27 00000038         Finish
+   28 00000038 E1A00001        MOV              r0, r1      ; r0 contains final
+                                                             result
+   29 0000003C         
+   30 0000003C         ; restore registers
+   31 0000003C E8BD001E        LDMIA            SP!, {r1-r4}
+   32 00000040         
+   33 00000040 EAFFFFFE 
+                       Done    B                Done
+   34 00000044         
+   35 00000044         
+   36 00000044         ; These are the customs variables for A,B,C, & D
+   37 00000044 00000002 
+                       Av      DCD              2
+   38 00000048 00000003 
+                       Bv      DCD              3
+   39 0000004C 00000004 
+                       Cv      DCD              4
+   40 00000050 000000C8 
+                       Dv      DCD              200         ; our constraint
+   41 00000054         
+   42 00000054                 END
+Command Line: --debug --xref --bi --apcs=interwork --depend=.\quad_func.d -o.\q
+uad_func.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include --predefine="__EV
+AL SETA 1" --list=.\quad_func.lst quad_func.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Av 00000044
+
+Symbol: Av
+   Definitions
+      At line 37 in file quad_func.s
+   Uses
+      At line 18 in file quad_func.s
+Comment: Av used once
+Bv 00000048
+
+Symbol: Bv
+   Definitions
+      At line 38 in file quad_func.s
+   Uses
+      At line 15 in file quad_func.s
+Comment: Bv used once
+Cv 0000004C
+
+Symbol: Cv
+   Definitions
+      At line 39 in file quad_func.s
+   Uses
+      At line 12 in file quad_func.s
+Comment: Cv used once
+Done 00000040
+
+Symbol: Done
+   Definitions
+      At line 33 in file quad_func.s
+   Uses
+      At line 33 in file quad_func.s
+Comment: Done used once
+Dv 00000050
+
+Symbol: Dv
+   Definitions
+      At line 40 in file quad_func.s
+   Uses
+      At line 23 in file quad_func.s
+Comment: Dv used once
+Finish 00000038
+
+Symbol: Finish
+   Definitions
+      At line 27 in file quad_func.s
+   Uses
+      At line 25 in file quad_func.s
+Comment: Finish used once
+quad_func 00000000
+
+Symbol: quad_func
+   Definitions
+      At line 1 in file quad_func.s
+   Uses
+      None
+Comment: quad_func unused
+7 symbols
+338 symbols in table
