@@ -12,13 +12,13 @@
       <ToolsetName>ARM-ADS</ToolsetName>
       <TargetOption>
         <TargetCommonOption>
-          <Device>ARM7 (Big Endian)</Device>
+          <Device>ARM966E-S (Big Endian)</Device>
           <Vendor>ARM</Vendor>
-          <Cpu>CLOCK(60000000) CPUTYPE(ARM7TDMI) EBIG</Cpu>
+          <Cpu>CLOCK(60000000) CPUTYPE(ARM966E-S) EBIG</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
           <FlashDriverDll></FlashDriverDll>
-          <DeviceId>3722</DeviceId>
+          <DeviceId>3814</DeviceId>
           <RegisterFile></RegisterFile>
           <MemoryEnv></MemoryEnv>
           <Cmp></Cmp>
@@ -103,11 +103,11 @@
         <DllOption>
           <SimDllName>SARM.DLL</SimDllName>
           <SimDllArguments></SimDllArguments>
-          <SimDlgDll>DARMO.DLL</SimDlgDll>
+          <SimDlgDll>DARMO9.DLL</SimDlgDll>
           <SimDlgDllArguments></SimDlgDllArguments>
           <TargetDllName>SARM.DLL</TargetDllName>
           <TargetDllArguments></TargetDllArguments>
-          <TargetDlgDll>TARMO.DLL</TargetDlgDll>
+          <TargetDlgDll>TARMO9.DLL</TargetDlgDll>
           <TargetDlgDllArguments></TargetDlgDllArguments>
         </DllOption>
         <DebugOption>
@@ -208,7 +208,7 @@
             <AdsLsxf>1</AdsLsxf>
             <RvctClst>0</RvctClst>
             <GenPPlst>0</GenPPlst>
-            <AdsCpuType>ARM7TDMI</AdsCpuType>
+            <AdsCpuType>ARM966E-S</AdsCpuType>
             <RvctDeviceName></RvctDeviceName>
             <mOS>0</mOS>
             <uocRom>0</uocRom>
@@ -290,27 +290,27 @@
                 <Size>0x0</Size>
               </XRAM>
               <OCR_RVCT1>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT1>
               <OCR_RVCT2>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT2>
               <OCR_RVCT3>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT3>
               <OCR_RVCT4>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT5>

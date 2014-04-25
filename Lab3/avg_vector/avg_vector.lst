@@ -1,0 +1,129 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             avg_vector, CODE, READONLY
+    2 00000000         
+    3 00000000         ; once again: map -> rwe: 0, 0x0000ffff 
+    4 00000000         
+    5 00000000 E3A00000        MOV              r0, #0      ; our counter
+    6 00000004         
+    7 00000004 E28F102C        ADR              r1, Va
+    8 00000008 E28F2048        ADR              r2, Vb
+    9 0000000C E28F3064        ADR              r3, Vc
+   10 00000010         
+   11 00000010 E4914004 
+                       loop    LDR              r4, [r1], #4
+   12 00000014 E4925004        LDR              r5, [r2], #4
+   13 00000018 E3500008        CMP              r0, #8      ; if at 7, we have 
+                                                            performed all 8 cal
+                                                            culations
+   14 0000001C 0A000004        BEQ              done
+   15 00000020 E2800001        ADD              r0, #1      ; increment our loo
+                                                            p counter
+   16 00000024 E0847005        ADD              r7, r4, r5
+   17 00000028 E1A070C7        ASR              r7, r7, #1  ; shift of one bit 
+                                                            divides by 2
+   18 0000002C         
+   19 0000002C E4837004        STR              r7, [r3], #4 ; save value to Vc
+                                                            
+   20 00000030         
+   21 00000030 EAFFFFF6        b                loop
+   22 00000034         
+   23 00000034 EAFFFFFE 
+                       done    b                done
+   24 00000038         
+   25 00000038 00000005 
+              00000005 
+              00000005 
+              00000005 
+              00000007 
+              00000007 
+              00000007 
+              00000008 Va      DCD              5,5,5,5,7,7,7,8
+   26 00000058 00000001 
+              00000002 
+              00000003 
+              00000004 
+              00000005 
+              00000006 
+              00000007 
+              00000008 Vb      DCD              1,2,3,4,5,6,7,8
+   27 00000078 00000009 
+              00000009 
+              00000009 
+              00000009 
+              00000009 
+              00000009 
+              00000009 
+              00000009 Vc      DCD              9,9,9,9,9,9,9,9
+   28 00000098         
+   29 00000098                 END
+Command Line: --debug --xref --cpu=ARM966E-S --bi --apcs=interwork --depend=.\a
+vg_vector.d -o.\avg_vector.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+ --predefine="__EVAL SETA 1" --list=.\avg_vector.lst avg_vector.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Va 00000038
+
+Symbol: Va
+   Definitions
+      At line 25 in file avg_vector.s
+   Uses
+      At line 7 in file avg_vector.s
+Comment: Va used once
+Vb 00000058
+
+Symbol: Vb
+   Definitions
+      At line 26 in file avg_vector.s
+   Uses
+      At line 8 in file avg_vector.s
+Comment: Vb used once
+Vc 00000078
+
+Symbol: Vc
+   Definitions
+      At line 27 in file avg_vector.s
+   Uses
+      At line 9 in file avg_vector.s
+Comment: Vc used once
+avg_vector 00000000
+
+Symbol: avg_vector
+   Definitions
+      At line 1 in file avg_vector.s
+   Uses
+      None
+Comment: avg_vector unused
+done 00000034
+
+Symbol: done
+   Definitions
+      At line 23 in file avg_vector.s
+   Uses
+      At line 14 in file avg_vector.s
+      At line 23 in file avg_vector.s
+
+loop 00000010
+
+Symbol: loop
+   Definitions
+      At line 11 in file avg_vector.s
+   Uses
+      At line 21 in file avg_vector.s
+Comment: loop used once
+6 symbols
+337 symbols in table
