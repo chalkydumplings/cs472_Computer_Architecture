@@ -5,7 +5,7 @@ CFLAGS_DEBUG = -Wall -std=gnu99 -openmp -O0 -g -I.
 CXXFLAGS = -Wall -openmp -O3 -g
 #overkill on the flags, but that doesn't hurt anything
 #add current dir to libs for libjsmn.a
-LDFLAGS = -lrt -lpthread -L. 
+LDFLAGS = -lrt -lpthread -L.
 #replace this if you want to change the output name
 TEX_TARGET = writeup
 
@@ -17,15 +17,21 @@ HTML=main_html
 SRC=mt.h
 
 #any headers go here
-INCLUDES = 
+INCLUDES =
 
 #any .c or .cpp files go here
-SOURCE = 
+SOURCE =
 
 #default is to compile and pdf
-default: pdf
+#default: pdf
+default: simple
+
 both: pdf html
-	
+
+simple:
+	pdflatex writeup.tex
+	rm *.log *.out *.aux
+
 #depends on all of you source and header files
 compile: ${SOURCE} ${INCLUDES}
 #this assumes you actually are linking all of the source files together
@@ -63,10 +69,10 @@ html:
 	mv ${HTML}/index2.html ${TEX_TARGET}.html
 	rm ${HTML}.*
 	rm -rf ${HTML}
-	
-run: 
+
+run:
 	$(info ************************RUNNING********************************)
-	./$(TARGET) 
+	./$(TARGET)
 
 tar:
 	tar cvf $(ASSIGNMENT_NAME).tar.bz2 $(TEX_TARGET).tex  Makefile \
