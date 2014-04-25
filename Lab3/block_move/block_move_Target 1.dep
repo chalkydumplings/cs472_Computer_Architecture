@@ -1,2 +1,2 @@
 Dependencies for Project 'block_move', Target 'Target 1': (DO NOT MODIFY !)
-F (.\block_move.s)(0x53598851)(--cpu ARM7TDMI --bi --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include--list .\block_move.lst --xref -o .\block_move.o --depend .\block_move.d)
+F (.\block_move.s)(0x5359A63F)(--cpu ARM7TDMI --bi --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include--list .\block_move.lst --xref -o .\block_move.o --depend .\block_move.d)

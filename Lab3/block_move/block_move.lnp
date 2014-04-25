@@ -1,6 +1,5 @@
 --cpu ARM7TDMI
 ".\block_move.o"
---strict --scatter "block_move.sct"
---summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--ro-base 0x00000000 --entry 0x00000000 --rw-base 0x00000000 --strict --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list ".\block_move.map" -o .\block_move.axf
