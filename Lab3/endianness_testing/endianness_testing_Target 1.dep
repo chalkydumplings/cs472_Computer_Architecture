@@ -1,0 +1,2 @@
+Dependencies for Project 'endianness_testing', Target 'Target 1': (DO NOT MODIFY !)
+F (.\endianness_testing.asm)(0x535B26CC)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include--list .\endianness_testing.lst --xref -o .\endianness_testing.o --depend .\endianness_testing.d)
