@@ -103,16 +103,24 @@
 \section*{$(3.9)$} What is a misaligned operand? Why are misaligned operands such a problem in programming?
 
 \begin{mdframed}[style=MyFrame]
+A misaligned operand is just what it sounds like an operand that is not aligned causing the operand to span two cache lines either slowing the system down substantially or causing a bus error. From some articles online typically x86 and x64 will happily work with unaligned data but will tend to be slower where as on other processors the system will just error. From the ARM website "Non word-aligned load and store multiple, double, semaphore, synchronization, and coprocessor accesses always signal Data Abort with an Alignment fault status code when the U bit is set." \cite{ARM}
 \end{mdframed}
 
 \section*{$(3.24)$} What is the meaning of each of the P,U,B,W, and L bits in the encoding of an ARM memory reference instruction?
-
 \begin{mdframed}[style=MyFrame]
+\begin{tabular}{l l}
+\textbf{P} & Do you want to adjust pointer before using?\\
+\textbf{U} & Do you want to decrement the pointer instead of incrementing it?\\
+\textbf{B} & Is this word access?\\
+\textbf{W} & Do you want to update the pointer after use?\\
+\textbf{L} & Do you want to store data in memory?
+\end{tabular}
 \end{mdframed}
 
 \section*{$(3.26)$} What is the effect of LDR r0, [r5, r6, LSL r2] ?
 
 \begin{mdframed}[style=MyFrame]
+\colorbox{red}{LDR is the load with offset. It will load a double word from R5 and R6 with an }\\\colorbox{red} {immediate offset specified by the left shift of R2 into R0}
 \end{mdframed}
 
 \section*{$(3.30)$} What is the meaning of sign-extension in the context of copying data from one location to another?
@@ -186,5 +194,5 @@ note: This is a repeat of the one of the exercises we did for lab 3.
 \end{mdframed}
 
 \bibliographystyle{plain}
-\bibliography{}
+\bibliography{writeup}
 \end{document}
