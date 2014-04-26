@@ -5,7 +5,7 @@
 \usepackage{amsmath}                                         
 \usepackage{amsthm}                                          
 
-\usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
+%\usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
 
 \usepackage{alltt}                                           
 \usepackage{float}
@@ -77,14 +77,6 @@
   morekeywords={*,...}                % if you want to add more keywords to the set
   framexbottommargin=5pt,
 }
-
-\makeatletter
-\patchcmd{\lst@GLI@}% <command>
-  {\def\lst@firstline{#1\relax}}% <search>
-  {\def\lst@firstline{#1\relax}\def\lst@firstnumber{#1\relax}}% <replace>
-  {\typeout{listings firstnumber=firstline}}% <success>
-  {\typeout{listings firstnumber not set}}% <failure>
-\makeatother
 
 \def\name{Drake Bridgewater \\  Ryan Phillips}
 \def\title{Lab 2 - The ARM ISA}
@@ -218,22 +210,22 @@ In the homework, you were asked to write an assembly routine that checks for pal
 
 For this lab, you will need to create a write-up discussing the differences you see in Part 2. Do you see any interesting features being used? Is the hand assembly you wrote significantly different than what the compiler produced? Which uses fewer instructions? In other words, provide an analysis of Part 2.
 
-\lstinputlisting[language=C]{palindrome.c}
+\lstinputlisting[language=C]{lab2_part2/palindrome.c}
 
 \begin{tabular}{p{7.5cm} p{7.5cm} }
-\lstinputlisting[lastline=45]{palindrome_0.s}
+\lstinputlisting[lastline=45]{lab2_part2/palindrome_0.asm}
 &
-\lstinputlisting[lastline=50]{palindrome_3.s}
+\lstinputlisting[lastline=50]{lab2_part2/palindrome_3.asm}
 \end{tabular}
 
 \begin{tabular}{p{7.5cm} p{7.5cm} }
-\lstinputlisting[linerange=46-90]{palindrome_0.s}
+\lstinputlisting[linerange=46-90]{lab2_part2/palindrome_0.asm}
 &
-\lstinputlisting[linerange=51-100]{palindrome_3.s}
+\lstinputlisting[linerange=51-100]{lab2_part2/palindrome_3.asm}
 \end{tabular}
 
 \begin{tabular}{p{7.5cm} p{7.5cm} }
-\lstinputlisting[linerange=90-200]{palindrome_0.s} &
+\lstinputlisting[linerange=90-200]{lab2_part2/palindrome_0.asm} &
 \end{tabular}
 
 There are a few important differences between the hand-written assembly code and the assembly code generated from the .c source. The generated code is less readable, mainly because it uses default numbered labels which yield no information about the code within these sections. Also, the hand-written assembly is much shorter in length at 36 lines. The unoptimized, generated code is over 100 lines, and even the optimized, generated code is over twice as long at 80 lines.

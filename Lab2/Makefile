@@ -14,7 +14,7 @@ ASSIGNMENT_NAME = cs472_LAB2_bridgewd_philliry
 
 # LaTeX related constants
 HTML=main_html
-SRC=mt.h
+SRC=
 
 #any headers go here
 INCLUDES = 
@@ -23,7 +23,7 @@ INCLUDES =
 SOURCE = lab2_part2/palindrome.c
 
 #default is to compile and pdf
-default: compile
+default: compile both
 both: pdf html
 	
 #depends on all of you source and header files
@@ -36,14 +36,14 @@ debug: ${SOURCE} ${INCLUDES}
 
 dvi: ${TEX_TARGET}.tex
 #	pygmentize the input source file -- THIS NAME SHOULD BE SAFE
-	pygmentize -f latex -o __${SRC}.tex ${SRC}
+#	pygmentize -f latex -o __${SRC}.tex ${SRC}
 #	run latex twice to get references correct
 	latex ${TEX_TARGET}.tex
 #	you can also have a bibtex line here
 #	bibtex $(TEX_TARGET).tex
 	latex $(TEX_TARGET).tex
 #	remove the pygmentized output to avoid cluttering up the directory
-	rm __${SRC}.tex
+#	rm __${SRC}.tex
 
 ps: dvi
 	dvips -R -Poutline -t letter ${TEX_TARGET}.dvi -o ${TEX_TARGET}.ps

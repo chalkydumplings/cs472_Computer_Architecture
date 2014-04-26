@@ -66,11 +66,11 @@ html:
 run: 
 	$(info ************************RUNNING********************************)
 	./$(TARGET) 
-
+	
 tar:
-	tar cvf $(ASSIGNMENT_NAME).tar.bz2 $(TEX_TARGET).tex  Makefile \
-		$(SOURCE) pygments.tex lab2_part1/*.asm  lab2_part2/*.asm \
-		*.pdf
+	tar cvzf $(ASSIGNMENT_NAME).tar.bz2 avg_vector/*.asm \
+		block_move/*.asm endianness_testing/*.asm\
+		quad_func/*.asm
 
 
 clean:
