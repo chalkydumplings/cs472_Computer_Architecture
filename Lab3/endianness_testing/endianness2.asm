@@ -4,13 +4,13 @@
 
 	MOV		R0, #1 ; if 1, swap
 
-	ADR 	R1, src1 
+	ADR		R1, x
 	LDRB	R2, [R1], #1
-	LDRB	R2, [R1], #1 ;r2 contains second byte? (2)
+	LDRB	R2, [R1], #1
+	LDRB	R2, [R1], #1
 	
-	ADR 	R3, src2 
-	LDRB	R4, [R3], #1 ;r5 contains 2
-
+	ADR		R3, y
+	LDRB 	R4, [R3], #1
 	
 	CMP     R2, R4
 	BEQ     big ;
@@ -28,10 +28,11 @@ small
 
 swap
 	
-
-
 l 	b 		l	; infinite loop
-src1 = 			"12"
-src2	=		"2"
+
+x   	    DCD  	4294945450 ; ffffaaaa
+			space   10
+y   	    DCD  	2863311530 ; aaaaaaaa
+
 	END
 	
