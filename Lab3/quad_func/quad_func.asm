@@ -26,12 +26,10 @@
 		CMP 	r1, r2 ; compare result to Constraint
 		BLE		Finish ; it's less than... good!
 		MOV		r1, r2 ; else: replace with constaint
-Finish
-		MOV		r0, r1 ; r0 contains final result
-		
+
+Finish		MOV		r0, r1 ; r0 contains final result
 		; restore registers
 		LDMIA  	SP!, {r1-r4}
-		
 Done	B		Done		
 		
 		

@@ -1,0 +1,16 @@
+			AREA test, CODE, READWRITE	
+			ENTRY
+			
+			LDR 	r0, =0x00000000
+			LDR		R1, =0x11111111
+			LDR		R2, =0x22222222
+			LDR		R3, =0x33333333
+			LDR		R4, =0x44444444
+			LDR		R5, =0x55555555
+			LDR		R6, =0x66666666
+			
+			ADR 	R13, Stack
+			STMIB r7!,{r0-r2,r4}
+			SPACE 20
+Stack		SPACE 20
+			END

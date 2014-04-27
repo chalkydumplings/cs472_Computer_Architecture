@@ -133,9 +133,33 @@ A misaligned operand is just what it sounds like an operand that is not aligned 
 \begin{mdframed}[style=MyFrame]
 \end{mdframed}
 
-\section*{$(3.34)$} What is the effect of executing SMBIB r13,\{r0-r2,r4\}? Draw a picture of the state of the stack pointed at by r13 before and after this operation.
-
+\newpage
+\section*{$(3.34)$} What is the effect of executing STMIB r13!,\{r0-r2,r4\}? Draw a picture of the state of the stack pointed at by r13 before and after this operation.
 \begin{mdframed}[style=MyFrame]
+
+The instruction STMIB is the Store Multiple Registers instruction and it increments the address before each transfer and with the addition of the exclimation mark on Rd the final address is written back to Rd \\
+
+\begin{center}
+\begin{tabular}{| c | c | c |}
+\hline
+& Before & After\\ \hline \hline
+R0 & 0x00000000  &\\ \hline
+R1 & 0x11111111  &\\ \hline
+R2 & 0x22222222  &\\ \hline
+R3 & 0x33333333  &\\ \hline
+R4 & 0x44444444  &\\ \hline
+R5 & 0x55555555  &\\ \hline
+R6 & 0x66666666  &\\ \hline
+R8 &  &\\ \hline
+R9 &  &\\ \hline
+R10 &  &\\ \hline
+R11 &  &\\ \hline 
+R12 &  &\\ \hline
+R13 &  &\\ \hline
+R14 &  &\\ \hline
+R15 & PC&\\ \hline
+\end{tabular}
+\end{center}
 \end{mdframed}
 
 \section*{$(3.36)$} Without using the ARM's multiplication instruction, write one or more instructions (using ADD, SUB, and shifting) to multiply by the following integers.
@@ -156,6 +180,10 @@ RSBMI   r0, r0, #0
 \end{verbatim}
 
 \begin{mdframed}[style=MyFrame]
+\textbf{TEQ} is the instruction test equivalence it uses a bitwise exclusive OR operation when it is complete it sets the flags and the result is discarded unlike the EORS instruction\\
+\textbf{RSBMI} is the instruction Reverse Subtract without carry but the addition of MI means that it will only execute when N status register is set, it is negative. 
+
+Depending on if the value in R0 the N flag will get set accordingly and if that flag does get set then the reverse subtract operation will execute 
 \end{mdframed}
 
 \section*{$(3.48)$} What, in the context of assembly language, is a psuedo-operation?
@@ -174,19 +202,12 @@ loop    MOVS       r0,r0,LSL #1
 \begin{mdframed}[style=MyFrame]
 \end{mdframed}
 
-\section*{$(3.60)$} A computer has three eight-element vectors in memory, Va, Vb, and Vc. Each element of a vector is a 32-bit word. Write the code to calculate all elements of Vc if the ith element is given by:
-
-\thinspace
-
-$Vc_i = \frac{1}{2} ( Va_i + Vb_i)$
-
-\thinspace
-
-note: This is a repeat of the one of the exercises we did for lab 3.
-
-
+\newpage
+\section*{$(3.60)$} A computer has three eight-element vectors in memory, Va, Vb, and Vc. Each element of a vector is a 32-bit word. Write the code to calculate all elements of Vc if the ith element is given by: $Vc_i = \frac{1}{2} ( Va_i + Vb_i)$
 \begin{mdframed}[style=MyFrame]
+\lstinputlisting[linerange=1-40]{../Lab3/quad_func/quad_func.asm}
 \end{mdframed}
+\newpage
 
 \section*{$(3.61)$} Register r15 is the program counter. You can use it with certain instructions such as a MOV (e.g., MOV pc, r14). However, r15 cannot be used in conjunction with most data processing instructions. Why?
 
