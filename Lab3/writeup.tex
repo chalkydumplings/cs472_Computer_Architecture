@@ -198,13 +198,13 @@ r6 & r1 \\
 r7 & r2 \\
 \end{tabular}
 
-\lstinputlisting{../block_move/block_move.s}
+\lstinputlisting{block_move/block_move.asm}
 
 \subsection*{3.59}
 
 Write a function (subroutine) that inputs a data value in register r0 and returns value in r0. The function returns $y = a + bx + cx^2$, where a, b, and c are parameters built into the function (i.e., they are not passed to it). The subroutine also performs clipping. If the output is greater than the value d, it is constrained to d (clipped). The input in r0 is a positive binary value in hte range 0 to 0xFF. Apart from r0, no other registers may be modified by this subroutine.
 
-\lstinputlisting{../quad_func/quad_func.s}
+\lstinputlisting{quad_func/quad_func.asm}
 
 
 \subsection*{3.60}
@@ -213,13 +213,13 @@ A computer has three eight-element vectors in memory, Va, Vb, and Vc. Each eleme
 
 $Vc_i = \frac{1}{2} ( Va_i + Vb_i)$
 
-\lstinputlisting{../avg_vec/avg_vec.s}
+\lstinputlisting{avg_vector/avg_vector.asm}
 
 \subsection*{Endianness Test/Flip}
 
 A function which tests the endianness of the system, and flips it as requested. This will be expanded upon in a later lab to examine the concept of endian neutral programming.
 
-\lstinputlisting{../flip_endianness/flip_endianness.asm}
+\lstinputlisting{endianness_testing/endianness2.asm}
 
 
 

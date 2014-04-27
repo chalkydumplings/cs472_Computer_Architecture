@@ -160,8 +160,27 @@ R14 &  &\\ \hline
 R15 & PC&\\ \hline
 \end{tabular}
 \end{center}
+\begin{verbatim}
+			AREA test, CODE, READWRITE	
+			ENTRY
+			
+			LDR 	r0, =0x00000000
+			LDR		R1, =0x11111111
+			LDR		R2, =0x22222222
+			LDR		R3, =0x33333333
+			LDR		R4, =0x44444444
+			LDR		R5, =0x55555555
+			LDR		R6, =0x66666666
+			
+			ADR 	R13, Stack
+			STMIB r7!,{r0-r2,r4}
+			SPACE 20
+Stack		SPACE 20
+			END
+\end{verbatim}
 \end{mdframed}
 
+\newpage
 \section*{$(3.36)$} Without using the ARM's multiplication instruction, write one or more instructions (using ADD, SUB, and shifting) to multiply by the following integers.
 
 \begin{enumerate}[label=\Alph*]
@@ -171,6 +190,27 @@ R15 & PC&\\ \hline
 \end{enumerate}
 
 \begin{mdframed}[style=MyFrame]
+In binary: \\
+\begin{tabular}{l l }
+33 & 0010 0001 \\
+1025 & 0100 0000 0001 \\
+4096 & 1111 1111 1111 \\ \\
+$33\times 1025 = 33825$ & 1000 0100 0010 0001
+\end{tabular}
+
+\begin{verbatim}
+				LDR		R1, #0x21
+				LDR		R2, #0x401
+				LDR 	R3, #0x1000
+				
+				;if bit 
+				 
+                LSL     R1, 1           ;Multiply R1 by two
+                MOV     R2, R1          ;Save 2*R1 for later
+                LSL     R1, 1           ;Multiply R1 by four
+                LSL     R1, 1           ;Multiply R1 by eight
+                ADD     R1, R2          ;Add in 2*R1 to get 10*R1
+\end{verbatim}
 \end{mdframed}
 
 \section*{$(3.44)$} What does the following code do?
