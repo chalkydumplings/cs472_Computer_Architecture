@@ -120,7 +120,12 @@ A misaligned operand is just what it sounds like an operand that is not aligned 
 \section*{$(3.26)$} What is the effect of LDR r0, [r5, r6, LSL r2] ?
 
 \begin{mdframed}[style=MyFrame]
-\colorbox{red}{LDR is the load with offset. It will load a double word from R5 and R6 with an }\\\colorbox{red} {immediate offset specified by the left shift of R2 into R0}
+\colorbox{red}{
+  
+Whatever is at the address located specified by: address r5 + (address r6)*2^r2 is loaded into r0.
+
+
+}
 \end{mdframed}
 
 \section*{$(3.30)$} What is the meaning of sign-extension in the context of copying data from one location to another?
