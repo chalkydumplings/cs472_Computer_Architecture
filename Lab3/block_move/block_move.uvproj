@@ -406,9 +406,9 @@
           <GroupName>Source Group 1</GroupName>
           <Files>
             <File>
-              <FileName>block_move.s</FileName>
+              <FileName>block_move.asm</FileName>
               <FileType>2</FileType>
-              <FilePath>.\block_move.s</FilePath>
+              <FilePath>.\block_move.asm</FilePath>
             </File>
           </Files>
         </Group>

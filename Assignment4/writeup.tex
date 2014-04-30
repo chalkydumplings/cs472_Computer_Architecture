@@ -120,101 +120,80 @@ A misaligned operand is just what it sounds like an operand that is not aligned 
 \section*{$(3.26)$} What is the effect of LDR r0, [r5, r6, LSL r2] ?
 
 \begin{mdframed}[style=MyFrame]
+<<<<<<< HEAD
 \colorbox{red}{
   
 Whatever is at the address located specified by: address r5 + (address r6)*2^r2 is loaded into r0.
 
 
 }
+=======
+$[r0] \leftarrow [r5+[r6 * r2] ]$ or in english store what is in R5 with the addition of the offset determined by logically shifting r6 left by r2 in r0
+>>>>>>> a70a315180d74f562ef1f5b38601446208480cb4
 \end{mdframed}
 
 \section*{$(3.30)$} What is the meaning of sign-extension in the context of copying data from one location to another?
 
 \begin{mdframed}[style=MyFrame]
+Sign extension is maintaning the binary sign when changing the length of represented value. For instance if you are moving a 16-bit value into a 32-bit register you have to ensure that you sign extend the bits this means that the most significant bit will need to be repeated until the end in the new register.  
 \end{mdframed}
 
 \section*{$(3.33)$} Most RISC processors do not include a block move instruction. What are the advantages and disadvantages of the ARM's LDM and STM instructions?
 
 \begin{mdframed}[style=MyFrame]
+Using a block load or store instruction can be excuted in few cycles for more then a single register. For instance if you want to block move 16 register it will take 8 cycles if 
 \end{mdframed}
 
 \newpage
 \section*{$(3.34)$} What is the effect of executing STMIB r13!,\{r0-r2,r4\}? Draw a picture of the state of the stack pointed at by r13 before and after this operation.
 \begin{mdframed}[style=MyFrame]
 
-The instruction STMIB is the Store Multiple Registers instruction and it increments the address before each transfer and with the addition of the exclimation mark on Rd the final address is written back to Rd \\
+The instruction STMIB is the Store Multiple Registers instruction and it increments the address before each transfer and with the addition of the exclimation mark on Rd the final address is written back to Rd, R13 \\
 
 \begin{center}
+Assuming this is a Full Ascending, decrement after stack
 \begin{tabular}{| c | c | c |}
 \hline
 & Before & After\\ \hline \hline
-R0 & 0x00000000  &\\ \hline
-R1 & 0x11111111  &\\ \hline
-R2 & 0x22222222  &\\ \hline
-R3 & 0x33333333  &\\ \hline
-R4 & 0x44444444  &\\ \hline
-R5 & 0x55555555  &\\ \hline
-R6 & 0x66666666  &\\ \hline
-R8 &  &\\ \hline
-R9 &  &\\ \hline
-R10 &  &\\ \hline
-R11 &  &\\ \hline 
-R12 &  &\\ \hline
-R13 &  &\\ \hline
-R14 &  &\\ \hline
-R15 & PC&\\ \hline
+\& $n+0$ &  $\rightarrow$ &$~~~~R0$\\ \hline
+\& $n+4$ &   &$~~~~R1$\\ \hline
+\& $n+8$ &   &$~~~~R2$\\ \hline
+\& $n+C$ &   &$\rightarrow$ $R4$\\ \hline
+\& $n+F$ &   &Free\\ \hline
+
 \end{tabular}
 \end{center}
-\begin{verbatim}
-			AREA test, CODE, READWRITE	
-			ENTRY
-			
-			LDR 	r0, =0x00000000
-			LDR		R1, =0x11111111
-			LDR		R2, =0x22222222
-			LDR		R3, =0x33333333
-			LDR		R4, =0x44444444
-			LDR		R5, =0x55555555
-			LDR		R6, =0x66666666
-			
-			ADR 	R13, Stack
-			STMIB r7!,{r0-r2,r4}
-			SPACE 20
-Stack		SPACE 20
-			END
-\end{verbatim}
 \end{mdframed}
 
-\newpage
-\section*{$(3.36)$} Without using the ARM's multiplication instruction, write one or more instructions (using ADD, SUB, and shifting) to multiply by the following integers.
-
-\begin{enumerate}[label=\Alph*]
-\item 33
-\item 1025
-\item 4095
-\end{enumerate}
+\section*{$(3.36)$} Without using the ARM's multiplication instruction, write one or more instructions (using ADD, SUB, and shifting) to multiply by the following integers: 33, 1025, 4095
 
 \begin{mdframed}[style=MyFrame]
 In binary: \\
 \begin{tabular}{l l }
 33 & 0010 0001 \\
 1025 & 0100 0000 0001 \\
-4096 & 1111 1111 1111 \\ \\
+4095 & 1111 1111 1111 \\ \\
 $33\times 1025 = 33825$ & 1000 0100 0010 0001
 \end{tabular}
 
 \begin{verbatim}
-				LDR		R1, #0x21
-				LDR		R2, #0x401
-				LDR 	R3, #0x1000
-				
-				;if bit 
-				 
-                LSL     R1, 1           ;Multiply R1 by two
-                MOV     R2, R1          ;Save 2*R1 for later
-                LSL     R1, 1           ;Multiply R1 by four
-                LSL     R1, 1           ;Multiply R1 by eight
-                ADD     R1, R2          ;Add in 2*R1 to get 10*R1
+    AREA test, CODE, READWRITE    
+        ENTRY
+        
+        ; multiply input by 33 -> original += 4 byte shift
+        MOV        R0, #4095              ; 
+        MOV        R1, R0, LSL #5         ; r1 = r0 * 2^5 
+        ADD        R2, R1, R0             ; r2 = r1 + r0
+                                          ; r2 contains r0 * 33
+        space     10                            
+        ; multiply input by 33 -> original += 4 byte shift
+        MOV        R0, R2                 ; 
+        MOV        R1, R0, LSL #10        ; r1 = r0 * 2^5 
+        ADD        R2, R1, R0             ; r2 = r1 + r0
+        
+        space     10
+    
+        END
 \end{verbatim}
 \end{mdframed}
 
@@ -228,14 +207,15 @@ RSBMI   r0, r0, #0
 \textbf{TEQ} is the instruction test equivalence it uses a bitwise exclusive OR operation when it is complete it sets the flags and the result is discarded unlike the EORS instruction\\
 \textbf{RSBMI} is the instruction Reverse Subtract without carry but the addition of MI means that it will only execute when N status register is set, it is negative. 
 
-Depending on if the value in R0 the N flag will get set accordingly and if that flag does get set then the reverse subtract operation will execute 
+TEQ will set the N, negative flag, for any negative value. If the value is a negative then RSBMI instruction will execute; yielding 0 - R0. Overall these two instructions used together will take the absolute value of R0.
 \end{mdframed}
 
 \section*{$(3.48)$} What, in the context of assembly language, is a psuedo-operation?
 
 \begin{mdframed}[style=MyFrame]
+These are keywords which do not directly translate to a machine instructions
 \end{mdframed}
-
+\newpage
 \section*{$(3.54)$} Explain what this fragment of code does instruction by instruction and what purpose it achieves (assuming that register r0 is the register of interest). Note that the data in r0 must not be 0 on entry.
 \begin{verbatim}
         MOV        r1,#0
@@ -245,6 +225,12 @@ loop    MOVS       r0,r0,LSL #1
 \end{verbatim}
 
 \begin{mdframed}[style=MyFrame]
+Moves 0 into R1\\
+Moves R0 left shifted by 1 into R0 and updated the status register\\
+Adds $R1 = R1 + 1$ if carry then flag is set\\
+Loops back to loop if carry then flag is set\\ \\
+
+This will multiply the value in R0 by 2 each until the most significant bit is a 1 and the value accrued in R1 is the value that is was multiplied by. 
 \end{mdframed}
 
 \newpage
@@ -257,6 +243,7 @@ loop    MOVS       r0,r0,LSL #1
 \section*{$(3.61)$} Register r15 is the program counter. You can use it with certain instructions such as a MOV (e.g., MOV pc, r14). However, r15 cannot be used in conjunction with most data processing instructions. Why?
 
 \begin{mdframed}[style=MyFrame]
+Since the program counter is not connected to the ALU instuctions can't be directly executed using the value in the program counter. If you want to use the program counter you must load it into a register then manipulate that register
 \end{mdframed}
 
 \bibliographystyle{plain}

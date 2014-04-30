@@ -1,1 +1,1 @@
-.\block_move.o: block_move.s
+.\block_move.o: block_move.asm

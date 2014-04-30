@@ -30,7 +30,7 @@ ARM Macro Assembler    Page 1
    23 0000002C                 END
 Command Line: --debug --xref --bi --apcs=interwork --depend=.\block_move.d -o.\
 block_move.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include --predefine="__
-EVAL SETA 1" --list=.\block_move.lst block_move.s
+EVAL SETA 1" --list=.\block_move.lst block_move.asm
 
 
 
@@ -41,7 +41,7 @@ block_move 00000000
 
 Symbol: block_move
    Definitions
-      At line 1 in file block_move.s
+      At line 1 in file block_move.asm
    Uses
       None
 Comment: block_move unused
@@ -49,9 +49,9 @@ l 00000028
 
 Symbol: l
    Definitions
-      At line 21 in file block_move.s
+      At line 21 in file block_move.asm
    Uses
-      At line 21 in file block_move.s
+      At line 21 in file block_move.asm
 Comment: l used once
 2 symbols
 333 symbols in table
