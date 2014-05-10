@@ -83,8 +83,8 @@
   urlcolor = black,
   pdfauthor = {\name},
   pdfkeywords = {cs472 ``computer architecture'' clements ``chapter 3''},
-  pdftitle = {CS 472: Homework 4},
-  pdfsubject = {CS 472: Homework 4},
+  pdftitle = {CS 472: Homework 5},
+  pdfsubject = {CS 472: Homework 5},
   pdfpagemode = UseNone
 }
 
@@ -93,183 +93,126 @@
 
 \hfill \today
 
-\hfill CS 472 HW 4
+\hfill CS 472 HW 5
 
-\section*{$(3.8)$} What are the relative advantages and disadvantages of general-purpose registers compared to separate address and data registers?
-
-\begin{mdframed}[style=MyFrame]
-Dedicated registers leads to more compact code - but general-purpose registers are more flexible and you don't have to worry about mixing up data and address registers
-\end{mdframed}
-
-\section*{$(3.9)$} What is a misaligned operand? Why are misaligned operands such a problem in programming?
+\section*{$(9.2)$} Why do computer use cache memory?
 
 \begin{mdframed}[style=MyFrame]
-A misaligned operand is just what it sounds like an operand that is not aligned causing the operand to span two cache lines either slowing the system down substantially or causing a bus error. From some articles online typically x86 and x64 will happily work with unaligned data but will tend to be slower where as on other processors the system will just error. From the ARM website "Non word-aligned load and store multiple, double, semaphore, synchronization, and coprocessor accesses always signal Data Abort with an Alignment fault status code when the U bit is set." \cite{ARM}
 \end{mdframed}
 
-\section*{$(3.24)$} What is the meaning of each of the P,U,B,W, and L bits in the encoding of an ARM memory reference instruction?
-\begin{mdframed}[style=MyFrame]
-\begin{tabular}{l l}
-\textbf{P} & Do you want to adjust pointer before using?\\
-\textbf{U} & Do you want to decrement the pointer instead of incrementing it?\\
-\textbf{B} & Is this word access?\\
-\textbf{W} & Do you want to update the pointer after use?\\
-\textbf{L} & Do you want to store data in memory?
-\end{tabular}
-\end{mdframed}
-
-\section*{$(3.26)$} What is the effect of LDR r0, [r5, r6, LSL r2] ?
+\section*{$(9.3)$} What is the meaning of temporal locality and spatial locality?
 
 \begin{mdframed}[style=MyFrame]
-$[r0] \leftarrow [r5+[r6 * r2] ]$ or in english store what is in R5 with the addition of the offset determined by logically shifting r6 left by r2 in r0
 \end{mdframed}
 
-\section*{$(3.30)$} What is the meaning of sign-extension in the context of copying data from one location to another?
+\section*{$(9.4)$} From first principles, derive an expression for the speedup fatio of memory system with cache (assume the hit ration is h and the ratio of the main storage access time to cache access time to cache access time is k, where k<1). Assume that the system is an ideal system and that you don't have to worry about the effect of clock cycle times.
 
 \begin{mdframed}[style=MyFrame]
-Sign extension is maintaning the binary sign when changing the length of represented value. For instance if you are moving a 16-bit value into a 32-bit register you have to ensure that you sign extend the bits this means that the most significant bit will need to be repeated until the end in the new register.  
 \end{mdframed}
 
-\section*{$(3.33)$} Most RISC processors do not include a block move instruction. What are the advantages and disadvantages of the ARM's LDM and STM instructions?
+\section*{$(9.5)$} For the following systems, calculate the speedup ratio S in the cas $t_c$ is the access time of the cache memory, $t_m$ is the access time of the main store, and h is the hit ratio. 
+\subsection*{a} $t_m=70ns,~t_c=7ns,~h=0.9$
+\begin{mdframed}[style=MyFrame]
+\end{mdframed}
+\subsection*{b} $t_m=60ns,~t_c=3ns,~h=0.9$
+\begin{mdframed}[style=MyFrame]
+\end{mdframed}
+\subsection*{c} $t_m=60ns,~t_c=3ns,~h=0.8$
+\begin{mdframed}[style=MyFrame]
+\end{mdframed}
+\subsection*{d} $t_m=60ns,~t_c=3ns,~h=0.97$
+\begin{mdframed}[style=MyFrame]
+\end{mdframed}
+
+\section*{$(9.6)$} For the following ideal systems, calculate the hit ratio h required to achieve the stated speedup ratio S.
+\subsection*{a} $t_m=60ns,~t_c=3ns,~S=1.1$
+\begin{mdframed}[style=MyFrame]
+\end{mdframed}
+\subsection*{b} $t_m=60ns,~t_c=3ns,~S=2.0$
+\begin{mdframed}[style=MyFrame]
+\end{mdframed}
+\subsection*{c} $t_m=60ns,~t_c=3ns,~S=5.0$
+\begin{mdframed}[style=MyFrame]
+\end{mdframed}
+\subsection*{d} $t_m=60ns,~t_c=3ns,~S=15.0$
+\begin{mdframed}[style=MyFrame]
+\end{mdframed}
+
+\section*{$(9.8)$} For the following system that use 
 
 \begin{mdframed}[style=MyFrame]
-Using a block load or store instruction can be excuted in few cycles for more then a single register. For instance if you want to block move 16 register it will take 8 cycles if 
 \end{mdframed}
 
-\newpage
-\section*{$(3.34)$} What is the effect of executing STMIB r13!,\{r0-r2,r4\}? Draw a picture of the state of the stack pointed at by r13 before and after this operation.
-\begin{mdframed}[style=MyFrame]
-
-The instruction STMIB is the Store Multiple Registers instruction and it increments the address before each transfer and with the addition of the exclimation mark on Rd the final address is written back to Rd, R13 \\
-
-\begin{center}
-Assuming this is a Full Ascending, decrement after stack
-\begin{tabular}{| c | c | c |}
-\hline
-& Before & After\\ \hline \hline
-\& $n+0$ &  $\rightarrow$ &$~~~~R0$\\ \hline
-\& $n+4$ &   &$~~~~R1$\\ \hline
-\& $n+8$ &   &$~~~~R2$\\ \hline
-\& $n+C$ &   &$\rightarrow$ $R4$\\ \hline
-\& $n+F$ &   &Free\\ \hline
-
-\end{tabular}
-\end{center}
-\end{mdframed}
-\newpage
-\section*{$(3.36)$} Without using the ARM's multiplication instruction, write one or more instructions (using ADD, SUB, and shifting) to multiply by the following integers: 33, 1025, 4095
+\section*{$(9.11)$} 
 
 \begin{mdframed}[style=MyFrame]
-In binary: \\
-\begin{tabular}{l l }
-33 & 0010 0001 \\
-1025 & 0100 0000 0001 \\
-4095 & 1111 1111 1111 \\ \\
-$33\times 1025 = 33825$ & 1000 0100 0010 0001
-\end{tabular}
-
-\begin{verbatim}
-    AREA test, CODE, READWRITE    
-        ENTRY
-        
-        ; multiply input by 33 -> original += 4 byte shift
-        MOV        R0, #4095              ; 
-        MOV        R1, R0, LSL #5         ; r1 = r0 * 2^5 
-        ADD        R2, R1, R0             ; r2 = r1 + r0
-                                          ; r2 contains r0 * 33
-        space     10                            
-        ; multiply input by 33 -> original += 4 byte shift
-        MOV        R0, R2                 ; 
-        MOV        R1, R0, LSL #10        ; r1 = r0 * 2^5 
-        ADD        R2, R1, R0             ; r2 = r1 + r0
-        
-        space     10
-    
-        END
-\end{verbatim}
 \end{mdframed}
-\newpage
-\section*{$(3.44)$} What does the following code do?
-\begin{verbatim}
-TEQ     r0, #0
-RSBMI   r0, r0, #0
-\end{verbatim}
+
+\section*{$(9.12)$} 
 
 \begin{mdframed}[style=MyFrame]
-\textbf{TEQ} is the instruction test equivalence it uses a bitwise exclusive OR operation when it is complete it sets the flags and the result is discarded unlike the EORS instruction\\
-\textbf{RSBMI} is the instruction Reverse Subtract without carry but the addition of MI means that it will only execute when N status register is set, it is negative. 
-
-TEQ will set the N, negative flag, for any negative value. If the value is a negative then RSBMI instruction will execute; yielding 0 - R0. Overall these two instructions used together will take the absolute value of R0.
 \end{mdframed}
 
-\section*{$(3.48)$} What, in the context of assembly language, is a psuedo-operation?
+\section*{$(9.17)$} 
 
 \begin{mdframed}[style=MyFrame]
-These are keywords which do not directly translate to a machine instructions
 \end{mdframed}
-\newpage
-\section*{$(3.54)$} Explain what this fragment of code does instruction by instruction and what purpose it achieves (assuming that register r0 is the register of interest). Note that the data in r0 must not be 0 on entry.
-\begin{verbatim}
-        MOV        r1,#0
-loop    MOVS       r0,r0,LSL #1
-        ADDCC      r1,r1,#1
-        BCC        loop
-\end{verbatim}
+
+\section*{$(9.22)$} 
 
 \begin{mdframed}[style=MyFrame]
-Moves 0 into R1\\
-Moves R0 left shifted by 1 into R0 and updated the status register\\
-Adds $R1 = R1 + 1$ if carry then flag is set\\
-Loops back to loop if carry then flag is set\\ \\
-
-This will multiply the value in R0 by 2 each until the most significant bit is a 1 and the value accrued in R1 is the value that is was multiplied by. 
 \end{mdframed}
 
-\newpage
-\section*{$(3.60)$} A computer has three eight-element vectors in memory, Va, Vb, and Vc. Each element of a vector is a 32-bit word. Write the code to calculate all elements of Vc if the ith element is given by: $Vc_i = \frac{1}{2} ( Va_i + Vb_i)$
-\begin{mdframed}[style=MyFrame]
-\begin{verbatim}
-		STMDB 	sp!,{r1-r4}
-
-		MOV 	r0, #5 ; user input
-				
-		MUL		r1, r0, r0 ; x^2 -> r1
-		LDR		r2, Cv ;
-		MUL		r4, r1, r2 ; cx^2 -> r4
-		
-		LDR		r2, Bv ;
-		MUL		r3, r0, r2 ; bx -> r3
-		
-		LDR 	r2, Av ; a -> r2
-		
-		ADD 	r1, r2, r3 ; a + bx -> r1
-		ADD 	r1, r1, r4 ; (a + bx) + cx^2 -> r1
-		
-		LDR		r2, Dv ; 
-		CMP 	r1, r2 ; compare result to Constraint
-		BLE		Finish ; it's less than... good!
-		MOV		r1, r2 ; else: replace with constaint
-
-Finish		MOV		r0, r1 ; r0 contains final result
-		; restore registers
-		LDMIA  	SP!, {r1-r4}
-Done	B		Done		
-		
-		
-		; These are the customs variables for A,B,C, & D
-Av   	DCD  	2
-Bv   	DCD  	3
-Cv   	DCD  	4
-Dv		DCD		200 ; our constraint
-\end{verbatim}
-\end{mdframed}
-\newpage
-
-\section*{$(3.61)$} Register r15 is the program counter. You can use it with certain instructions such as a MOV (e.g., MOV pc, r14). However, r15 cannot be used in conjunction with most data processing instructions. Why?
+\section*{$(9.23)$} 
 
 \begin{mdframed}[style=MyFrame]
-Since the program counter is not connected to the ALU instuctions can't be directly executed using the value in the program counter. If you want to use the program counter you must load it into a register then manipulate that register
 \end{mdframed}
+
+\section*{$(9.26)$} 
+
+\begin{mdframed}[style=MyFrame]
+\end{mdframed}
+
+\section*{$(9.28)$} 
+
+\begin{mdframed}[style=MyFrame]
+\end{mdframed}
+
+\section*{$(9.35)$} 
+
+\begin{mdframed}[style=MyFrame]
+\end{mdframed}
+
+\section*{$(9.41)$} 
+
+\begin{mdframed}[style=MyFrame]
+\end{mdframed}
+
+\section*{$(9.42)$} 
+
+\begin{mdframed}[style=MyFrame]
+\end{mdframed}
+
+\section*{$(9.43)$} 
+
+\begin{mdframed}[style=MyFrame]
+\end{mdframed}
+
+\section*{$(9.45)$} 
+
+\begin{mdframed}[style=MyFrame]
+\end{mdframed}
+
+\section*{$(9.46)$} 
+
+\begin{mdframed}[style=MyFrame]
+\end{mdframed}
+
+\section*{$(9.57)$} 
+
+\begin{mdframed}[style=MyFrame]
+\end{mdframed}
+
 
 \bibliographystyle{plain}
 \bibliography{writeup}
