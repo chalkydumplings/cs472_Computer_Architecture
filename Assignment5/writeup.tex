@@ -95,14 +95,18 @@
 
 \hfill CS 472 HW 5
 
-\section*{$(9.2)$} Why do computer use cache memory?
+\section*{$(9.2)$} Why do computers use cache memory?
 
 \begin{mdframed}[style=MyFrame]
+Because it's much faster than main memory, and if it's able to be used frequently, instead of other, slower memory, it increases the overall performance of a system.
 \end{mdframed}
 
 \section*{$(9.3)$} What is the meaning of temporal locality and spatial locality?
 
 \begin{mdframed}[style=MyFrame]
+Addresses are said to exhibit Temporal locality if they are accessed over and over within a short time span.
+
+Spatial locality occurs when the addresses are clustered within the same region of memory. (Clements, pg. 561)
 \end{mdframed}
 
 \section*{$(9.4)$} From first principles, derive an expression for the speedup fatio of memory system with cache (assume the hit ration is h and the ratio of the main storage access time to cache access time to cache access time is k, where k<1). Assume that the system is an ideal system and that you don't have to worry about the effect of clock cycle times.
@@ -156,12 +160,15 @@
 
 \subsection*{a} Word
 \begin{mdframed}[style=MyFrame]
+Basic unit of memory. Defined by the system (i.e. 64-bit registers).
 \end{mdframed}
 \subsection*{b} Line
 \begin{mdframed}[style=MyFrame]
+A unit of storage that contains several words. It's location directly corresponds to a line in main memory.
 \end{mdframed}
 \subsection*{c} Set
 \begin{mdframed}[style=MyFrame]
+A series of lines. The size of a set is the same as the cache.
 \end{mdframed}
 
 \section*{$(9.12)$} How is data in main store mapped on to each of the following?
@@ -179,11 +186,13 @@
 \section*{$(9.17)$} What is cache coherency?
 
 \begin{mdframed}[style=MyFrame]
+The term cache coherence implies that the data in the various cache and main memories are all in step. (Clements, pg. 582,583)
 \end{mdframed}
 
 \section*{$(9.22)$} Why is it harder to design a data cache than an instruction cache?
 
 \begin{mdframed}[style=MyFrame]
+Because an instruction cache requires fewer features. For example: entries are never modified, and you don't have to worry about swapping out instructions, because the program doesn't change during the course of its execution.
 \end{mdframed}
 
 \section*{$(9.23)$} When a CPU writes to the cache, both the item in the cache and the corresponding item in the memory must be updated. If data is not in the cache, it must be fetched from memory and loaded in the cache. If $t_1$ is the time taken to reload the cache on a miss, show that the effective average access time of the memory system is given by
@@ -198,9 +207,10 @@ $t_{avg} = ht_{c} + (1 - h)t_{m} + (1 - h)t_{l}$.
 \begin{mdframed}[style=MyFrame]
 \end{mdframed}
 
-\section*{$(9.28)$} In the context of multilevel caches, what is the difference bettwen a local miss rate and a global miss rate?
+\section*{$(9.28)$} In the context of multilevel caches, what is the difference between a local miss rate and a global miss rate?
 
 \begin{mdframed}[style=MyFrame]
+local miss rate is the rate of misses that occur for a specific cache. The global miss rate takes all of the caches into account.
 \end{mdframed}
 
 \section*{$(9.35)$} A 64-bit processor has a 8-MB, four-way set-associative cache with 32-byte lines. How is the address arranged in terms of set, line, and offset bits?
@@ -223,7 +233,7 @@ $t_{avg} = ht_{c} + (1 - h)t_{m} + (1 - h)t_{l}$.
 \begin{mdframed}[style=MyFrame]
 \end{mdframed}
 
-\section*{$(9.45)$} A computer runs an instruction set with ethe characteristics in the following table.
+\section*{$(9.45)$} A computer runs an instruction set with the characteristics in the following table.
 
 Arithmatic operations, 70\%, 1 cycle
 
