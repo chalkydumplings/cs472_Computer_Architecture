@@ -95,26 +95,16 @@
 
 \hfill CS 472 HW 5
 
-\section*{$(9.2)$} Why do computers use cache memory?
+\section*{$(9.2)$} Why do computer use cache memory?
 
 \begin{mdframed}[style=MyFrame]
-<<<<<<< HEAD
 Computers use cache memory to give the appearance of speed. When cache memory is used in conjunction with system memory and primary (secondary as the book puts it) storage the system can operate at much higher rates. 
-=======
-Because it's much faster than main memory, and if it's able to be used frequently, instead of other, slower memory, it increases the overall performance of a system.
->>>>>>> 7f96552d2556dfcb116423c49948d6c966f14fae
 \end{mdframed}
 
 \section*{$(9.3)$} What is the meaning of temporal locality and spatial locality?
 
 \begin{mdframed}[style=MyFrame]
-<<<<<<< HEAD
 Addresses are said to exhibit \textbf{spatial locality} because they are clustered within the same region of memory. Which other addresses are said to exhibit \textbf{temporal locality} because they are accessed over and over again within a short time span.
-=======
-Addresses are said to exhibit Temporal locality if they are accessed over and over within a short time span.
-
-Spatial locality occurs when the addresses are clustered within the same region of memory. (Clements, pg. 561)
->>>>>>> 7f96552d2556dfcb116423c49948d6c966f14fae
 \end{mdframed}
 
 \vspace{-0.2cm}
@@ -135,17 +125,8 @@ S = hc + (h-1)m / m
 \end{verbatim}
 \end{mdframed}
 
-<<<<<<< HEAD
 \newpage
 \section*{$(9.5)$} For the following systems, calculate the speedup ratio S in the case $t_c$ is the access time of the cache memory, $t_m$ is the access time of the main store, and h is the hit ratio. Using $S=\frac{1}{1-H(1-k)}$ where $k=\frac{t_c}{t_m}$
-=======
-\section*{$(9.5)$} For the following systems, calculate the speedup ratio S in the cas $t_c$ is the access time of the cache memory, $t_m$ is the access time of the main store, and h is the hit ratio.
-
-\subsection*{a} $t_m=70ns,~t_c=7ns,~h=0.9$
-\begin{mdframed}[style=MyFrame]
-\end{mdframed}
-\subsection*{b} $t_m=60ns,~t_c=3ns,~h=0.9$
->>>>>>> 7f96552d2556dfcb116423c49948d6c966f14fae
 \begin{mdframed}[style=MyFrame]
 \subsection*{a} $t_m=70ns,~t_c=7ns,~H=0.9$: \textbf{5.263}
 \subsection*{b} $t_m=60ns,~t_c=3ns,~H=0.9$: \textbf{6.897}
@@ -168,17 +149,8 @@ S = hc + (h-1)m / m
 \subsection*{a} $t_{cyc}=10ns,~t_m=75ns,~t_c=15$
 \end{mdframed}
 
-<<<<<<< HEAD
 \section*{$(9.11)$} In a direct mapped cache memory system, what is the meaning of the following terms: word, line and set?
 
-=======
-\section*{$(9.6)$} For the following ideal systems, calculate the hit ratio h required to achieve the stated speedup ratio S.
-
-\subsection*{a} $t_m=60ns,~t_c=3ns,~S=1.1$
-\begin{mdframed}[style=MyFrame]
-\end{mdframed}
-\subsection*{b} $t_m=60ns,~t_c=3ns,~S=2.0$
->>>>>>> 7f96552d2556dfcb116423c49948d6c966f14fae
 \begin{mdframed}[style=MyFrame]
 In a direct-mapped cache, the lines are arranged into units called sets, where the size of a set is the same size as the cache. The lines are then divided into words. These terms are all terms to narrow down where. Essentially like a persons address city like set, street like line, and word like house number. 
 \end{mdframed}
@@ -203,36 +175,15 @@ Set-Associative: Set-associative is a combination of fully associative and direc
 "Cache coherence is the consistency of shared resource data that ends up stored in multiple local caches. When clients in a system maintain caches of a common memory resource, problems may arise with inconsistent data. This is particularly true of CPUs in a multiprocessing system." Wikipedia says it best. 
 \end{mdframed}
 
-<<<<<<< HEAD
 \section*{$(9.22)$} Why is it harder to design a data cache than an instruction cache?
-=======
-\section*{$(9.8)$} For the following system that use a clocked microprocessor, caculate the maximum speedup ratio you could expect to see as h approaches 100\%.
->>>>>>> 7f96552d2556dfcb116423c49948d6c966f14fae
 
-\subsection*{a} $t_{cyc}=20ns,~t_m=75ns,~t_c=15ns$
-\begin{mdframed}[style=MyFrame]
-\end{mdframed}
-\subsection*{b} $t_{cyc}=20ns,~t_m=75ns,~t_c=25ns$
-\begin{mdframed}[style=MyFrame]
-\end{mdframed}
-\subsection*{c} $t_{cyc}=10ns,~t_m=75ns,~t_c=15ns$
 \begin{mdframed}[style=MyFrame]
 Because an instruction cache requires fewer features. For example: entries are never modified, and you don't have to worry about swapping out instructions, because the program doesn't change during the course of its execution.
 \end{mdframed}
 
-<<<<<<< HEAD
 \section*{$(9.23)$} When a CPU  writes to the cache, both the item in the cache and the corresponding item in the memory must be updated. If data is not in the cache, it must be fetched from memory and loaded in the cache. If $t_1$ is the time taken to reloaded the cache on a miss, show that the effective average time of the memory system is given by $t_{avg}=ht_c+(1-h)t_m+(1-h)t_1$
-=======
-\section*{$(9.11)$} In a direct-mapped cache memory system, what is the meaning of the following terms.
->>>>>>> 7f96552d2556dfcb116423c49948d6c966f14fae
 
-\subsection*{a} Word
 \begin{mdframed}[style=MyFrame]
-Basic unit of memory. Defined by the system (i.e. 64-bit registers).
-\end{mdframed}
-\subsection*{b} Line
-\begin{mdframed}[style=MyFrame]
-<<<<<<< HEAD
  $t_{avg}=hits+misses$\\
  $hits=ht_c$\\
  $misses=miss~time+time~fetch~memory$\\
@@ -242,31 +193,12 @@ Basic unit of memory. Defined by the system (i.e. 64-bit registers).
 
 \newpage
 \section*{$(9.26)$} A system has a level 1 cache and a level 2 cache. the hit rate of the level 1 cache is 90\% and the hit rate of the level 2 cache is 80\%. An access to level 1 cache requires one cycle, an access to level 2 cache requires four cycles, and an access to main memory requires 50 cycles. What is the average access time?
-=======
-A unit of storage that contains several words. It's location directly corresponds to a line in main memory.
-\end{mdframed}
-\subsection*{c} Set
-\begin{mdframed}[style=MyFrame]
-A series of lines. The size of a set is the same as the cache.
-\end{mdframed}
-
-\section*{$(9.12)$} How is data in main store mapped on to each of the following?
-
-\subsection*{a} A direct-mapped cache
-\begin{mdframed}[style=MyFrame]
-\end{mdframed}
-\subsection*{b} A fully associative cache
-\begin{mdframed}[style=MyFrame]
-\end{mdframed}
-\subsection*{c} A set associative cache
->>>>>>> 7f96552d2556dfcb116423c49948d6c966f14fae
 \begin{mdframed}[style=MyFrame]
 If we take a sample of 100 accesses to memory/cache. 90\% of these call will be caught by L1 cache and will require 1 cycle to complete, leaving 10 accesses which 80\% will be caught by L2 cache requiring 4 cycles, lastly if the CPU misses on L1 and L2 then it will have to fetch from main memory requiring 50 cycles. 
 \begin{equation*}
 100_{total\_access} = ~(100*90\%_{hits}*1_{cycles})+(10*80\%_{hits}*4_{cycles})+(2*100\%_{hits}*50_{cycles})
 \end{equation*}
 
-<<<<<<< HEAD
 \begin{equation*}
 (90+22+100)/100=2.3 ~Avg.~Cycles
 \end{equation*}
@@ -280,39 +212,17 @@ Local miss rate is the rate of misses that occur for a specific cache. The globa
 \end{mdframed}
 
 \section*{$(9.35)$} A 64-bit processor has a 8-MB, four-way set-associative cache with 32-byte lines. How is the address arranged in terms of set, line and offset bits?
-=======
-\section*{$(9.17)$} What is cache coherency?
-
-\begin{mdframed}[style=MyFrame]
-The term cache coherence implies that the data in the various cache and main memories are all in step. (Clements, pg. 582,583)
-\end{mdframed}
-
-\section*{$(9.22)$} Why is it harder to design a data cache than an instruction cache?
-
-\begin{mdframed}[style=MyFrame]
-Because an instruction cache requires fewer features. For example: entries are never modified, and you don't have to worry about swapping out instructions, because the program doesn't change during the course of its execution.
-\end{mdframed}
-
-\section*{$(9.23)$} When a CPU writes to the cache, both the item in the cache and the corresponding item in the memory must be updated. If data is not in the cache, it must be fetched from memory and loaded in the cache. If $t_1$ is the time taken to reload the cache on a miss, show that the effective average access time of the memory system is given by
-
-$t_{avg} = ht_{c} + (1 - h)t_{m} + (1 - h)t_{l}$.
->>>>>>> 7f96552d2556dfcb116423c49948d6c966f14fae
 
 \begin{mdframed}[style=MyFrame]
 set: 2-bits, line: 16-bits, word: 2-bits
 \end{mdframed}
 
-<<<<<<< HEAD
 \section*{$(9.41)$} What are the fundamental differences between cache memory (as found in a CPU) and cache memory found in a hard disk drive?
-=======
-\section*{$(9.26)$} A system has a level 1 cache and a level 2 cache. The hit rate of the level 1 cache is 90\%, and the hit rate of the level 2 cache is 80\%. An access to level 1 cache requires one cycle, an access to level 2 cache requires four cycles, and an access to main memory requires 50 cycles. What is the average access time?
->>>>>>> 7f96552d2556dfcb116423c49948d6c966f14fae
 
 \begin{mdframed}[style=MyFrame]
 Typically the memory found in a hard disk is stored on a mechanical medium where as cache memory is stored using electrical gates. As for the cache memory found in a hard drive it need to be large enough that when DRAM controller is trying to write to the hard disk the DRAM controller is not having to wait.
 \end{mdframed}
 
-<<<<<<< HEAD
 \section*{$(9.42)$} What are the differences between write-back and write-through caches, and what are the implications for system performance? 
 
 \begin{mdframed}[style=MyFrame]
@@ -323,72 +233,32 @@ A write through cache will be slower because it's not finished until it has writ
 \end{mdframed}
 
 \section*{$(9.43)$} A computer with a 32-bit address architecture has a memory management system with single-level 4KB page tables. How much memory space must be devoted to the page tables?
-=======
-\section*{$(9.28)$} In the context of multilevel caches, what is the difference between a local miss rate and a global miss rate?
-
-\begin{mdframed}[style=MyFrame]
-local miss rate is the rate of misses that occur for a specific cache. The global miss rate takes all of the caches into account.
-\end{mdframed}
-
-\section*{$(9.35)$} A 64-bit processor has a 8-MB, four-way set-associative cache with 32-byte lines. How is the address arranged in terms of set, line, and offset bits?
->>>>>>> 7f96552d2556dfcb116423c49948d6c966f14fae
 
 \begin{mdframed}[style=MyFrame]
 To determine the location within a page, 4KB, you will need 12 bits. With the remaining bits you can use to determine which page to access; this leads us to have a total of 20 remaining bits, each specifying different pages of 4KB. Resulting in a total memory space of 4GB devoted to page tables.
 \end{mdframed}
 
-<<<<<<< HEAD
 \newpage
 \section*{$(9.45)$} \textbf{Look at the table in the book to complete.} A computer runs with the characteristics in the following table and determine the average number of cycles per instruction?
-=======
-\section*{$(9.41)$} What are the fundamental differences between cache memory (as found in a CPU) and cache memory found in a hard disk drive?
->>>>>>> 7f96552d2556dfcb116423c49948d6c966f14fae
 
 Arithmatic operations, 70\%, 1 cycle
 
-<<<<<<< HEAD
  
 Conditional operations, 15\%, 2 cycles
-=======
-\section*{$(9.42)$} What are the differences between write-back and write-through caches, and what are the implications for system performance?
->>>>>>> 7f96552d2556dfcb116423c49948d6c966f14fae
 
 
-<<<<<<< HEAD
 Load, 10\%, 2 cycles
-=======
-\section*{$(9.43)$} A computer with 32-bit address architecture has a memory management system with single-level 4 KB page tables. How much memory space must be devoted to the page tables?
->>>>>>> 7f96552d2556dfcb116423c49948d6c966f14fae
 
 
-<<<<<<< HEAD
 Store, 5\%, 2 cycles
 
 
 Hit rate, 95\%
 
-=======
-\section*{$(9.45)$} A computer runs an instruction set with the characteristics in the following table.
-
-Arithmatic operations, 70\%, 1 cycle
-
-Conditional operations, 15\%, 2 cycles
-
-Load, 10\%, 2 cycles
-
-Store, 5\%, 2 cycles
-
-Hit rate, 95\%
->>>>>>> 7f96552d2556dfcb116423c49948d6c966f14fae
 
 Cost of a cache miss (read), 10 cycles
 
 Write-through time, 5 cycles (writes to memory are not buffered)
-<<<<<<< HEAD
-=======
-
-What is the average number of cycles per instruction?
->>>>>>> 7f96552d2556dfcb116423c49948d6c966f14fae
 
 \begin{mdframed}[style=MyFrame]
 $Avg\_Cycles~=~$\\
@@ -397,57 +267,27 @@ $(70\%*1~+~15\%*2~+~10\%*2~+5~\%*(2+5_{wToMemory}))(.05*10_{miss~cost})(x)+$\\
 
 \end{mdframed}
 
-<<<<<<< HEAD
 \section*{$(9.46)$} Consider the following code that accesses three values in memory scalar integers x and s , and an integer vector $y[i]$. what is the memory latency in clock cycles for a trip round the loop (after the first iteration)? Assume that the array is not cached and each new access to the array results in a miss.
 the system has both L1 and L2 caches. the access time of the L1 cache is 2 cycles, L2 cache is 6 cycles, and the main memory has access time of 50 cycles. in this case all memory and cache memory accesses take place in parallel
-\begin{verbatim}
+\begin{verbatim} 
 for (i=0; i<100; i++)
 {
     x=y[i];
     s=s+x;
 }
 \end{verbatim}
-=======
-\section*{$(9.46)$} Consider the following code that accesses three values in memory scalar integers x and s, and an integer vector y[i]. What is the memory latency in clock cycles for a trip round the loop (after the first iteration)? Assume that the array is not cached and each new access to the array results in a miss.
-
-The system has both L1 and L2 caches. The access time of the L1 cache is two cycles, the acess time of the L2 cache is 6 cycles and main memory has an access time of 50 cycles. In this case all memory and cache memory accesses take place in parallel.
-
-\lstset{language=C}
-\begin{lstlisting}
-for (i = 0; i < 100; i++)
-{
-x = y[i];
-s = s + x;
-}
-\end{lstlisting}
-
->>>>>>> 7f96552d2556dfcb116423c49948d6c966f14fae
 
 \begin{mdframed}[style=MyFrame]
 If all memory and cache read/writes take place in parallel, we are bound by the slowest, which is the main memory access time. We can safely assume that $i$ will be cached, but we need to read y[i], write x, read s, read x, write s. This is five operations per loop, each which will require 50 cycles, giving a total of 250 cycles. But after the first iteration, we can assume that s and x are cached, meaning that we only need to retrieve y[i] from main memory. This yields 50+50+2+2+50 = 154 cycles, much better than the initial 200. 
 \end{mdframed}
 
-<<<<<<< HEAD
 \section*{$(9.57)$} A compter with a 24-bit address bus has a main memory of size 16MB and a cache size of 64KB. The word length is two bytes. What is the address format for the direct-mapped cache with a line size of 32 words? What is the address format for a fully associative cache with a line size of 32 words? What is the address format for a four-way set associative cache with line size of 16 words?
-=======
-\section*{$(9.57)$}
->>>>>>> 7f96552d2556dfcb116423c49948d6c966f14fae
 
-A computer with a 24-bit address bus has a main memory of size 16 MB and a cache size of 64 KB. The wordlength is two bytes.
-
-\subsection*{a} What is the address format for a direct-mapped cache with a line size of 32 words?
-\begin{mdframed}[style=MyFrame]
-\end{mdframed}
-\subsection*{b} What is the address format for a fully associative cache with a line size of 32 words?
-\begin{mdframed}[style=MyFrame]
-\end{mdframed}
-\subsection*{c} What is the adress format for a four-way set-associative cache with a line size of 16 words?
 \begin{mdframed}[style=MyFrame]
 For a direct-mapped cache set: 8-bits, line: 6-bits, word: 5-bits\\
 For a fully associative cache  line: 6-bits, word: 10-bits \\
 For a four-way set associative cache set: 2-bits, line: 6-bits, word: 8-bits
 \end{mdframed}
-
 
 
 \bibliographystyle{plain}
