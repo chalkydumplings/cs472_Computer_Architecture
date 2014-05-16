@@ -91,7 +91,7 @@ A CPU without a cache is rare as caches can cover up most of the cost of random 
 Another way to hide latency, which is implemented on many of today's processors, is the use of pipelining, out-of-order execution, and prefetching. Prefetching can be triggered by certain
 events (hardware prefetching) or explicitly requested by the program (software prefetching). \cite[p.~61]{Drepper} With software prefetching the programs don't have to change, but ensuring the access patterns don't happen across page boundaries is key. 
 
-Multi-threading can also be optimized. There is concurrency optimization, atomicity optimization, and bandwidth considerations that 
+Multi-threading can increase overall speed, but there is concurrency optimization, atomicity optimization, and bandwidth considerations that need to be considered. Concurrency optimization is optimizing the code to prevent other threads from accessing  cache lines in 'E' (exclusive) state. This can be done by grouping like access levels such as read-only and read-write commands. While optimization for concurrency 
 
 \section*{Summary Memory Optimization article}
 
