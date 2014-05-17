@@ -30,6 +30,8 @@ both: pdf html
 
 simple:
 	pdflatex writeup.tex
+	bibtex writeup
+	pdflatex writeup.tex
 	rm *.log *.out *.aux
 
 #depends on all of you source and header files
