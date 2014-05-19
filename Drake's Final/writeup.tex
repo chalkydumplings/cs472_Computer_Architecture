@@ -1,43 +1,24 @@
 \documentclass[letterpaper,12pt,titlepage]{article}
 
-\usepackage{graphicx}
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage{amsthm}
+\usepackage{graphicx}                                        
+\usepackage{amssymb}                                         
+\usepackage{amsmath}                                         
+\usepackage{amsthm}                                          
 
-\usepackage{alltt}
+\usepackage{alltt}                                           
 \usepackage{float}
 \usepackage{color}
 \usepackage{url}
 
-\usepackage[framemethod=TikZ]{mdframed}
-\mdfdefinestyle{MyFrame}{%
-    innertopmargin=\baselineskip,
-    innerbottommargin=\baselineskip,
-    innerrightmargin=20pt,
-    innerleftmargin=20pt,
-    backgroundcolor=gray!5!white,
-    splitbottomskip = 5mm,
-    splittopskip = 5mm,
-    skipabove=5mm}
-
-\usepackage{listings}
-\usepackage{xcolor}
-\usepackage{color}
-\usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}
-
-\usepackage{balance}
-\usepackage[TABBOTCAP, tight]{subfigure}
-\usepackage{enumitem}
+%\usepackage{balance}
+%\usepackage[TABBOTCAP, tight]{subfigure}
+%\usepackage{enumitem}
 \usepackage{pstricks, pst-node}
 
-%%keeps text of subsection on same line
-\usepackage{titlesec}
-\titleformat{\subsection}[runin]
-  {\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\usepackage{listings}
 
 \usepackage{geometry}
-\geometry{textheight=9in, textwidth=6.5in}
+\geometry{textheight=9.5in, textwidth=7in}
 
 %random comment
 
@@ -46,51 +27,135 @@
 
 \usepackage{hyperref}
 \usepackage{geometry}
-
-%% Code Listing Configuration
-\renewcommand{\lstlistingname}{Code}
-\lstset{ %
-  %Some lang opts: C++, C, Java, Python, Matlab, TeX, HTML, SQL, Verilog, VHDL, make, ...
-  basicstyle=\footnotesize\ttfamily , % the size of the fonts that are used for the code
-  numbers=left,                       % where to put the line-numbers
-  numberstyle=\scriptsize\color{darkgray}, % the style that is used for the line-numbers
-  stepnumber=2,                       % the step between two line-numbers.
-  numbersep=5pt,                      % how far the line-numbers are from the code
-  backgroundcolor=\color{white},      % choose the background color. You must add \usepackage{color}
-  showspaces=false,                   % show spaces adding particular underscores
-  showstringspaces=false,             % underline spaces within strings
-  showtabs=false,                     % show tabs within strings adding particular underscores
-  frame=tb,                           % adds a frame around the code
-  rulesepcolor=\color{gray},          % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
-  tabsize=2,                          % sets default tabsize to 2 spaces
-  captionpos=t,                       % sets the caption-position
-  breaklines=true,                    % sets automatic line breaking
-  breakatwhitespace=false,            % sets if automatic breaks should only happen at whitespace
-  title=\lstname,                     % show the filename of files included with \lstinputlisting;
-  keywordstyle=\color{blue},          % keyword style
-  commentstyle=\color{dkgreen},       % comment style
-  stringstyle=\color{mauve},          % string literal style
-  escapeinside={\%*}{*)},             % if you want to add a comment within your code
-  morekeywords={*,...}                % if you want to add more keywords to the set
-  framexbottommargin=5pt,
-}
+\usepackage{multicol}
 
 \def\name{Drake Bridgewater}
+\def\title{IA32, better or worse then ARM}
+\def\subtitle{}
+\def\subject{CS }
+\def\courseNumber{ 472 }
+\def\courseName{Computer Architecture }
+\def\courseInfo{Spring 2014 }%Class Time: MWF X-X:XX AM}
+\def\supervisor{Kevin \textsc{McGrath}} % Supervisor's Name
+
+
+%pull in the necessary preamble matter for pygments output
+%\input{pygments.tex}
 
 %% The following metadata will show up in the PDF properties
-\hypersetup{
-  colorlinks = true,
-  urlcolor = black,
-  pdfauthor = {\name},
-  pdfkeywords = {cs472 ``computer architecture'' clements ``chapter 3''},
-  pdftitle = {CS 472: Homework 5},
-  pdfsubject = {CS 472: Homework 5},
-  pdfpagemode = UseNone
-}
+ \hypersetup{
+   colorlinks = false,
+   urlcolor = black,
+   pdfauthor = {\name},
+   pdfkeywords = {\title, \subject, \courseNumber, \courseName, \supervisor},
+   pdftitle = {\title},
+   pdfsubject = {\subject},
+   pdfpagemode = UseNone
+ }
+
+\parindent = 0.0 in
+\parskip = 0.1 in
 
 \begin{document}
 
 
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+ 
+%----------------------------------------------------------------------------------------
+%        HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE Oregon State University}\\[1.5cm] % Name of your university/college
+\textsc{\Large \subject \courseNumber - \courseName}\\[0.5cm] % Major heading such as course name
+\textsc{\large \courseInfo}\\[0.5cm] % Minor heading such as course title
+
+%----------------------------------------------------------------------------------------
+%        TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \huge \bfseries \title }\\[0.4cm] % Title of your document
+{\small \textit{\subtitle}}\\[0.4cm]
+\HRule \\[2.5cm]
+ 
+%----------------------------------------------------------------------------------------
+%        AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+
+\emph{Author:}\\
+\name \\[2.5cm]
+
+\emph{Professor:} \\
+\supervisor\\[4.4cm]
+
+% If you don't want a supervisor, uncomment the two lines below and remove the section above
+%\Large \emph{Author:}\\
+%John \textsc{Smith}\\[3cm] % Your name
+
+%----------------------------------------------------------------------------------------
+%        DATE SECTION
+%----------------------------------------------------------------------------------------
+
+{\large \today}\\[3cm] % Date, change the \today to a set date if you want to be precise
+
+%----------------------------------------------------------------------------------------
+%        LOGO SECTION
+%----------------------------------------------------------------------------------------
+
+%\includegraphics{Logo}\\[1cm] % Include a department/university logo - this will require the graphicx package
+ 
+%----------------------------------------------------------------------------------------
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+%\tableofcontents
+%\vfill % Fill the rest of the page with whitespace
+\newpage
+One of the goals of this course is that you be able to apply what you learn about machine organization to unfamiliar machines. In this paper, you'll choose a listed computer architecture and compare and contrast that architecture with both ARM and IA32. This also requires that you compare and contrast IA32 and ARM. In the end, you will be discussing 3 distinct architectures.
+
+Main point and purpose: This is an opportunity for you to apply what you've learned in class to a new situation. This is the best way to solidify your knowledge!
+
+Contents and form: The paper must be single-spaced, 10 pt font, 2 column format. It should use correct grammar and spelling. You must not plagiarize material. You must cite any sources, and include a bibliography. The write-up must be created in LaTeX (or variant). It must be as long as it needs to be to do a thorough, complete job.
+
+In the paper, you should include the following topics. REMEMBER YOUR AUDIENCE as you write and compare the architecture to what you know of ARM.
+
+\textbf{Introduction to the architecture including history:}
+Instruction set design (is it RISC/CISC, what addressing modes are offered, how long are addresses, what's the minimum addressable unit in memory, etc.)
+
+Datapath design (how many registers, is it single-cycle, multi-cycle, pipelined, is microcode used, etc.)
+
+Memory subsystem (what are the memory limits, are there caches, how is virtual memory supported by the hardware, etc)
+
+Other characteristics that are interesting about this system
+
+An explanation of how the features of this system might boost performance.
+
+In some of the above, you will likely be talking about specific implementations of the architecture. It is sufficient to focus on one implementation.
+
+\textbf{Topic Choices:}
+
+VAX,
+PowerPC,
+SPARC,
+HP PA-RISC,
+DEC Alpha,
+Parallel machines such a SGI Origin, IBM RS/6000 SP, Cray X-MP/416
+
+\begin{multicols}{2}
+\section*{History }
+\section*{Instruction Set Design}
+\section*{Datapath Design}
+\section*{Memory Subsystem}
+\section*{Other interesting Characteristics}
+\section*{How the features of the system might boost performance}
+\end{multicols}
 \bibliographystyle{plain}
 \bibliography{writeup}
 \end{document}
