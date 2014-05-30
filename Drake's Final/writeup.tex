@@ -1,0 +1,166 @@
+\documentclass[letterpaper,12pt,titlepage]{article}
+
+\usepackage{graphicx}                                        
+\usepackage{amssymb}                                         
+\usepackage{amsmath}                                         
+\usepackage{amsthm}                                          
+
+\usepackage{alltt}                                           
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+
+%\usepackage{balance}
+%\usepackage[TABBOTCAP, tight]{subfigure}
+%\usepackage{enumitem}
+\usepackage{pstricks, pst-node}
+
+\usepackage{listings}
+
+\usepackage{geometry}
+\geometry{textheight=9.5in, textwidth=7in}
+
+%random comment
+
+\newcommand{\cred}[1]{{\color{red}#1}}
+\newcommand{\cblue}[1]{{\color{blue}#1}}
+
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{multicol}
+
+\def\name{Drake Bridgewater}
+\def\title{IA32, better or worse then ARM}
+\def\subtitle{}
+\def\subject{CS }
+\def\courseNumber{ 472 }
+\def\courseName{Computer Architecture }
+\def\courseInfo{Spring 2014 }%Class Time: MWF X-X:XX AM}
+\def\supervisor{Kevin \textsc{McGrath}} % Supervisor's Name
+
+
+%pull in the necessary preamble matter for pygments output
+%\input{pygments.tex}
+
+%% The following metadata will show up in the PDF properties
+ \hypersetup{
+   colorlinks = false,
+   urlcolor = black,
+   pdfauthor = {\name},
+   pdfkeywords = {\title, \subject, \courseNumber, \courseName, \supervisor},
+   pdftitle = {\title},
+   pdfsubject = {\subject},
+   pdfpagemode = UseNone
+ }
+
+\parindent = 0.0 in
+\parskip = 0.1 in
+
+\begin{document}
+
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+ 
+%----------------------------------------------------------------------------------------
+%        HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE Oregon State University}\\[1.5cm] % Name of your university/college
+\textsc{\Large \subject \courseNumber - \courseName}\\[0.5cm] % Major heading such as course name
+\textsc{\large \courseInfo}\\[0.5cm] % Minor heading such as course title
+
+%----------------------------------------------------------------------------------------
+%        TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \huge \bfseries \title }\\[0.4cm] % Title of your document
+{\small \textit{\subtitle}}\\[0.4cm]
+\HRule \\[2.5cm]
+ 
+%----------------------------------------------------------------------------------------
+%        AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+
+\emph{Author:}\\
+\name \\[2.5cm]
+
+\emph{Professor:} \\
+\supervisor\\[4.4cm]
+
+% If you don't want a supervisor, uncomment the two lines below and remove the section above
+%\Large \emph{Author:}\\
+%John \textsc{Smith}\\[3cm] % Your name
+
+%----------------------------------------------------------------------------------------
+%        DATE SECTION
+%----------------------------------------------------------------------------------------
+
+{\large \today}\\[3cm] % Date, change the \today to a set date if you want to be precise
+
+%----------------------------------------------------------------------------------------
+%        LOGO SECTION
+%----------------------------------------------------------------------------------------
+
+%\includegraphics{Logo}\\[1cm] % Include a department/university logo - this will require the graphicx package
+ 
+%----------------------------------------------------------------------------------------
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+%\tableofcontents
+%\vfill % Fill the rest of the page with whitespace
+\newpage
+One of the goals of this course is that you be able to apply what you learn about machine organization to unfamiliar machines. In this paper, you'll choose a listed computer architecture and compare and contrast that architecture with both ARM and IA32. This also requires that you compare and contrast IA32 and ARM. In the end, you will be discussing 3 distinct architectures.
+
+Main point and purpose: This is an opportunity for you to apply what you've learned in class to a new situation. This is the best way to solidify your knowledge!
+
+Contents and form: The paper must be single-spaced, 10 pt font, 2 column format. It should use correct grammar and spelling. You must not plagiarize material. You must cite any sources, and include a bibliography. The write-up must be created in LaTeX (or variant). It must be as long as it needs to be to do a thorough, complete job.
+
+In the paper, you should include the following topics. REMEMBER YOUR AUDIENCE as you write and compare the architecture to what you know of ARM.
+
+\textbf{Introduction to the architecture including history:}
+Instruction set design (is it RISC/CISC, what addressing modes are offered, how long are addresses, what's the minimum addressable unit in memory, etc.)
+
+Datapath design (how many registers, is it single-cycle, multi-cycle, pipelined, is microcode used, etc.)
+
+Memory subsystem (what are the memory limits, are there caches, how is virtual memory supported by the hardware, etc)
+
+Other characteristics that are interesting about this system
+
+An explanation of how the features of this system might boost performance.
+
+In some of the above, you will likely be talking about specific implementations of the architecture. It is sufficient to focus on one implementation.
+
+\textbf{Topic Choices:}
+
+VAX,
+PowerPC,
+SPARC,
+HP PA-RISC,
+DEC Alpha,
+Parallel machines such a SGI Origin, IBM RS/6000 SP, Cray X-MP/416
+\newpage
+\begin{multicols}{2}
+A computer is just a bunch of bits flying around at insane speeds only being slowed down by decisions. Each architecture available has strengths and weaknesses that is why many computers are designed for specific purpose. Just like this \includegraphics[scale=0.46]{multiMachine.jpg} all in one toaster it will get the job done but there are better ways of doing so. 
+
+There are two primary instruction set designs CISC and RISC. CISC is complex instruction set computers and each instruction may exceed a single clock cycle and can operate directly on memory. Whereas RISC is reduced instruction set computers and each instruction will complete in a single clock cycle with instructions that are more simple. This is a huge reason why the charts stating that the clock speed is the fastest in the world don't tell the consumer anything. If You would need As RISC ARCHITECTURE \cite{RISC} states CISC has an emphasis on hardware while RISC has more emphasis on software
+\section*{History }
+\section*{Instruction Set Design}
+\section*{Datapath Design}
+\section*{Memory Subsystem}
+\section*{Other interesting Characteristics}
+\section*{How the features of the system might boost performance}
+\end{multicols}
+
+\newpage
+\bibliographystyle{plainnat}
+\bibliography{writeup}
+\end{document}
