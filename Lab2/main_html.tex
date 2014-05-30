@@ -1,0 +1,234 @@
+\documentclass[letterpaper,12pt,titlepage]{article}
+
+\usepackage{graphicx}                                        
+\usepackage{amssymb}                                         
+\usepackage{amsmath}                                         
+\usepackage{amsthm}                                          
+
+%\usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
+
+\usepackage{alltt}                                           
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+
+%\usepackage{balance}
+%\usepackage[TABBOTCAP, tight]{subfigure}
+%\usepackage{enumitem}
+\usepackage{pstricks, pst-node}
+
+\usepackage{listings}
+
+\usepackage{geometry}
+\geometry{textheight=9in, textwidth=6.5in}
+
+% Code listing packages
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}
+
+%%keeps text of subsection on same line
+\usepackage{titlesec} 
+\titleformat{\subsection}[runin] 
+  {\normalfont\large\bfseries}{\thesubsection}{1em}{} 
+
+
+\newcommand{\cred}[1]{{\color{red}#1}}
+\newcommand{\cblue}[1]{{\color{blue}#1}}
+
+\usepackage{hyperref}
+\usepackage{geometry}
+
+%% Color Definitions
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{lightgrey}{gray}{0.8}
+\definecolor{darkgrey}{gray}{1.6}
+
+%% Code Listing Configuration
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{0.987\linewidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing, labelfont=white, indention=0pt, textfont=white, margin=0pt, font={bf,footnotesize}, singlelinecheck=false}
+\DeclareCaptionFont{white}{\color{white}}
+\renewcommand{\lstlistingname}{Code}
+\lstset{ %
+  %Some lang opts: C++, C, Java, Python, Matlab, TeX, HTML, SQL, Verilog, VHDL, make, ...
+  basicstyle=\footnotesize\ttfamily , % the size of the fonts that are used for the code
+  numbers=left,                       % where to put the line-numbers
+  numberstyle=\scriptsize\color{darkgray}, % the style that is used for the line-numbers
+  stepnumber=2,                       % the step between two line-numbers. 
+  numbersep=5pt,                      % how far the line-numbers are from the code
+  backgroundcolor=\color{white},      % choose the background color. You must add \usepackage{color}
+  showspaces=false,                   % show spaces adding particular underscores
+  showstringspaces=false,             % underline spaces within strings
+  showtabs=false,                     % show tabs within strings adding particular underscores
+  frame=tb,                           % adds a frame around the code
+  rulesepcolor=\color{gray},          % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=2,                          % sets default tabsize to 2 spaces
+  captionpos=t,                       % sets the caption-position
+  breaklines=true,                    % sets automatic line breaking
+  breakatwhitespace=false,            % sets if automatic breaks should only happen at whitespace
+  title=\lstname,                     % show the filename of files included with \lstinputlisting;
+  keywordstyle=\color{blue},          % keyword style
+  commentstyle=\color{dkgreen},       % comment style
+  stringstyle=\color{mauve},          % string literal style
+  escapeinside={\%*}{*)},             % if you want to add a comment within your code
+  morekeywords={*,...}                % if you want to add more keywords to the set
+  framexbottommargin=5pt,
+}
+
+\def\name{Drake Bridgewater \\  Ryan Phillips}
+\def\title{Lab 2 - The ARM ISA}
+\def\subtitle{}
+\def\subject{CS }
+\def\courseNumber{ 472 }
+\def\courseName{Computer Architecture }
+\def\courseInfo{Spring 2014 }%Class Time: MWF X-X:XX AM}
+\def\supervisor{Kevin \textsc{McGrath}} % Supervisor's Name
+
+
+%pull in the necessary preamble matter for pygments output
+\input{pygments.tex}
+
+%% The following metadata will show up in the PDF properties
+ \hypersetup{
+   colorlinks = false,
+   urlcolor = black,
+   pdfauthor = {\name},
+   pdfkeywords = {\title, \subject, \courseNumber, \courseName, \supervisor},
+   pdftitle = {\title},
+   pdfsubject = {\subject},
+   pdfpagemode = UseNone
+ }
+
+\parindent = 0.0 in
+\parskip = 0.1 in
+
+\begin{document}
+
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+ 
+%----------------------------------------------------------------------------------------
+%        HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE Oregon State University}\\[1.5cm] % Name of your university/college
+\textsc{\Large \subject \courseNumber - \courseName}\\[0.5cm] % Major heading such as course name
+\textsc{\large \courseInfo}\\[0.5cm] % Minor heading such as course title
+
+%----------------------------------------------------------------------------------------
+%        TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \huge \bfseries \title }\\[0.4cm] % Title of your document
+{\small \textit{\subtitle}}\\[0.4cm]
+\HRule \\[1.5cm]
+ 
+%----------------------------------------------------------------------------------------
+%        AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Author:}\\
+\name
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Professor:} \\
+\supervisor
+\end{flushright}
+\end{minipage}\\[4cm]
+
+% If you don't want a supervisor, uncomment the two lines below and remove the section above
+%\Large \emph{Author:}\\
+%John \textsc{Smith}\\[3cm] % Your name
+
+%----------------------------------------------------------------------------------------
+%        DATE SECTION
+%----------------------------------------------------------------------------------------
+
+{\large \today}\\[3cm] % Date, change the \today to a set date if you want to be precise
+
+%----------------------------------------------------------------------------------------
+%        LOGO SECTION
+%----------------------------------------------------------------------------------------
+
+%\includegraphics{Logo}\\[1cm] % Include a department/university logo - this will require the graphicx package
+ 
+%----------------------------------------------------------------------------------------
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+%\tableofcontents
+%\vfill % Fill the rest of the page with whitespace
+%\newpage
+\subsection*{1 \& 2)} Write a simple program to perform:  $Z = A+B+B-(D \times E)$. The instructions you may use are ADD, SUB, and MUL. Assume that the data is in registers r0 to r4 (representing A to E) and the result is put in r5. Enter your program into the Keil simulator and run it. You can use move instruction to load data into registers. Do you
+get the expected answer? 
+
+\lstinputlisting{lab2_part1/lab2_1.asm}
+While watching the register reflect each line of code I was able to view each commands effects on the bits. This allowed me to realize that the add operation and subtraction operations are performed exactly as expected, but once the multiplication command came into play I noticed that when the numbers are smaller minus larger the result is a negative. 
+
+ \newpage
+\subsection*{3)} Write a program that includes deliberate syntax errors.   Enter it in the development system, assemble (build) it and then debug it. 
+
+\vspace{-0.75cm}
+\begin{tabular}{p{7.5cm} p{7.5cm}}
+\lstinputlisting{lab2_part1/lab2_3_errors.asm}
+&
+\lstinputlisting{lab2_part1/lab2_3_fixed.asm}
+\end{tabular}
+\vspace{-0.75cm}
+\begin{verbatim}
+assembling lab2_3_errors.asm...
+lab2_3_errors.asm(6): error: A1163E: Unknown opcode r4, expecting opcode or Macro
+lab2_3_errors.asm(8): error: A1106E: Missing comma
+lab2_3_errors.asm(11): error: A1110E: Expected constant expression
+lab2_3_errors.asm(24): warning: A1313W: Missing END directive at end of file
+assembling lab2_3_fixed.asm...
+".\lab2.axf" - 3 Error(s), 1 Warning(s).
+\end{verbatim}
+Error on line 6: can be fixed by adding tabbing out the command out. The compiler thinks that ADR is a label and that r4 is the opcode; that is why it is saying unknown opcode r4.
+Error on line 8: can be fixed by adding comma but will still complain if you only add a comma. Therefore you will have to add an additional operand.
+Error on line 11: can be fixed by adding the expected expression, either numeric or PC-relative, as the Directive allocates one or more words of memory aligned on four-byte boundaries.
+Error on line 24: can be fixed by telling the compiler where the end of the program is or placing 'END' on the last line. 
+Error on line 18: this error is not seen as an error but as a bug; the attempt is to add the two register but you must specify the Rd or destination, Rn or the first operand and operand2 or the second operand in order to sum two values. 
+\newpage
+\section*{Part 2: Examination of compiler output}
+In the homework, you were asked to write an assembly routine that checks for palindromes in odd length strings. For this portion of the lab, please write a simple C program that does the same thing, use the \href{http://gcc.godbolt.org}{web based compiler} and compile your  C code to ARM assembly (use arm-linux-gnueabi-g++-4.6 with option -O0). Compare this assembly with what you wrote. Modify the optimization level from 0 to one of the values in the set {1,2,3,s}. What changes? Why do you think these changes were made?
+
+For this lab, you will need to create a write-up discussing the differences you see in Part 2. Do you see any interesting features being used? Is the hand assembly you wrote significantly different than what the compiler produced? Which uses fewer instructions? In other words, provide an analysis of Part 2.
+
+\lstinputlisting[language=C]{lab2_part2/palindrome.c}
+
+\begin{tabular}{p{7.5cm} p{7.5cm} }
+\lstinputlisting[lastline=45]{lab2_part2/palindrome_0.asm}
+&
+\lstinputlisting[lastline=50]{lab2_part2/palindrome_3.asm}
+\end{tabular}
+
+\begin{tabular}{p{7.5cm} p{7.5cm} }
+\lstinputlisting[linerange=46-90]{lab2_part2/palindrome_0.asm}
+&
+\lstinputlisting[linerange=51-100]{lab2_part2/palindrome_3.asm}
+\end{tabular}
+
+\begin{tabular}{p{7.5cm} p{7.5cm} }
+\lstinputlisting[linerange=90-200]{lab2_part2/palindrome_0.asm} &
+\end{tabular}
+
+There are a few important differences between the hand-written assembly code and the assembly code generated from the .c source. The generated code is less readable, mainly because it uses default numbered labels which yield no information about the code within these sections. Also, the hand-written assembly is much shorter in length at 36 lines. The unoptimized, generated code is over 100 lines, and even the optimized, generated code is over twice as long at 80 lines.
+
+\end{document}
+
