@@ -34,8 +34,13 @@ part1:
 	./cache_size
 
 part2:
-	gcc endian_neutral.c -o endian_neutral
+	gcc endian_neutral.c -mbig-endian -o endian_neutral 
 	./endian_neutral
+
+part2.1:
+	gcc endian_neutral.c  -mlittle-endian -o endian_neutral
+	./endian_neutral
+
 
 part3:
 	gcc endian_neutral.c -o endian_neutral
