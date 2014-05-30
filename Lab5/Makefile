@@ -20,10 +20,14 @@ SRC=mt.h
 INCLUDES =
 
 #any .c or .cpp files go here
-SOURCE =
+SOURCE = cacheSizes.c
 
 #default is to compile and pdf
 #default: pdf
+
+default: simple
+
+all: part1 part2 part3 pdf html
 
 part1:
 	gcc cache_size.c -o cache_size
@@ -36,10 +40,6 @@ part2:
 part3:
 	gcc endian_neutral.c -o endian_neutral
 	./endian_neutral
-
-default: simple
-
-both: pdf html
 
 simple:
 	pdflatex writeup.tex

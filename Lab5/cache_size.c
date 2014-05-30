@@ -41,6 +41,5 @@ int main() {
 	    timeTaken = (double)(clock() - start)/CLOCKS_PER_SEC;
         printf("%d, %.8f \n", sizes[s] / 1024, timeTaken);
     }
-
     return 0;
 }
