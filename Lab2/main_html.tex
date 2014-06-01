@@ -12,18 +12,6 @@
 \usepackage{color}
 \usepackage{url}
 
-%for frames around text works great for answers. 
-\usepackage[framemethod=TikZ]{mdframed}
-\mdfdefinestyle{MyFrame}{%
-    innertopmargin=\baselineskip,
-    innerbottommargin=\baselineskip,
-    innerrightmargin=20pt,
-    innerleftmargin=20pt,
-    backgroundcolor=gray!5!white,
-    splitbottomskip = 5mm,
-    splittopskip = 5mm,
-    skipabove=5mm}
-    
 %\usepackage{balance}
 %\usepackage[TABBOTCAP, tight]{subfigure}
 %\usepackage{enumitem}
@@ -91,7 +79,7 @@
 }
 
 \def\name{Drake Bridgewater \\  Ryan Phillips}
-\def\title{Lab 5 - The Memory Hierarchy and Endian-Neutral Programming}
+\def\title{Lab 2 - The ARM ISA}
 \def\subtitle{}
 \def\subject{CS }
 \def\courseNumber{ 472 }
@@ -182,19 +170,65 @@
 \vfill % Fill the rest of the page with whitespace
 
 \end{titlepage}
-\section*{Part 1}
-\begin{tabular}{p{9.5cm} p{6cm} }
- \textbf{Code} & \textbf{Output} \\ \vspace{-0.5cm}
-\lstinputlisting[linerange=8-55]{cache_size.c} & \vspace{-0.5cm} \lstinputlisting{cache_size.txt}  
-\begin{mdframed}[style=MyFrame]From the output our program produces while running on a Beaglebone Black we can see that the size of the \textbf{L1 cache is about 32K} as the jump in time happened immediately after that. As for the \textbf{L2 cache it is likely to be around 128K} as there is no jump in timing after that. \end{mdframed}
+
+%\tableofcontents
+%\vfill % Fill the rest of the page with whitespace
+%\newpage
+\subsection*{1 \& 2)} Write a simple program to perform:  $Z = A+B+B-(D \times E)$. The instructions you may use are ADD, SUB, and MUL. Assume that the data is in registers r0 to r4 (representing A to E) and the result is put in r5. Enter your program into the Keil simulator and run it. You can use move instruction to load data into registers. Do you
+get the expected answer? 
+
+\lstinputlisting{lab2_part1/lab2_1.asm}
+While watching the register reflect each line of code I was able to view each commands effects on the bits. This allowed me to realize that the add operation and subtraction operations are performed exactly as expected, but once the multiplication command came into play I noticed that when the numbers are smaller minus larger the result is a negative. 
+
+ \newpage
+\subsection*{3)} Write a program that includes deliberate syntax errors.   Enter it in the development system, assemble (build) it and then debug it. 
+
+\vspace{-0.75cm}
+\begin{tabular}{p{7.5cm} p{7.5cm}}
+\lstinputlisting{lab2_part1/lab2_3_errors.asm}
+&
+\lstinputlisting{lab2_part1/lab2_3_fixed.asm}
+\end{tabular}
+\vspace{-0.75cm}
+\begin{verbatim}
+assembling lab2_3_errors.asm...
+lab2_3_errors.asm(6): error: A1163E: Unknown opcode r4, expecting opcode or Macro
+lab2_3_errors.asm(8): error: A1106E: Missing comma
+lab2_3_errors.asm(11): error: A1110E: Expected constant expression
+lab2_3_errors.asm(24): warning: A1313W: Missing END directive at end of file
+assembling lab2_3_fixed.asm...
+".\lab2.axf" - 3 Error(s), 1 Warning(s).
+\end{verbatim}
+Error on line 6: can be fixed by adding tabbing out the command out. The compiler thinks that ADR is a label and that r4 is the opcode; that is why it is saying unknown opcode r4.
+Error on line 8: can be fixed by adding comma but will still complain if you only add a comma. Therefore you will have to add an additional operand.
+Error on line 11: can be fixed by adding the expected expression, either numeric or PC-relative, as the Directive allocates one or more words of memory aligned on four-byte boundaries.
+Error on line 24: can be fixed by telling the compiler where the end of the program is or placing 'END' on the last line. 
+Error on line 18: this error is not seen as an error but as a bug; the attempt is to add the two register but you must specify the Rd or destination, Rn or the first operand and operand2 or the second operand in order to sum two values. 
+\newpage
+\section*{Part 2: Examination of compiler output}
+In the homework, you were asked to write an assembly routine that checks for palindromes in odd length strings. For this portion of the lab, please write a simple C program that does the same thing, use the \href{http://gcc.godbolt.org}{web based compiler} and compile your  C code to ARM assembly (use arm-linux-gnueabi-g++-4.6 with option -O0). Compare this assembly with what you wrote. Modify the optimization level from 0 to one of the values in the set {1,2,3,s}. What changes? Why do you think these changes were made?
+
+For this lab, you will need to create a write-up discussing the differences you see in Part 2. Do you see any interesting features being used? Is the hand assembly you wrote significantly different than what the compiler produced? Which uses fewer instructions? In other words, provide an analysis of Part 2.
+
+\lstinputlisting[language=C]{lab2_part2/palindrome.c}
+
+\begin{tabular}{p{7.5cm} p{7.5cm} }
+\lstinputlisting[lastline=45]{lab2_part2/palindrome_0.asm}
+&
+\lstinputlisting[lastline=50]{lab2_part2/palindrome_3.asm}
 \end{tabular}
 
-\section*{Part 2}
+\begin{tabular}{p{7.5cm} p{7.5cm} }
+\lstinputlisting[linerange=46-90]{lab2_part2/palindrome_0.asm}
+&
+\lstinputlisting[linerange=51-100]{lab2_part2/palindrome_3.asm}
+\end{tabular}
 
-\lstinputlisting[language=C]{endian_neutral.c} 
+\begin{tabular}{p{7.5cm} p{7.5cm} }
+\lstinputlisting[linerange=90-200]{lab2_part2/palindrome_0.asm} &
+\end{tabular}
 
-\newpage
-\section*{Part 3}
-\lstinputlisting[language=C]{endian_neutral.c} 
+There are a few important differences between the hand-written assembly code and the assembly code generated from the .c source. The generated code is less readable, mainly because it uses default numbered labels which yield no information about the code within these sections. Also, the hand-written assembly is much shorter in length at 36 lines. The unoptimized, generated code is over 100 lines, and even the optimized, generated code is over twice as long at 80 lines.
 
 \end{document}
+
