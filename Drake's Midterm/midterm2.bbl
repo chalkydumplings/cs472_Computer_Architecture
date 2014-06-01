@@ -1,0 +1,31 @@
+\begin{thebibliography}{1}
+
+\bibitem{HW5}
+Drake Bridgewater and Ryan Phillips.
+\newblock Homework 5.
+\newblock
+  \url{https://github.com/drakebridgewater/cs472_Computer_Architecture/raw/master/Assignment5/CS472_HW5_bridgewd_philliry.pdf}.
+
+\bibitem{HW6}
+Drake Bridgewater and Ryan Phillips.
+\newblock Homework 6.
+\newblock
+  \url{https://github.com/drakebridgewater/cs472_Computer_Architecture/raw/master/Assignment6/CS472_HW6_bridgewd_philliry.pdf}.
+
+\bibitem{MeansDiff}
+Andrew Matuszak.
+\newblock Differences between arithmetic, geometric, and harmonic means, 2010.
+\newblock
+  \url{http://economistatlarge.com/finance/applied-finance/differences-arithmetic-geometric-harmonic-means}.
+
+\bibitem{MeansWiki}
+Multiple.
+\newblock Means, 2014.
+\newblock \url{https://en.wikipedia.org/wiki/Mean}.
+
+\bibitem{Swanson}
+William Swanson.
+\newblock The art of picking intel registers, 2003.
+\newblock \url{http://www.swansontec.com/sregisters.html}.
+
+\end{thebibliography}
