@@ -63,6 +63,8 @@
 
 \noindent {\large \bf Name: \name \hfill CS/ECE 472/572 Midterm 2}
 
+\noindent {\large Turtle}
+
 \noindent {\large \bf ID\#: 931-566-291 }
 
 \emph{All answers should be typed directly below the questions. All work should be shown.
@@ -157,29 +159,30 @@ The arithemetic mean would be the largest when ever value, $\alpha$ is the same
 Answer copied from Homework 6 by Drake Bridgewater and Ryan Phillips \cite{HW6}
 \end{mdframed}
 \item (10 points) 6.32: The SPEC benchmarks present results with respect to a standard machine by normalizing the benchmarks. That is, a set of benchmarks is run on a reference machine and the times obtained for each for the benchmarks. When a test machine is benchmarked, its times are divided by the results on the reference machine. What are the advantages and disadvantages of giving benchmarks with respect to a reference machine?
-\begin{mdframed}[style=MyFrame, backgroundcolor=red]
-\textbf{ The disadvantages of using a reference machine for calculating benchmarks is that the reference machine is not always comparable to the system you are running, but it give a way for competitors to outperform each other. Benchmarking is not a great idea for many reasons because all the benchmark is saying is that the current system runs this benchmark with these at this speed. This is great to tell you how fast it runs that benchmark and that is why SPEC came out. SPEC is a benchmark compiance that runs a compilations of smaller benchmarks then uses an average of the scores to produce a score. }
+\begin{mdframed}[style=MyFrame]
+ The disadvantages of using a reference machine for calculating benchmarks is that the reference machine is not always comparable to the system you are running, but it give a way for competitors to outperform each other. Benchmarking is not a great idea for many reasons because all the benchmark is saying is that the current system runs this benchmark with these at this speed. This is great to tell you how fast it runs that benchmark and that is why SPEC came out. SPEC is a benchmark compiance that runs a compilations of smaller benchmarks then uses an average of the scores to produce a score. 
+\end{mdframed}
 
-\end{mdframed}
-\item (10 points) 7.13: What modifications would have to be made to the architecture for the computer in figure P7.12 to implement predicated execution like the ARM?
-\begin{mdframed}[style=MyFrame, backgroundcolor=red]
-\textbf{The computer would need a flag from the Z bit of the register file to determine if it needs branch predication which would be best determined after the instruction is read therefore you want this Z bit to trigger the branch  }
-\end{mdframed}
 \newpage
+\item (10 points) 7.13: What modifications would have to be made to the architecture for the computer in figure P7.12 to implement predicated execution like the ARM?
+\begin{mdframed}[style=MyFrame]
+The ARM processor would need a flag from the Z bit that would be throne depending on the previous instruction. This would have to be added to the status register to enable branching at the appropriate time. 
+\end{mdframed}
 \item (10 points) 7.19
-\begin{mdframed}[style=MyFrame, backgroundcolor=red]
+\begin{mdframed}[style=MyFrame]
 \begin{enumerate}
 \item \textbf{Is it true that a larger number of register in any architecture is always better then a smaller number?} It is not true it just defines difference architecture that is being used for Intel processors they only use a single register while other processors such as ARM have multiple.  If you create an architecture that does not require registers then adding register will do nothing for it, but if you do use registers then adding register will increase performance to a certain degree. There is the possibility that you can have too many registers; one downside will be when you have too many register to transfer on a single bus line causing the need for additional cycles for executions. \\ 
 Each architecture is designed differently which is a large factor as to the difficulties of benchmarking. 
 \item \textbf{What limits the number of register that can be implemented by any ISA? } The number of register is limited by price, bus size, and instruction size.
 \item \textbf{What are the relative advantages and disadvantages of dedicated registers like the IA32 architecture compared to general purpose registers like ARM and MIPS?} As Swanson Technologies \cite{Swanson} states, when Intel was originally creating there processors they had general purpose registers because you can reduce the physical size and each register was being used for a specific purpose. This is great for software engineers if they take advantage of the optimizations, but as he states may software engineers are unaware of these optimizations therefore they are not used properly. This article also states that having consistent register use brings better compression. 
-\item \textbf{If you have an m-bit register select field in an instruction, you can have more then $2^m$ registers. There are in fact, ways round this restriction. Suggest ways of increasing the number of register beyond $2^m$ while keeping an m-bit register select field.} 
+\item \textbf{If you have an m-bit register select field in an instruction, you can have more then $2^m$ registers. There are in fact, ways round this restriction. Suggest ways of increasing the number of register beyond $2^m$ while keeping an m-bit register select field.} Use the exponent trick, where you dedicate however many of those bits for an exponent and then take the rest of the bits to the power of the exponent bits, so you get a wider range.
 \end{enumerate}
 \end{mdframed}
 
-\item (10 points) 7.20
-\begin{mdframed}[style=MyFrame, backgroundcolor=red]
-
+\newpage
+\item (10 points) 7.20: Someone once said "RISC is to hardware what UNIX is to software" What do you think this means and do you think it is true?
+\begin{mdframed}[style=MyFrame]
+RISC makes things happen in the hardware while UNIX is making things happen in software and yes it is true.
 \end{mdframed}
 
 \item (10 points) 9.12: How is data in main store mapped on to each of the following: a direct-mapped cache, a fully associative cache, and a set-associative cache? 
@@ -195,6 +198,7 @@ Answer copied from Homework 5 by Drake Bridgewater and Ryan Phillips \cite{HW5}
 A system that access has the cache between the MMU and Main memory allows a program to treat its memory space as a single contiguous block and the MMU takes care of the mapping of virtual memory to physical address.  Whereas if the cache is between the processor and MMU the processor addressees cache directly without needing to go through thee MMU meaning that address don't have to be translated by the MMU saving precious time, but the one downside is that all the processes have the same virtual address space. Overall to determine the optimal location of the cache you would want to know the weather typical executions need to access main memory very often and how much memory a process is requesting. 
 \end{mdframed}
 
+\newpage
 \item (10 points) 9.23: When a CPU  writes to the cache, both the item in the cache and the corresponding item in the memory must be updated. If data is not in the cache, it must be fetched from memory and loaded in the cache. If $t_1$ is the time taken to reloaded the cache on a miss, show that the effective average time of the memory system is given by $t_{avg}=ht_c+(1-h)t_m+(1-h)t_1$
 
 \begin{mdframed}[style=MyFrame]
@@ -228,14 +232,14 @@ offset = 5 bits since each line is 32 bytes, line = 16 bits, set = 43 bits.
 \item (10 points) Assume a 64-bit virtual address and a 64-bit physical address. The page
   size is 4KB. How many total entries are there in the page table? Express your answer in
   powers of 2.
-\begin{mdframed}[style=MyFrame, backgroundcolor=red]
+\begin{mdframed}[style=MyFrame]
 A 64 bit address can address $2^{64}$ bytes in a byte addressable machine. Since the size of a page is is 4KB ($2^{12}$)the number of addressable pages is $\frac{2^{64}}{2^{12}}=2^{52}$
 \end{mdframed}
 
 \item (15 points) Describe the ARM pipeline. What benefit does this serve over a single 
   cycle flow through processor?
-\begin{mdframed}[style=MyFrame, backgroundcolor=red]
-
+\begin{mdframed}[style=MyFrame]
+In comparison to a single cycle flow through processor an ARM pipeline is a pipeline which allows execution of multiple instructions at once. The intricacies with the arm pipeline are: fetch, decode and execute. This allows each component within the processor to be productive ie. it has multiplexers that restrict electron movement from different areas and it only reads the incoming information on rising edge of the clock. The downside is every component needs a clock where the single cycle did not need a clock on every component only at the beginning. 
 \end{mdframed}
 
 \item (15 points) Describe a method of programmatically determining cache line size as 
